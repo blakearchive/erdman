@@ -1,8 +1,8 @@
-import * as api from './api';
 import * as data from './data';
+import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import {TableOfContents} from './components';
 
-var contents = api.createContentsTree(data.pages);
+var el = document.getElementById("table-of-contents");
 
-React.createElement(<TableOfContents pages={data.pages} titles={data.titles}/>)
+ReactDOM.render(<TableOfContents pages={data.pages} titles={data.titles}/>, el);

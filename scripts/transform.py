@@ -149,10 +149,12 @@ class XMLTransformer(object):
         xslt_xml = etree.parse("../xsl/transcription.xsl")
         self.transform = etree.XSLT(xslt_xml)
 
+
 def get_titles(tree):
     heads = tree.xpath("//head")
     return {head.getparent().attrib["id"]: head.xpath("string()").strip() for head in heads
             if head.getparent().tag in {"div1", "div2", "div3", "div4"}}
+
 
 def parse_document(file_name):
     tree = etree.parse(file_name)
@@ -169,13 +171,13 @@ def run():
     (erd2, erd2_titles) = parse_document("../data/erd2.xml")
     (erd3, erd3_titles) = parse_document("../data/erd3.xml")
     (erd4, erd4_titles) = parse_document("../data/erd4.xml")
-    with open("../client/src/data.js", 'w') as f:
+    with open("../client/src/data.ts", 'w') as f:
         pages = erd1.pages + erd2.pages + erd3.pages + erd4.pages
         titles.update(erd1_titles)
         titles.update(erd2_titles)
         titles.update(erd3_titles)
         titles.update(erd4_titles)
-        f.write("var erdmanData = {pages: %s, titles: %s};" % (json.dumps(pages), json.dumps(titles)))
+        f.write("export var pages = %s, titles = %s;" % (json.dumps(pages), json.dumps(titles)))
 
 
 if __name__ == "__main__":
