@@ -9,6 +9,7 @@ import json
 class ErdmanTransformer(ContentHandler):
 
     def __init__(self):
+        self.next_page_id = ""
         self.pages = []
         self.open_tags = []
         self.current_heading = []
@@ -42,16 +43,16 @@ class ErdmanTransformer(ContentHandler):
 
     @classmethod
     def create_tag(cls, tag_name, attrs=None):
+        template = "<%s>".encode('utf-8')
         if attrs:
-            return "<%s>".encode('utf-8') % cls.tag_with_attributes(tag_name, attrs)
-        return "<%s>".encode('utf-8') % tag_name
+            return template % cls.tag_with_attributes(tag_name, attrs)
+        return template % tag_name
 
     def add_current_page_heading(self, name, level=0):
         current_heading = self.current_page["headings"]
         for i in range(level):
             current_heading = current_heading[self.current_heading[i][1]["id"]]
         current_heading[name] = OrderedDict()
-
 
     def startElementNS(self, name, qname, attrs):
         uri, localname = name
@@ -60,15 +61,19 @@ class ErdmanTransformer(ContentHandler):
         if localname == 'div1':
             self.current_heading.append((attrs["id"], attrs))
             self.add_current_page_heading(attrs["id"])
+            self.current_page["contents"].append("<span id='" + attrs["id"] + "'/>")
         elif localname == 'div2':
             self.current_heading.append((attrs["id"], attrs))
             self.add_current_page_heading(attrs["id"], 1)
+            self.current_page["contents"].append("<span id='" + attrs["id"] + "'/>")
         elif localname == 'div3':
             self.current_heading.append((attrs["id"], attrs))
             self.add_current_page_heading(attrs["id"], 2)
+            self.current_page["contents"].append("<span id='" + attrs["id"] + "'/>")
         elif localname == 'div4':
             self.current_heading.append((attrs["id"], attrs))
             self.add_current_page_heading(attrs["id"], 3)
+            self.current_page["contents"].append("<span id='" + attrs["id"] + "'/>")
         elif localname == 'head':
             if len(self.current_heading) == 4:
                 heading = self.current_heading[3]
@@ -82,14 +87,14 @@ class ErdmanTransformer(ContentHandler):
             elif len(self.current_heading) == 1:
                 heading = self.current_heading[0]
                 attrs["class"] = "heading-secondary"
-            attrs["id"] = heading[1]["id"]
             self.open_tags.append((localname, attrs))
             tag = self.create_tag('head'.encode('utf-8'), attrs)
             self.current_page["contents"].append(tag)
         elif localname == 'pb':
+            self.next_page_id = attrs["n"]
             if self.current_page["contents"]:
                 self.save_page()
-                self.current_page = self.create_page(attrs["n"])
+            self.current_page = self.create_page(self.next_page_id)
 
         elif localname in self.ignored_elements:
             pass
@@ -114,7 +119,8 @@ class ErdmanTransformer(ContentHandler):
         page_content = ''.encode('utf-8').join(page_tags_unicode)
         page_closing_tags = ''.encode('utf-8').join('</%s>' % tag for (tag, attrs) in reversed(self.open_tags))
         page_xml = page_tag + page_content + page_closing_tags + "</div>".encode('utf-8')
-        return etree.tostring(self.transformer.transform(etree.fromstring(page_xml)))
+        page_html = self.transformer.transform(etree.fromstring(page_xml))
+        return etree.tostring(page_html)
 
     def endElementNS(self, name, qname):
         uri, localname = name

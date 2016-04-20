@@ -16,6 +16,13 @@ export class Page implements IPage {
     }
 }
 
+export function pagesMatchingSearch(pages: IPage[], search: string) {
+    let pageFilter = new RegExp(search, "i");
+    return pages.filter(page => {
+        return page.contents.search(pageFilter) >= 0;
+    });
+}
+
 export function createContentsTree(pages: IPage[]) {
     var contents = {__index__: []};
 

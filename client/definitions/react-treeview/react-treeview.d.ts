@@ -1,4 +1,4 @@
-/// <reference path="../react/react.d.ts" />
+/// <reference path="../../typings/main.d.ts" />
 
 interface ITreeViewProps {
     collapsed?: boolean,
@@ -9,6 +9,6 @@ interface ITreeViewProps {
 }
 
 declare module "react-treeview" {
-    export = class TreeView extends React.Component<ITreeViewProps, any> {}
+    export = class TreeView extends __React.Component<ITreeViewProps, any> {}
 }
 

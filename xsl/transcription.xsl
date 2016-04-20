@@ -4,11 +4,38 @@ transforms transcriptions
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:exist="http://exist.sourceforge.net/NS/exist" version="1.0">
     <!--<xsl:include href="includes.xsl"/>-->
     <xsl:include href="wba_ms_test.xsl"/>
-    <xsl:template match="/"><!--<div>--><xsl:apply-templates/><!--</div>--></xsl:template>
+    <xsl:template match="/div">
+        <div class="page"><xsl:attribute name="id"><xsl:value-of select="@id"></xsl:value-of></xsl:attribute>
+            <xsl:apply-templates/>
+        </div>
+    </xsl:template>
+    <xsl:template match="head[@class='heading-primary']">
+        <h1><xsl:attribute name="id"><xsl:value-of select="@id"></xsl:value-of></xsl:attribute>
+            <xsl:apply-templates/>
+        </h1>
+    </xsl:template>
+    <xsl:template match="head[@class='heading-secondary']">
+        <h2><xsl:attribute name="id"><xsl:value-of select="@id"></xsl:value-of></xsl:attribute>
+            <xsl:apply-templates/>
+        </h2>
+    </xsl:template>
+    <xsl:template match="head[@class='heading-tertiary']">
+        <h3><xsl:attribute name="id"><xsl:value-of select="@id"></xsl:value-of></xsl:attribute>
+        <xsl:apply-templates/>
+        </h3>
+    </xsl:template>
+    <xsl:template match="head[@class='heading-quaternary']">
+        <h4><xsl:attribute name="id"><xsl:value-of select="@id"></xsl:value-of></xsl:attribute>
+        <xsl:apply-templates/>
+        </h4>
+    </xsl:template>
     <xsl:template match="@*|node()">
         <xsl:copy>
             <xsl:apply-templates select="@*|node()"/>
         </xsl:copy>
+    </xsl:template>
+    <xsl:template match="add">
+        <xsl:apply-templates/>
     </xsl:template>
     <xsl:template match="lb">
         <br/>
@@ -194,7 +221,7 @@ transforms transcriptions
         <tr>
             <td class="tei-line-number"> <!-- "width: 5%; font-family:Times New Roman;font-size:8pt;color:gray;" -->
                 <xsl:choose>
-                    <xsl:when test="not(contains(@n, 'XX'))">
+                    <xsl:when test="number(@n) = @n">
                         <xsl:value-of select="number(substring(@n, string-length(@n) - 1))"/>
                     </xsl:when>
                     <xsl:otherwise>
@@ -242,17 +269,6 @@ transforms transcriptions
     </xsl:template>
     <xsl:template match="foreign|physnumber|catchword">
         <xsl:apply-templates/>
-    </xsl:template>
-    <xsl:template match="note">
-        <!-- Probably going to need to review this in the future to enable editor's notes -->
-        <!--<a>-->
-            <!--<xsl:attribute name="href">javascript:START('<xsl:value-of select="$blakeroot"/>-->
-                <!--archive/editornotes.xq?objectid=<xsl:value-of select="/document/@objectid"/>&amp;lineno=<xsl:value-of-->
-                        <!--select="xalan:tokenize(ancestor::l/@n, '.')[position() = last()]"/>',-->
-                <!--'ednote')-->
-            <!--</xsl:attribute>-->
-            <!--n-->
-        <!--</a>-->
     </xsl:template>
     <xsl:template match="p">
         <p>
