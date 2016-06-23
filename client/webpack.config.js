@@ -1,5 +1,5 @@
 module.exports = {
-    entry: './src/main.tsx',
+    entry: './src/main.js',
     output: {
         filename: './dist/bundle.js'
     },
@@ -9,7 +9,7 @@ module.exports = {
     },
     module: {
         loaders: [
-            {test: /\.tsx?$/, loader: 'awesome-typescript-loader'},
+            {test: /\.js$/, loader: 'babel-loader'},
             {test: /\.css$/, loader: "style!css" }
         ]
     }

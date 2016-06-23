@@ -4,6 +4,7 @@ from xml.sax.handler import ContentHandler
 from xml.sax.saxutils import escape, unescape
 from collections import OrderedDict
 import json
+import pysolr
 
 
 class ErdmanTransformer(ContentHandler):
@@ -177,13 +178,24 @@ def run():
     (erd2, erd2_titles) = parse_document("../data/erd2.xml")
     (erd3, erd3_titles) = parse_document("../data/erd3.xml")
     (erd4, erd4_titles) = parse_document("../data/erd4.xml")
-    with open("../client/src/data.ts", 'w') as f:
-        pages = erd1.pages + erd2.pages + erd3.pages + erd4.pages
-        titles.update(erd1_titles)
-        titles.update(erd2_titles)
-        titles.update(erd3_titles)
-        titles.update(erd4_titles)
-        f.write("export var pages = %s, titles = %s;" % (json.dumps(pages), json.dumps(titles)))
+    pages = erd1.pages + erd2.pages + erd3.pages + erd4.pages
+    titles.update(erd1_titles)
+    titles.update(erd2_titles)
+    titles.update(erd3_titles)
+    titles.update(erd4_titles)
+    solr = pysolr.Solr("http://ctools-dev.its.unc.edu:8983/solr/erdman-page")
+    solr.delete(q='*:*')
+    for (i, page) in enumerate(pages):
+        solr.add([{
+            "id": i,
+            "page_id": page["page_id"],
+            "headings": json.dumps(page["headings"]),
+            "contents": json.dumps(page["contents"])
+        }])
+    solr.optimize()
+    with open("../client/src/data.js", 'w') as f:
+        pages = [{"headings": p["headings"], "page_id": p["page_id"]} for p in pages]
+        f.write("export var titles = %s, pages = %s;" % (json.dumps(titles), pages))
 
 
 if __name__ == "__main__":
