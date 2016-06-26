@@ -1,9 +1,15 @@
 "use strict";
+
+var angular = require('angular');
+var app = angular.module("Erdman", []);
+
 var data = require('./data');
-var ReactDOM = require('react-dom');
-var React = require('react');
-var components_1 = require('./components');
-var el = document.getElementById("table-of-contents");
+var tableOfContents = require('./table-of-contents');
+var page = require('./page');
+
+app.controller("MainCtrl", function () {
+    
+});
 
 function buildTableOfContentsTree(pages) {
     var contents = {__index__: []};
@@ -32,4 +38,3 @@ function buildTableOfContentsTree(pages) {
     return contents;
 }
 
-//# sourceMappingURL=main.js.map

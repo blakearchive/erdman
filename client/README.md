@@ -1,0 +1,2 @@
+Before beginning development, you should initialize the project via `npm install`.  Once this is done you can build it
+via `npm run-script build`, or to constantly watch and rebuild, `npm run-script watch`.
