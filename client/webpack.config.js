@@ -1,5 +1,3 @@
-ngminPlugin = require('ngmin-webpack-plugin');
-
 module.exports = {
     entry: './src/main.js',
     output: {
@@ -11,10 +9,9 @@ module.exports = {
     },
     module: {
         loaders: [
+            {test: /\.js$/, loader: 'babel-loader'},
             {test: /\.css$/, loader: "style!css" }
         ]
     },
-    plugins: [
-        new ngminPlugin()
-    ]
+    plugins: []
 };

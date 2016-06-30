@@ -1,11 +1,10 @@
 "use strict";
 
-var angular = require('angular');
-var app = angular.module("Erdman", []);
+import angular from 'angular';
+import components from './components';
+import {titles, headings} from './data';
 
-var data = require('./data');
-var tableOfContents = require('./table-of-contents');
-var page = require('./page');
+var app = angular.module("Erdman", [components]);
 
 app.controller("MainCtrl", function () {
     

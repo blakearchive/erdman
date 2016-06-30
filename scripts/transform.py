@@ -195,7 +195,7 @@ def run():
     solr.optimize()
     with open("../client/src/data.js", 'w') as f:
         pages = [{"headings": p["headings"], "page_id": p["page_id"]} for p in pages]
-        f.write("var titles = %s, pages = %s;" % (json.dumps(titles), pages))
+        f.write("export const titles = %s, pages = %s;" % (json.dumps(titles), pages))
 
 
 if __name__ == "__main__":
