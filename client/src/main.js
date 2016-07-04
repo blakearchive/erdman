@@ -3,6 +3,8 @@
 import angular from 'angular';
 import components from './components';
 import {titles, headings} from './data';
+import Page from './models';
+import ErdmanDataService from './services';
 
 var app = angular.module("Erdman", [components]);
 
