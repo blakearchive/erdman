@@ -7,5 +7,4 @@ class ErdmanDataService(object):
     @classmethod
     def get_pages(cls, page_ids):
         query = "page_id:(%s)" % "OR".join(page_ids)
-        return erdman_pages.search(query)
-
+        return list(erdman_pages.search(query))
