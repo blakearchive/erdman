@@ -5,6 +5,7 @@ from xml.sax.saxutils import escape, unescape
 from collections import OrderedDict
 import json
 import pysolr
+# import config
 
 
 class ErdmanTransformer(ContentHandler):
@@ -183,7 +184,7 @@ def run():
     titles.update(erd2_titles)
     titles.update(erd3_titles)
     titles.update(erd4_titles)
-    solr = pysolr.Solr("http://ctools-dev.its.unc.edu:8983/solr/erdman-page")
+    solr = pysolr.Solr('http://localhost:8983/solr/erdman')
     solr.delete(q='*:*')
     for (i, page) in enumerate(pages):
         solr.add([{

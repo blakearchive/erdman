@@ -1,10 +1,11 @@
 from erdman import app
 from flask import send_from_directory
+import config
 
 
 app.config["DEBUG"] = True
-app.config["SECRET_KEY"] = "not_so_secret_key"
-app.config["STATIC_FOLDER"] = "/home/nathan/Projects/erdman/client/dist/"
+app.config["SECRET_KEY"] = config.secret_key
+app.config["STATIC_FOLDER"] = config.static_folder
 
 
 @app.route('/', defaults={'path': ''})
