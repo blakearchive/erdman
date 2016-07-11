@@ -1,15 +1,5 @@
 .idea/
 client/node_modules/
 client/typings/
-<<<<<<< HEAD
 server/config.py
-server/config.py
-
-server/config.pyc
-
 *.pyc
-
-server/config.py
-=======
-*.pyc
->>>>>>> master
