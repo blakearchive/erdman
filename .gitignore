@@ -1,3 +1,11 @@
 .idea/
 client/node_modules/
 client/typings/
+server/config.py
+server/config.py
+
+server/config.pyc
+
+*.pyc
+
+server/config.py

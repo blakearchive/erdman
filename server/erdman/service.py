@@ -1,6 +1,7 @@
 import pysolr
+import config
 
-erdman_pages = pysolr.Solr('http://localhost:8983/solr/erdman-page')
+erdman_pages = pysolr.Solr(config.solr_url)
 
 
 class ErdmanDataService(object):
