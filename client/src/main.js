@@ -1,22 +1,15 @@
 "use strict";
 
 import angular from 'angular';
-import Components from './components/components';
+import components from './components/components';
 import {titles, headings} from './data';
 import Page from './models';
+import ErdmanController from './erdman.controller'
 import ErdmanDataService from './services';
 
-class ErdmanController {
-    constructor(ErdmanDataService){
-        ErdmanDataService.getPages().then(pages => {
-            this.pages = pages;
-        })
-    }
-}
 
-export default ErdmanController
 
-angular.module("Erdman", [Components])
+angular.module("Erdman", [components])
     .controller('ErdmanController',ErdmanController)
     .service('ErdmanDataService',ErdmanDataService);
 

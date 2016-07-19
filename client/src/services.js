@@ -13,6 +13,9 @@ class ErdmanDataService {
         return promise.then(data => {
             data.map(i => new Page(i));
         });
+        /*return promise.then(function(response){
+            console.log(response);
+        })*/
     }
 }
 

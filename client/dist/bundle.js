@@ -46,10 +46,6 @@
 
 	"use strict";
 
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
 	var _angular = __webpack_require__(1);
 
 	var _angular2 = _interopRequireDefault(_angular);
@@ -64,28 +60,17 @@
 
 	var _models2 = _interopRequireDefault(_models);
 
+	var _erdman = __webpack_require__(27);
+
+	var _erdman2 = _interopRequireDefault(_erdman);
+
 	var _services = __webpack_require__(26);
 
 	var _services2 = _interopRequireDefault(_services);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	var ErdmanController = function ErdmanController(ErdmanDataService) {
-	    var _this = this;
-
-	    _classCallCheck(this, ErdmanController);
-
-	    ErdmanDataService.getPages().then(function (pages) {
-	        _this.pages = pages;
-	    });
-	};
-
-	exports.default = ErdmanController;
-
-
-	_angular2.default.module("Erdman", [_components2.default]).controller('ErdmanController', ErdmanController).service('ErdmanDataService', _services2.default);
+	_angular2.default.module("Erdman", [_components2.default]).controller('ErdmanController', _erdman2.default).service('ErdmanDataService', _services2.default);
 
 	/*function buildTableOfContentsTree(pages) {
 	    var contents = {__index__: []};
@@ -18431,6 +18416,9 @@
 	                    return new _models2.default(i);
 	                });
 	            });
+	            /*return promise.then(function(response){
+	                console.log(response);
+	            })*/
 	        }
 	    }]);
 
@@ -18438,6 +18426,33 @@
 	}();
 
 	exports.default = ErdmanDataService;
+
+/***/ },
+/* 27 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var ErdmanController =
+
+	/**@ngInject*/
+	function ErdmanController(ErdmanDataService) {
+	    var _this = this;
+
+	    _classCallCheck(this, ErdmanController);
+
+	    ErdmanDataService.getPages().then(function (pages) {
+	        return _this.pages = pages;
+	    });
+	};
+
+	exports.default = ErdmanController;
 
 /***/ }
 /******/ ]);
