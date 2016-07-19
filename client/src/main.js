@@ -1,18 +1,28 @@
 "use strict";
 
 import angular from 'angular';
-import components from './components';
+import Components from './components/components';
 import {titles, headings} from './data';
 import Page from './models';
 import ErdmanDataService from './services';
 
-var app = angular.module("Erdman", [components]);
+class ErdmanController {
+    constructor(ErdmanDataService){
+        ErdmanDataService.getPages().then(pages => {
+            this.pages = pages;
+        })
+    }
+}
 
-app.controller("MainCtrl", function () {
-    
-});
+export default ErdmanController
 
-function buildTableOfContentsTree(pages) {
+angular.module("Erdman", [Components])
+    .controller('ErdmanController',ErdmanController)
+    .service('ErdmanDataService',ErdmanDataService);
+
+
+
+/*function buildTableOfContentsTree(pages) {
     var contents = {__index__: []};
     pages.forEach(function (page) {
         function processHeadingList(headingList, contents) {
@@ -37,5 +47,5 @@ function buildTableOfContentsTree(pages) {
         processHeadingList(page.headings, contents);
     });
     return contents;
-}
+}*/
 
