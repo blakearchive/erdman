@@ -18406,30 +18406,27 @@
 	_jquery2.default.ajaxSettings.traditional = true;
 
 	var ErdmanDataService = function () {
-	    function ErdmanDataService() {
+	    function ErdmanDataService($http) {
 	        _classCallCheck(this, ErdmanDataService);
 
+	        this.$http = $http;
 	        this.apiBase = 'http://localhost:8002';
 	    }
 
 	    _createClass(ErdmanDataService, [{
 	        key: 'getPages',
 	        value: function getPages() {
-	            var url = this.apiBase + '/api/pages',
-	                promise = _jquery2.default.getJSON(url);
-	            return promise.then(function (data) {
-	                data.map(function (i) {
-	                    return new _models2.default(i);
-	                });
+	            var url = this.apiBase + '/api/pages';
+	            return this.$http.get(url).then(function (response) {
+	                return response.data;
 	            });
-	            /*return promise.then(function(response){
-	                console.log(response);
-	            })*/
 	        }
 	    }]);
 
 	    return ErdmanDataService;
 	}();
+
+	ErdmanDataService.$inject = ['$http'];
 
 	exports.default = ErdmanDataService;
 
@@ -18437,7 +18434,7 @@
 /* 27 */
 /***/ function(module, exports) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -18453,10 +18450,12 @@
 
 	    _classCallCheck(this, ErdmanController);
 
-	    ErdmanDataService.getPages().then(function (pages) {
-	        return _this.pages = pages;
+	    ErdmanDataService.getPages().then(function (response) {
+	        return _this.pages = response;
 	    });
 	};
+
+	ErdmanController.$inject = ['ErdmanDataService'];
 
 	exports.default = ErdmanController;
 

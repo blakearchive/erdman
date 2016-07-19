@@ -2,8 +2,10 @@ class ErdmanController {
 
     /**@ngInject*/
     constructor(ErdmanDataService){
-        ErdmanDataService.getPages().then(pages => this.pages = pages)
+        ErdmanDataService.getPages().then(response => this.pages = response)
     }
 }
+
+ErdmanController.$inject = ['ErdmanDataService'];
 
 export default ErdmanController
