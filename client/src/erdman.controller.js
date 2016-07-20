@@ -1,11 +1,18 @@
-class ErdmanController {
+import {ErdmanDataService} from './services';
 
-    /**@ngInject*/
-    constructor(ErdmanDataService){
-        ErdmanDataService.getPages().then(response => this.pages = response)
+class ErdmanController {
+    constructor() {
+        let that = this;
+        that.pages = [];
+        ErdmanDataService.getPages().then(response => Array.prototype.push.apply(that.pages, response))
+    }
+
+    examine() {
+    }
+
+    static create() {
+        return new ErdmanController();
     }
 }
-
-ErdmanController.$inject = ['ErdmanDataService'];
 
 export default ErdmanController

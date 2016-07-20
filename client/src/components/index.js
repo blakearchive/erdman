@@ -1,9 +1,9 @@
 import angular from 'angular';
-import Reader from './reader';
+import reader from './reader';
 
 const components = angular
     .module('app.components', [
-        Reader
+        reader
     ])
     .name;
 

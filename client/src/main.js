@@ -1,18 +1,13 @@
 "use strict";
 
 import angular from 'angular';
-import components from './components/components';
+import components from './components';
 import {titles, headings} from './data';
-import Page from './models';
 import ErdmanController from './erdman.controller'
-import ErdmanDataService from './services';
 
 
-
-angular.module("Erdman", [components])
-    .controller('ErdmanController',ErdmanController)
-    .service('ErdmanDataService',ErdmanDataService);
-
+angular.module("Erdman", [components, 'ngSanitize'])
+    .controller('ErdmanController', ErdmanController.create);
 
 
 /*function buildTableOfContentsTree(pages) {

@@ -1,1 +1,2 @@
-solr_url:'http://solr.url/core-name'
+secret_key = "your_secret_key"
+static_folder = "../client/dist/"
