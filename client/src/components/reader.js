@@ -14,16 +14,15 @@ const ReaderComponent = {
     controller: ReaderController.create,
     template: `
         <div id="reader">
-        <h1>Pages</h1>
-            <div ng-repeat="page in $ctrl.pages" class="page">
-                {{ page.contents }}
+            <div ng-repeat="page in $ctrl.pages">
+                <div ng-bind-html="page.contents" class="page"></div>
             </div>
         </div>
         `
 };
 
 const reader = angular
-    .module('reader', [])
+    .module('reader', ['ngSanitize'])
     .component('reader', ReaderComponent)
     .name;
 

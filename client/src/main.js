@@ -6,7 +6,7 @@ import {titles, headings} from './data';
 import ErdmanController from './erdman.controller'
 
 
-angular.module("Erdman", [components, 'ngSanitize'])
+angular.module("Erdman", [components])
     .controller('ErdmanController', ErdmanController.create);
 
 

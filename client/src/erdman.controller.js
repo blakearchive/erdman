@@ -1,17 +1,13 @@
 import {ErdmanDataService} from './services';
 
 class ErdmanController {
-    constructor() {
+    constructor($rootScope) {
         let that = this;
-        that.pages = [];
-        ErdmanDataService.getPages().then(response => Array.prototype.push.apply(that.pages, response))
+        ErdmanDataService.getPages().then(response => $rootScope.$apply(_ => that.pages = response));
     }
 
-    examine() {
-    }
-
-    static create() {
-        return new ErdmanController();
+    static create($rootScope) {
+        return new ErdmanController($rootScope);
     }
 }
 
