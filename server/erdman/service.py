@@ -1,10 +1,11 @@
 import pysolr
+import os
 
-erdman_pages = pysolr.Solr('http://localhost:8983/solr/erdman-page')
+erdman_pages = pysolr.Solr(os.environ.get("SOLR_URL"))
 
 
 class ErdmanDataService(object):
     @classmethod
-    def get_pages(cls, page_ids):
-        query = "page_id:(%s)" % "OR".join(page_ids)
+    def get_pages(cls, page_ids=None):
+        query = "page_id:(%s)" % "OR".join(page_ids) if page_ids else "*:*"
         return list(erdman_pages.search(query))

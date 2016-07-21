@@ -3,16 +3,14 @@
 import angular from 'angular';
 import components from './components';
 import {titles, headings} from './data';
-import Page from './models';
-import ErdmanDataService from './services';
+import ErdmanController from './erdman.controller'
 
-var app = angular.module("Erdman", [components]);
 
-app.controller("MainCtrl", function () {
-    
-});
+angular.module("Erdman", [components])
+    .controller('ErdmanController', ErdmanController.create);
 
-function buildTableOfContentsTree(pages) {
+
+/*function buildTableOfContentsTree(pages) {
     var contents = {__index__: []};
     pages.forEach(function (page) {
         function processHeadingList(headingList, contents) {
@@ -37,5 +35,5 @@ function buildTableOfContentsTree(pages) {
         processHeadingList(page.headings, contents);
     });
     return contents;
-}
+}*/
 

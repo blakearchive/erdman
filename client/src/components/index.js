@@ -1,7 +1,10 @@
 import angular from 'angular';
-import page from './page';
-import tableOfContents from './table-of-contents';
+import reader from './reader';
 
-const components = angular.module("components", [page, tableOfContents]).name;
+const components = angular
+    .module('app.components', [
+        reader
+    ])
+    .name;
 
 export default components;
