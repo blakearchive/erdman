@@ -2,6 +2,13 @@ class ReaderController {
     constructor() {
     }
 
+    /*$onChanges(changes) {
+        console.log(changes);
+        if (changes.pages) {
+            this.pages = Object.assign({}, this.pages);
+        }
+    }*/
+
     static create() {
         return new ReaderController();
     }
@@ -9,7 +16,7 @@ class ReaderController {
 
 const ReaderComponent = {
     bindings: {
-        pages: '='
+        pages: '<'
     },
     controller: ReaderController.create,
     template: `

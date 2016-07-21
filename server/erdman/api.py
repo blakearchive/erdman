@@ -10,3 +10,9 @@ def get_pages():
     page_ids = request.args.getlist("page_id")
     pages = ErdmanDataService.get_pages(page_ids)
     return json.dumps(pages)
+
+@api.route("/search")
+def search():
+    q = request.args.get("q")
+    pages = ErdmanDataService.search(q)
+    return json.dumps(pages)
