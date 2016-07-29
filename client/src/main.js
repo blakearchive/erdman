@@ -1,12 +1,13 @@
 "use strict";
 
 import angular from 'angular';
+import ngSanitize from 'ng-sanitize';
 import components from './components';
 import {titles, headings} from './data';
 import ErdmanController from './erdman.controller'
 
 
-angular.module("Erdman", [components])
+angular.module("Erdman", [components, 'ngSanitize'])
     .controller('ErdmanController', ErdmanController.create);
 
 
