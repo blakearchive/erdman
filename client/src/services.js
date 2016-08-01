@@ -29,7 +29,7 @@ class _ErdmanDataService {
         let url = '/api/pages';
         pageIds = pageIds || [];
         let _getPages = _ => {
-            this.server.pages.query().filter(p => pageIds.indexOf(p.page_id) >= 0).execute().then(results => {
+            return this.server.pages.query().filter(p => pageIds.indexOf(p.page_id) >= 0).execute().then(results => {
                 let cachedIds = results.map(r => r.page_id);
                 let uncached = pageIds.filter(p => cachedIds.indexOf(p) >= 0);
                 if (uncached.length > 0 || pageIds.length == 0) {

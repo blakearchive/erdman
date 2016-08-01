@@ -3,13 +3,15 @@ from lxml.sax import saxify
 from xml.sax.handler import ContentHandler
 from xml.sax.saxutils import escape, unescape
 from collections import OrderedDict
+from itertools import count
 import json
 import pysolr
 # import config
 
+_counter = count(1)
+
 
 class ErdmanTransformer(ContentHandler):
-
     def __init__(self):
         self.next_page_id = ""
         self.pages = []
@@ -26,6 +28,8 @@ class ErdmanTransformer(ContentHandler):
             current_heading[idx] = OrderedDict()
             current_heading = current_heading[idx]
         contents = [self.create_tag(tag_name, attrs) for (tag_name, attrs) in self.open_tags]
+        if not page_id:
+            page_id = "unid_" + str(_counter.next())
         return {
             "page_id": page_id,
             "headings": headings,
@@ -173,7 +177,13 @@ def parse_document(file_name):
     return handler, titles
 
 
-def run():
+def do_import(solr_url):
+    titles, pages = parse_documents()
+    populate_solr(solr_url, pages)
+    write_data_files(pages, titles)
+
+
+def parse_documents():
     titles = {}
     (erd1, erd1_titles) = parse_document("../data/erd1.xml")
     (erd2, erd2_titles) = parse_document("../data/erd2.xml")
@@ -184,7 +194,11 @@ def run():
     titles.update(erd2_titles)
     titles.update(erd3_titles)
     titles.update(erd4_titles)
-    solr = pysolr.Solr('http://localhost:8983/solr/erdman')
+    return titles, pages
+
+
+def populate_solr(solr_url, pages):
+    solr = pysolr.Solr(solr_url)
     solr.delete(q='*:*')
     for (i, page) in enumerate(pages):
         solr.add([{
@@ -194,10 +208,20 @@ def run():
             "contents": json.dumps(page["contents"])
         }])
     solr.optimize()
+
+
+def write_data_files(pages, titles):
     with open("../client/src/data.js", 'w') as f:
         pages = [{"headings": p["headings"], "page_id": p["page_id"]} for p in pages]
         f.write("export const titles = %s, pages = %s;" % (json.dumps(titles), pages))
 
 
+def main():
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("solr_url", default='http://localhost:8983/solr/erdman')
+    args = parser.parse_args()
+    do_import(args.solr_url)
+
 if __name__ == "__main__":
-    run()
+    main()

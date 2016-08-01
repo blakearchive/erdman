@@ -1,9 +1,7 @@
+import * as ngSanitize from 'angular-sanitize';
+
 class ReaderController {
     constructor() {
-    }
-
-    static create() {
-        return new ReaderController();
     }
 }
 
