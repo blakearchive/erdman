@@ -16645,8 +16645,8 @@
 	    bindings: {
 	        pages: '='
 	    },
-	    controller: ReaderController.create,
-	    template: '\n        <div id="reader">\n            <div ng-repeat="page in $ctrl.pages">\n                <div ng-bind-html="page.contents" class="page"></div>\n            </div>\n        </div>\n        '
+	    controller: ReaderController,
+	    template: '\n        <div id="reader">\n            <div ng-repeat="page in $ctrl.pages" id="{{ page.page_id }}" class="page-container">\n                <div ng-bind-html="page.contents" class="page"></div>\n            </div>\n        </div>\n        '
 	};
 
 	var reader = angular.module('reader', ['ngSanitize']).component('reader', ReaderComponent).name;
@@ -17379,128 +17379,79 @@
 	    value: true
 	});
 
-	var _services = __webpack_require__(9);
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	var ErdmanController = function ErdmanController($rootScope) {
-	    var _this = this;
-
-	    _classCallCheck(this, ErdmanController);
-
-	    _services.ErdmanDataService.getPages().then(function (response) {
-	        return $rootScope.$apply(function (_) {
-	            return _this.pages = response;
-	        });
-	    });
-	};
-
-	exports.default = ErdmanController;
-
-/***/ },
-/* 9 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	exports.ErdmanDataService = undefined;
-
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _jquery = __webpack_require__(10);
+	var _jquery = __webpack_require__(9);
 
 	var _jquery2 = _interopRequireDefault(_jquery);
 
-	var _db = __webpack_require__(12);
+	var _services = __webpack_require__(11);
 
-	var _db2 = _interopRequireDefault(_db);
-
-	var _models = __webpack_require__(13);
-
-	var _models2 = _interopRequireDefault(_models);
+	var _data = __webpack_require__(7);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	_jquery2.default.ajaxSettings.traditional = true;
-
-	var _ErdmanDataService = function () {
-	    function _ErdmanDataService() {
+	var ErdmanController = function () {
+	    function ErdmanController($rootScope) {
 	        var _this = this;
 
-	        _classCallCheck(this, _ErdmanDataService);
+	        _classCallCheck(this, ErdmanController);
 
-	        this.server = _db2.default.open({
-	            server: 'Erdman',
-	            version: 1,
-	            schema: {
-	                pages: {
-	                    key: { keyPath: 'page_id' }
-	                },
-	                searches: {
-	                    key: { keypath: 'id', autoIncrement: true }
-	                },
-	                searchResults: {
-	                    key: { keypath: 'id', autoIncrement: true }
-	                }
-	            }
+	        this.scope = $rootScope;
+	        this.pages = _data.pages.map(function (p) {
+	            return { page_id: p.page_id, contents: "" };
 	        });
-	        this.server.then(function (s) {
-	            return _this.server = s;
+	        (0, _jquery2.default)(document).ready(function () {
+	            return _this.loadPagesForViewport();
+	        });
+	        (0, _jquery2.default)(document).scroll(function () {
+	            clearTimeout(_this.timeoutId);
+	            _this.timeoutId = setTimeout(function () {
+	                return _this.loadPagesForViewport();
+	            }, 500);
 	        });
 	    }
 
-	    _createClass(_ErdmanDataService, [{
-	        key: 'getPages',
-	        value: function getPages(pageIds) {
+	    _createClass(ErdmanController, [{
+	        key: 'updatePageContents',
+	        value: function updatePageContents(pages) {
 	            var _this2 = this;
 
-	            var url = '/api/pages';
-	            pageIds = pageIds || [];
-	            var _getPages = function _getPages(_) {
-	                return _this2.server.pages.query().filter(function (p) {
-	                    return pageIds.indexOf(p.page_id) >= 0;
-	                }).execute().then(function (results) {
-	                    var cachedIds = results.map(function (r) {
-	                        return r.page_id;
-	                    });
-	                    var uncached = pageIds.filter(function (p) {
-	                        return cachedIds.indexOf(p) >= 0;
-	                    });
-	                    if (uncached.length > 0 || pageIds.length == 0) {
-	                        return _jquery2.default.getJSON(url, { "page_id": uncached }).then(function (data) {
-	                            var pages = data.map(function (i) {
-	                                return new _models2.default(i);
-	                            });
-	                            _this2.server.pages.add.apply(null, pages).catch(function (_) {
-	                                return _;
-	                            });
-	                            return pages.concat(results).sort(function (a, b) {
-	                                return a.id - b.id;
-	                            });
-	                        });
-	                    } else return results;
+	            var pageMap = {};
+	            pages.forEach(function (page) {
+	                return pageMap[page.page_id] = page;
+	            });
+
+	            this.scope.$apply(function () {
+	                _this2.pages.forEach(function (page) {
+	                    var newPage = pageMap[page.page_id];
+	                    if (newPage) {
+	                        page.contents = newPage.contents;
+	                    } else page.contents = "";
 	                });
-	            };
-	            if (this.server.then) {
-	                return this.server.then(function (s) {
-	                    return _getPages();
-	                });
-	            } else return _getPages();
+	            });
+	        }
+	    }, {
+	        key: 'loadPagesForViewport',
+	        value: function loadPagesForViewport() {
+	            var _this3 = this;
+
+	            var active = _services.PageService.active();
+	            _services.ErdmanDataService.getPages(active).then(function (response) {
+	                return _this3.updatePageContents(response);
+	            });
 	        }
 	    }]);
 
-	    return _ErdmanDataService;
+	    return ErdmanController;
 	}();
 
-	var ErdmanDataService = exports.ErdmanDataService = new _ErdmanDataService();
+	exports.default = ErdmanController;
 
 /***/ },
-/* 10 */
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module) {"use strict";var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol?"symbol":typeof obj;};/*eslint-disable no-unused-vars*//*!
@@ -19123,10 +19074,10 @@
 	// (#7102#comment:10, https://github.com/jquery/jquery/pull/557)
 	// and CommonJS for browser emulators (#13566)
 	if(!noGlobal){window.jQuery=window.$=jQuery;}return jQuery;});
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)(module)))
 
 /***/ },
-/* 11 */
+/* 10 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -19141,6 +19092,162 @@
 		}
 		return module;
 	};
+
+/***/ },
+/* 11 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.PageService = exports.ErdmanDataService = undefined;
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _jquery = __webpack_require__(9);
+
+	var _jquery2 = _interopRequireDefault(_jquery);
+
+	var _db = __webpack_require__(12);
+
+	var _db2 = _interopRequireDefault(_db);
+
+	var _models = __webpack_require__(13);
+
+	var _models2 = _interopRequireDefault(_models);
+
+	var _data = __webpack_require__(7);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	_jquery2.default.ajaxSettings.traditional = true;
+
+	var _ErdmanDataService = function () {
+	    function _ErdmanDataService() {
+	        var _this = this;
+
+	        _classCallCheck(this, _ErdmanDataService);
+
+	        this.server = _db2.default.open({
+	            server: 'Erdman',
+	            version: 1,
+	            schema: {
+	                pages: {
+	                    key: { keyPath: 'page_id' }
+	                },
+	                searches: {
+	                    key: { keypath: 'id', autoIncrement: true }
+	                },
+	                searchResults: {
+	                    key: { keypath: 'id', autoIncrement: true }
+	                }
+	            }
+	        });
+	        this.server.then(function (s) {
+	            return _this.server = s;
+	        });
+	    }
+
+	    _createClass(_ErdmanDataService, [{
+	        key: 'getPages',
+	        value: function getPages(pageIds) {
+	            var _this2 = this;
+
+	            var url = '/api/pages';
+	            pageIds = pageIds || [];
+	            var _getPages = function _getPages(_) {
+	                return _this2.server.pages.query().filter(function (p) {
+	                    return pageIds.indexOf(p.page_id) >= 0;
+	                }).execute().then(function (results) {
+	                    var cachedIds = results.map(function (r) {
+	                        return r.page_id;
+	                    });
+	                    var uncached = pageIds.filter(function (p) {
+	                        return cachedIds.indexOf(p) == -1;
+	                    });
+	                    if (uncached.length > 0) {
+	                        return _jquery2.default.getJSON(url, { "page_id": uncached }).then(function (data) {
+	                            var pages = data.map(function (i) {
+	                                return new _models2.default(i);
+	                            });
+	                            _this2.server.pages.add.apply(null, pages).catch(function (_) {
+	                                return _;
+	                            });
+	                            return pages.concat(results).sort(function (a, b) {
+	                                return a.id - b.id;
+	                            });
+	                        });
+	                    } else return results;
+	                });
+	            };
+	            if (this.server.then) {
+	                return this.server.then(function (s) {
+	                    return _getPages();
+	                });
+	            } else return _getPages();
+	        }
+	    }]);
+
+	    return _ErdmanDataService;
+	}();
+
+	var _PageService = function () {
+	    function _PageService() {
+	        _classCallCheck(this, _PageService);
+
+	        this.pages = _data.pages;
+	    }
+
+	    _createClass(_PageService, [{
+	        key: 'isActive',
+	        value: function isActive(page) {
+	            var el = document.getElementById(page.page_id);
+	            if (el) {
+	                return this.inBoundingArea(el);
+	            }
+	            return false;
+	        }
+	    }, {
+	        key: 'active',
+	        value: function active() {
+	            var _this3 = this;
+
+	            return this.pages.filter(function (p) {
+	                return _this3.isActive(p);
+	            }).map(function (p) {
+	                return p.page_id;
+	            });
+	        }
+	    }, {
+	        key: 'inactive',
+	        value: function inactive() {
+	            var _this4 = this;
+
+	            return this.pages.filter(function (p) {
+	                return !_this4.isActive(p);
+	            }).map(function (p) {
+	                return p.page_id;
+	            });
+	        }
+	    }, {
+	        key: 'inBoundingArea',
+	        value: function inBoundingArea(el) {
+	            var rect = el.getBoundingClientRect();
+	            var buffer = 1000;
+
+	            return rect.bottom >= 0 && rect.bottom <= (0, _jquery2.default)(window).height() + buffer;
+	        }
+	    }]);
+
+	    return _PageService;
+	}();
+
+	var ErdmanDataService = exports.ErdmanDataService = new _ErdmanDataService(),
+	    PageService = exports.PageService = new _PageService();
 
 /***/ },
 /* 12 */
