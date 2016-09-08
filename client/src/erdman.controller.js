@@ -5,11 +5,25 @@ class ErdmanController {
         this.$rootScope = $rootScope;
         this.pages = [];
         this.results = [];
-        this.getPages();
+        this.lastPage = 0;
+        this.getNextPages(0);
+        this.getting = false;
     }
 
     getPages(){
-        ErdmanDataService.getPages().then(response => this.$rootScope.$apply(this.pages = response));
+        ErdmanDataService.getPages().then(response => {
+            this.$rootScope.$apply(this.pages = response)
+        });
+    }
+
+    getNextPages(pageId){
+        this.getting = true;
+        ErdmanDataService.getPageGroup(pageId).then(response => {
+            this.$rootScope.$apply(this.pages = this.pages.concat(response))
+            this.lastPage = response[response.length - 1].id;
+            console.log(this.lastPage);
+            this.getting = false;
+        });
     }
 
     searchPages( query ){
@@ -17,9 +31,6 @@ class ErdmanController {
         ErdmanDataService.search().then(response => this.$rootScope.$apply(this.results = response));
     }
 
-    static create($rootScope) {
-        return new ErdmanController($rootScope);
-    }
 }
 
 export default ErdmanController

@@ -1,28 +1,17 @@
 class ReaderController {
     constructor() {
     }
-
-    /*$onChanges(changes) {
-        console.log(changes);
-        if (changes.pages) {
-            this.pages = Object.assign({}, this.pages);
-        }
-    }*/
-
-    static create() {
-        return new ReaderController();
-    }
 }
 
 const ReaderComponent = {
     bindings: {
         pages: '<'
     },
-    controller: ReaderController.create,
+    controller: ReaderController,
     template: `
         <div id="reader">
             <div ng-repeat="page in $ctrl.pages">
-                <div ng-bind-html="page.contents" class="page"></div>
+                <div ng-bind-html="page.contents"></div>
             </div>
         </div>
         `
