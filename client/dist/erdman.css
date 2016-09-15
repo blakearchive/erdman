@@ -1,12 +1,52 @@
-.erdman-toc {
-    margin-top: 80px;
-    height: calc(100vh - 80px);
+#erdman-toc {
+    margin-top: 50px;
+    height: calc(100vh - 50px);
     display: inline-block;
     position: fixed;
     top: 0;
     left: 0;
     width: 28vw;
     border-right: 1px solid black;
+    padding-left: 20px;
+}
+.erdman-toc-wrapper {
+    height: 100%;
+    overflow-y: auto;
+}
+
+.toc-level {
+    display: none;
+    padding-left: 15px;
+}
+.toc-level-open  > .toc-item > .toc-level{
+    display: block;
+}
+
+.tree-bullet {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 2px;
+    vertical-align: middle;
+    border-radius: 50%;
+    border: solid black 2px;
+}
+
+.tree-children{
+    border-radius: 0;
+    border-left: 4px solid\9;
+    border-left: 4px dashed;
+    border-right: none;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+}
+
+.toc-level-open > .tree-children {
+    border-top: 4px solid\9;
+    border-top: 4px dashed;
+    border-bottom: none;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
 }
 
 .erdman-reader {

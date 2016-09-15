@@ -17,6 +17,12 @@ def get_page_group():
     pages = ErdmanDataService.get_page_group(page_id)
     return json.dumps(pages)
 
+@api.route("/heading")
+def get_pages_by_heading():
+    heading = request.args.get("heading")
+    pages = ErdmanDataService.get_pages_by_heading(heading)
+    return json.dumps(pages)
+
 @api.route("/search")
 def search():
     q = request.args.get("q")

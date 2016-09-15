@@ -18,6 +18,15 @@ class ErdmanDataService(object):
         }))
 
     @classmethod
+    def get_pages_by_heading(cls, heading=None):
+        if heading:
+            query = "headings:"+heading
+            return list(erdman_pages.search(query, **{
+                "sort": "id asc",
+                "rows": "5000"
+            }))
+
+    @classmethod
     def search(cls, q):
         query = "contents:"+q
         return list(erdman_pages.search(query))
