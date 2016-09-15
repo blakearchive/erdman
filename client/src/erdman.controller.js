@@ -2,25 +2,25 @@ import {ErdmanDataService} from './services';
 import {titles} from './data';
 
 class ErdmanController {
-    constructor($rootScope) {
+    constructor($rootScope, $location, $anchorScroll) {
         this.$rootScope = $rootScope;
+        this.$location = $location;
+        this.$anchorScroll = $anchorScroll;
         this.pages = [];
         this.results = [];
-        this.lastPage = 0;
-        this.getNextPages(0);
-        this.getting = false;
         this.titles = Object.assign({}, titles);
         this.tocTree = [];
         this.nestTitles();
+        this.getPages();
     }
 
     getPages(){
         ErdmanDataService.getPages().then(response => {
-            this.$rootScope.$apply(this.pages = response)
+            this.$rootScope.$apply(this.pages = response);
         });
     }
 
-    getNextPages(pageId){
+    /*getNextPages(pageId){
         this.getting = true;
         ErdmanDataService.getPageGroup(pageId).then(response => {
             this.$rootScope.$apply(this.pages = this.pages.concat(response));
@@ -28,21 +28,24 @@ class ErdmanController {
             console.log(this.lastPage);
             this.getting = false;
         });
-    }
+    }*/
 
     getPageByHeading( heading ) {
-        console.log('getting pages by heading');
+        console.log(heading);
         if(!heading) {
             return;
         }
-
-        this.getting = true;
-        ErdmanDataService.getPageByHeading(heading).then(response => {
-            this.$rootScope.$apply(this.pages = response);
-            this.lastPage = response[response.length - 1].id;
-            console.log(this.lastPage);
-            this.getting = false;
+        ErdmanDataService.getPageIdByHeading(heading).then(response => {
+            const newHash = response[0].page_id;
+            console.log(newHash);
+            console.log(this.$location.hash());
+            if (this.$location.hash() !== newHash) {
+                this.$location.hash(newHash);
+                this.$anchorScroll();
+            }
+            console.log(this.$location.hash());
         });
+
     }
 
     searchPages( query ){

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="Erdman">
 <head>
+    <base href="/">
     <meta charset="UTF-8">
     <title>Title</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -31,7 +32,8 @@
             <toc items="erdman.tocTree" on-get-page="erdman.getPageByHeading(heading)"></toc>
         </div>
     </nav>
-    <div class="erdman-reader" ng-class="{loading: erdman.getting}" infinite-scroll="erdman.getNextPages(erdman.lastPage)" infinite-scroll-immediate-check="false" infinite-scroll-distance="1">
+    <div class="erdman-reader">
+        <div id="loader">LOADING...</div>
         <reader pages="erdman.pages"></reader>
     </div>
 </body>

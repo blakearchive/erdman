@@ -5,27 +5,19 @@ jQuery.ajaxSettings.traditional = true;
 
 export class ErdmanDataService {
 
-    static getPages(pageIds) {
+    static getPages() {
         let url = '/api/pages',
-            promise = jQuery.getJSON(url, {"page_id": pageIds || []});
+            promise = jQuery.getJSON(url);
         return promise.then(data => {
             return data.map(i => new Page(i));
         });
     }
 
-    static getPageGroup(pageId) {
-        let url = '/api/page_group',
-          promise = jQuery.getJSON(url, {"page_id": pageId || []});
-        return promise.then(data => {
-            return data.map(i => new Page(i));
-        });
-    }
-
-    static getPageByHeading(heading) {
+    static getPageIdByHeading(heading) {
         let url = '/api/heading',
           promise = jQuery.getJSON(url, {"heading": heading || []});
         return promise.then(data => {
-            return data.map(i => new Page(i));
+            return data;
         });
     }
 

@@ -54,10 +54,6 @@
 
 	var _angularSanitize2 = _interopRequireDefault(_angularSanitize);
 
-	var _ngInfiniteScroll = __webpack_require__(5);
-
-	var _ngInfiniteScroll2 = _interopRequireDefault(_ngInfiniteScroll);
-
 	var _components = __webpack_require__(6);
 
 	var _components2 = _interopRequireDefault(_components);
@@ -70,7 +66,9 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	_angular2.default.module("Erdman", [_ngInfiniteScroll2.default, _components2.default]).controller('ErdmanController', _erdman2.default);
+	_angular2.default.module("Erdman", [_components2.default]).controller('ErdmanController', _erdman2.default).config(function ($locationProvider) {
+	  $locationProvider.html5Mode(true).hashPrefix('!');
+	});
 
 /***/ },
 /* 1 */
@@ -17486,200 +17484,7 @@
 	})(window, window.angular);
 
 /***/ },
-/* 5 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	/* ng-infinite-scroll - v1.3.0 - 2016-06-30 */
-	angular.module('infinite-scroll', []).value('THROTTLE_MILLISECONDS', null).directive('infiniteScroll', ['$rootScope', '$window', '$interval', 'THROTTLE_MILLISECONDS', function ($rootScope, $window, $interval, THROTTLE_MILLISECONDS) {
-	  return {
-	    scope: {
-	      infiniteScroll: '&',
-	      infiniteScrollContainer: '=',
-	      infiniteScrollDistance: '=',
-	      infiniteScrollDisabled: '=',
-	      infiniteScrollUseDocumentBottom: '=',
-	      infiniteScrollListenForEvent: '@'
-	    },
-	    link: function link(scope, elem, attrs) {
-	      var changeContainer, checkInterval, checkWhenEnabled, container, handleInfiniteScrollContainer, handleInfiniteScrollDisabled, handleInfiniteScrollDistance, handleInfiniteScrollUseDocumentBottom, handler, height, immediateCheck, offsetTop, pageYOffset, scrollDistance, scrollEnabled, throttle, unregisterEventListener, useDocumentBottom, windowElement;
-	      windowElement = angular.element($window);
-	      scrollDistance = null;
-	      scrollEnabled = null;
-	      checkWhenEnabled = null;
-	      container = null;
-	      immediateCheck = true;
-	      useDocumentBottom = false;
-	      unregisterEventListener = null;
-	      checkInterval = false;
-	      height = function height(elem) {
-	        elem = elem[0] || elem;
-	        if (isNaN(elem.offsetHeight)) {
-	          return elem.document.documentElement.clientHeight;
-	        } else {
-	          return elem.offsetHeight;
-	        }
-	      };
-	      offsetTop = function offsetTop(elem) {
-	        if (!elem[0].getBoundingClientRect || elem.css('none')) {
-	          return;
-	        }
-	        return elem[0].getBoundingClientRect().top + pageYOffset(elem);
-	      };
-	      pageYOffset = function pageYOffset(elem) {
-	        elem = elem[0] || elem;
-	        if (isNaN(window.pageYOffset)) {
-	          return elem.document.documentElement.scrollTop;
-	        } else {
-	          return elem.ownerDocument.defaultView.pageYOffset;
-	        }
-	      };
-	      handler = function handler() {
-	        var containerBottom, containerTopOffset, elementBottom, remaining, shouldScroll;
-	        if (container === windowElement) {
-	          containerBottom = height(container) + pageYOffset(container[0].document.documentElement);
-	          elementBottom = offsetTop(elem) + height(elem);
-	        } else {
-	          containerBottom = height(container);
-	          containerTopOffset = 0;
-	          if (offsetTop(container) !== void 0) {
-	            containerTopOffset = offsetTop(container);
-	          }
-	          elementBottom = offsetTop(elem) - containerTopOffset + height(elem);
-	        }
-	        if (useDocumentBottom) {
-	          elementBottom = height((elem[0].ownerDocument || elem[0].document).documentElement);
-	        }
-	        remaining = elementBottom - containerBottom;
-	        shouldScroll = remaining <= height(container) * scrollDistance + 1;
-	        if (shouldScroll) {
-	          checkWhenEnabled = true;
-	          if (scrollEnabled) {
-	            if (scope.$$phase || $rootScope.$$phase) {
-	              return scope.infiniteScroll();
-	            } else {
-	              return scope.$apply(scope.infiniteScroll);
-	            }
-	          }
-	        } else {
-	          if (checkInterval) {
-	            $interval.cancel(checkInterval);
-	          }
-	          return checkWhenEnabled = false;
-	        }
-	      };
-	      throttle = function throttle(func, wait) {
-	        var later, previous, timeout;
-	        timeout = null;
-	        previous = 0;
-	        later = function later() {
-	          previous = new Date().getTime();
-	          $interval.cancel(timeout);
-	          timeout = null;
-	          return func.call();
-	        };
-	        return function () {
-	          var now, remaining;
-	          now = new Date().getTime();
-	          remaining = wait - (now - previous);
-	          if (remaining <= 0) {
-	            $interval.cancel(timeout);
-	            timeout = null;
-	            previous = now;
-	            return func.call();
-	          } else {
-	            if (!timeout) {
-	              return timeout = $interval(later, remaining, 1);
-	            }
-	          }
-	        };
-	      };
-	      if (THROTTLE_MILLISECONDS != null) {
-	        handler = throttle(handler, THROTTLE_MILLISECONDS);
-	      }
-	      scope.$on('$destroy', function () {
-	        container.unbind('scroll', handler);
-	        if (unregisterEventListener != null) {
-	          unregisterEventListener();
-	          unregisterEventListener = null;
-	        }
-	        if (checkInterval) {
-	          return $interval.cancel(checkInterval);
-	        }
-	      });
-	      handleInfiniteScrollDistance = function handleInfiniteScrollDistance(v) {
-	        return scrollDistance = parseFloat(v) || 0;
-	      };
-	      scope.$watch('infiniteScrollDistance', handleInfiniteScrollDistance);
-	      handleInfiniteScrollDistance(scope.infiniteScrollDistance);
-	      handleInfiniteScrollDisabled = function handleInfiniteScrollDisabled(v) {
-	        scrollEnabled = !v;
-	        if (scrollEnabled && checkWhenEnabled) {
-	          checkWhenEnabled = false;
-	          return handler();
-	        }
-	      };
-	      scope.$watch('infiniteScrollDisabled', handleInfiniteScrollDisabled);
-	      handleInfiniteScrollDisabled(scope.infiniteScrollDisabled);
-	      handleInfiniteScrollUseDocumentBottom = function handleInfiniteScrollUseDocumentBottom(v) {
-	        return useDocumentBottom = v;
-	      };
-	      scope.$watch('infiniteScrollUseDocumentBottom', handleInfiniteScrollUseDocumentBottom);
-	      handleInfiniteScrollUseDocumentBottom(scope.infiniteScrollUseDocumentBottom);
-	      changeContainer = function changeContainer(newContainer) {
-	        if (container != null) {
-	          container.unbind('scroll', handler);
-	        }
-	        container = newContainer;
-	        if (newContainer != null) {
-	          return container.bind('scroll', handler);
-	        }
-	      };
-	      changeContainer(windowElement);
-	      if (scope.infiniteScrollListenForEvent) {
-	        unregisterEventListener = $rootScope.$on(scope.infiniteScrollListenForEvent, handler);
-	      }
-	      handleInfiniteScrollContainer = function handleInfiniteScrollContainer(newContainer) {
-	        if (newContainer == null || newContainer.length === 0) {
-	          return;
-	        }
-	        if (newContainer.nodeType && newContainer.nodeType === 1) {
-	          newContainer = angular.element(newContainer);
-	        } else if (typeof newContainer.append === 'function') {
-	          newContainer = angular.element(newContainer[newContainer.length - 1]);
-	        } else if (typeof newContainer === 'string') {
-	          newContainer = angular.element(document.querySelector(newContainer));
-	        }
-	        if (newContainer != null) {
-	          return changeContainer(newContainer);
-	        } else {
-	          throw new Error("invalid infinite-scroll-container attribute.");
-	        }
-	      };
-	      scope.$watch('infiniteScrollContainer', handleInfiniteScrollContainer);
-	      handleInfiniteScrollContainer(scope.infiniteScrollContainer || []);
-	      if (attrs.infiniteScrollParent != null) {
-	        changeContainer(angular.element(elem.parent()));
-	      }
-	      if (attrs.infiniteScrollImmediateCheck != null) {
-	        immediateCheck = scope.$eval(attrs.infiniteScrollImmediateCheck);
-	      }
-	      return checkInterval = $interval(function () {
-	        if (immediateCheck) {
-	          handler();
-	        }
-	        return $interval.cancel(checkInterval);
-	      });
-	    }
-	  };
-	}]);
-
-	if (typeof module !== "undefined" && typeof exports !== "undefined" && module.exports === exports) {
-	  module.exports = 'infinite-scroll';
-	}
-
-/***/ },
+/* 5 */,
 /* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -17736,7 +17541,7 @@
 	        pages: '<'
 	    },
 	    controller: ReaderController,
-	    template: '\n        <div id="reader">\n            <div ng-repeat="page in $ctrl.pages">\n                <div ng-bind-html="page.contents"></div>\n            </div>\n        </div>\n        '
+	    template: '\n        <div id="reader">\n            <div ng-repeat="page in $ctrl.pages" id="{{ page.page_id }}">\n                <div ng-bind-html="page.contents"></div>\n            </div>\n        </div>\n        '
 	};
 
 	var reader = angular.module('reader', ['ngSanitize']).component('reader', ReaderComponent).name;
@@ -17917,18 +17722,18 @@
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	var ErdmanController = function () {
-	    function ErdmanController($rootScope) {
+	    function ErdmanController($rootScope, $location, $anchorScroll) {
 	        _classCallCheck(this, ErdmanController);
 
 	        this.$rootScope = $rootScope;
+	        this.$location = $location;
+	        this.$anchorScroll = $anchorScroll;
 	        this.pages = [];
 	        this.results = [];
-	        this.lastPage = 0;
-	        this.getNextPages(0);
-	        this.getting = false;
 	        this.titles = Object.assign({}, _data.titles);
 	        this.tocTree = [];
 	        this.nestTitles();
+	        this.getPages();
 	    }
 
 	    _createClass(ErdmanController, [{
@@ -17940,45 +17745,45 @@
 	                _this.$rootScope.$apply(_this.pages = response);
 	            });
 	        }
-	    }, {
-	        key: 'getNextPages',
-	        value: function getNextPages(pageId) {
-	            var _this2 = this;
 
+	        /*getNextPages(pageId){
 	            this.getting = true;
-	            _services.ErdmanDataService.getPageGroup(pageId).then(function (response) {
-	                _this2.$rootScope.$apply(_this2.pages = _this2.pages.concat(response));
-	                _this2.lastPage = response[response.length - 1].id;
-	                console.log(_this2.lastPage);
-	                _this2.getting = false;
+	            ErdmanDataService.getPageGroup(pageId).then(response => {
+	                this.$rootScope.$apply(this.pages = this.pages.concat(response));
+	                this.lastPage = response[response.length - 1].id;
+	                console.log(this.lastPage);
+	                this.getting = false;
 	            });
-	        }
+	        }*/
+
 	    }, {
 	        key: 'getPageByHeading',
 	        value: function getPageByHeading(heading) {
-	            var _this3 = this;
+	            var _this2 = this;
 
-	            console.log('getting pages by heading');
+	            console.log(heading);
 	            if (!heading) {
 	                return;
 	            }
-
-	            this.getting = true;
-	            _services.ErdmanDataService.getPageByHeading(heading).then(function (response) {
-	                _this3.$rootScope.$apply(_this3.pages = response);
-	                _this3.lastPage = response[response.length - 1].id;
-	                console.log(_this3.lastPage);
-	                _this3.getting = false;
+	            _services.ErdmanDataService.getPageIdByHeading(heading).then(function (response) {
+	                var newHash = response[0].page_id;
+	                console.log(newHash);
+	                console.log(_this2.$location.hash());
+	                if (_this2.$location.hash() !== newHash) {
+	                    _this2.$location.hash(newHash);
+	                    _this2.$anchorScroll();
+	                }
+	                console.log(_this2.$location.hash());
 	            });
 	        }
 	    }, {
 	        key: 'searchPages',
 	        value: function searchPages(query) {
-	            var _this4 = this;
+	            var _this3 = this;
 
 	            if (!query) return;
 	            _services.ErdmanDataService.search().then(function (response) {
-	                return _this4.$rootScope.$apply(_this4.results = response);
+	                return _this3.$rootScope.$apply(_this3.results = response);
 	            });
 	        }
 	    }, {
@@ -18058,9 +17863,9 @@
 
 	    _createClass(ErdmanDataService, null, [{
 	        key: 'getPages',
-	        value: function getPages(pageIds) {
+	        value: function getPages() {
 	            var url = '/api/pages',
-	                promise = _jquery2.default.getJSON(url, { "page_id": pageIds || [] });
+	                promise = _jquery2.default.getJSON(url);
 	            return promise.then(function (data) {
 	                return data.map(function (i) {
 	                    return new _models2.default(i);
@@ -18068,25 +17873,12 @@
 	            });
 	        }
 	    }, {
-	        key: 'getPageGroup',
-	        value: function getPageGroup(pageId) {
-	            var url = '/api/page_group',
-	                promise = _jquery2.default.getJSON(url, { "page_id": pageId || [] });
-	            return promise.then(function (data) {
-	                return data.map(function (i) {
-	                    return new _models2.default(i);
-	                });
-	            });
-	        }
-	    }, {
-	        key: 'getPageByHeading',
-	        value: function getPageByHeading(heading) {
+	        key: 'getPageIdByHeading',
+	        value: function getPageIdByHeading(heading) {
 	            var url = '/api/heading',
 	                promise = _jquery2.default.getJSON(url, { "heading": heading || [] });
 	            return promise.then(function (data) {
-	                return data.map(function (i) {
-	                    return new _models2.default(i);
-	                });
+	                return data;
 	            });
 	        }
 	    }, {

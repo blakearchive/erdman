@@ -6,15 +6,10 @@ erdman_pages = pysolr.Solr(os.environ.get("SOLR_URL","http://localhost:8983/solr
 
 class ErdmanDataService(object):
     @classmethod
-    def get_pages(cls, page_ids=None):
-        query = "page_id:(%s)" % "OR".join(page_ids) if page_ids else "*:*"
-        return list(erdman_pages.search(query))
-
-    @classmethod
-    def get_page_group(cls, page_id=None):
-        query = "id:["+page_id+" TO *]" if page_id else "id:[0 TO *]"
+    def get_pages(cls):
+        query = "*:*"
         return list(erdman_pages.search(query, **{
-            "sort": "id asc",
+            "rows": 10000,
         }))
 
     @classmethod
@@ -23,7 +18,8 @@ class ErdmanDataService(object):
             query = "headings:"+heading
             return list(erdman_pages.search(query, **{
                 "sort": "id asc",
-                "rows": "5000"
+                "fl": "page_id",
+                "rows": 1
             }))
 
     @classmethod
