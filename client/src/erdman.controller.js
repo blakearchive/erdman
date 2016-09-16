@@ -17,9 +17,9 @@ class ErdmanController {
     }
 
     getPages(){
-        /*ErdmanDataService.getPages().then(response => {
+        ErdmanDataService.getPages().then(response => {
             this.$rootScope.$apply(this.pages = response);
-        });*/
+        });
     }
 
     /*getNextPages(pageId){
