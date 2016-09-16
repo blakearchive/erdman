@@ -26,7 +26,7 @@ export class ErdmanDataService {
         let url = '/api/search',
             promise = jQuery.getJSON(url, {"q": encodeURIComponent(query) || ''});
         return promise.then(data => {
-            return data.map(i => new Page(i));
+            return data;
         });
     }
 }

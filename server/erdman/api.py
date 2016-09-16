@@ -19,5 +19,5 @@ def get_pages_by_heading():
 @api.route("/search")
 def search():
     q = request.args.get("q")
-    pages = ErdmanDataService.search(q)
-    return json.dumps(pages)
+    results = ErdmanDataService.search(q)
+    return json.dumps(results)

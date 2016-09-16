@@ -9,6 +9,7 @@ class ErdmanDataService(object):
     def get_pages(cls):
         query = "*:*"
         return list(erdman_pages.search(query, **{
+            "sort": "id asc",
             "rows": 10000,
         }))
 
@@ -17,7 +18,6 @@ class ErdmanDataService(object):
         if heading:
             query = "headings:"+heading
             return list(erdman_pages.search(query, **{
-                "sort": "id asc",
                 "fl": "page_id",
                 "rows": 1
             }))
@@ -25,4 +25,10 @@ class ErdmanDataService(object):
     @classmethod
     def search(cls, q):
         query = "contents:"+q
-        return list(erdman_pages.search(query))
+        result = erdman_pages.search(query, **{
+             "hl": "true",
+             "hl.fl":"contents",
+             "fl": "id, page_id",
+             "rows": 10000
+        })
+        return {"docs":result.docs, "highlighting":result.highlighting}

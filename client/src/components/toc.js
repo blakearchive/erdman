@@ -7,14 +7,35 @@ class TocController {
         // Sort the items
         this.items.sort((a, b) => {
 
-            if (a.key < b.key) {
+            const aNorm = this.normalizeKey(a.key);
+            const bNorm = this.normalizeKey(b.key);
+
+            if (aNorm < bNorm) {
                 return -1;
             }
-            if (a.key > b.key) {
+            if (aNorm > bNorm) {
                 return 1;
             }
             return 0;
         });
+    }
+
+    normalizeKey(key) {
+        const parts = key.split('.');
+        const normalized = [];
+        for (const part of parts) {
+            if(isNaN(part)){
+                const alpha = part.substr(0,1);
+                let num = part.substr(1);
+                num = num.length == 1 ? '0' + num : num;
+                normalized.push(alpha + num);
+            } else {
+                const num = part.length == 1 ? '0' + part : part;
+                normalized.push(num);
+            }
+        }
+
+        return normalized.join('.');
     }
 
     handleGetPage($heading) {
@@ -31,7 +52,7 @@ const TocComponent = {
     controller: TocController,
     template: `
         <ul class="list-unstyled">
-          <li ng-repeat="item in $ctrl.items track by $index" ng-class="{'toc-level-open': item.showChildren }">
+          <li ng-repeat="item in $ctrl.items track by $index" ng-class="{'toc-level-open': item.showChildren }" data-key="{{ item.key }}">
             <span class="tree-bullet" ng-class="{ 'tree-children': item.children.length }"></span>
             <span class="toc-item">
                 <a href="#" ng-click="item.showChildren = !item.showChildren; $ctrl.handleGetPage(item.key)">{{ item.title }}</a>

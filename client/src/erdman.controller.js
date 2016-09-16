@@ -1,5 +1,5 @@
 import {ErdmanDataService} from './services';
-import {titles} from './data';
+import {titles, pages} from './data';
 
 class ErdmanController {
     constructor($rootScope, $location, $anchorScroll) {
@@ -8,16 +8,18 @@ class ErdmanController {
         this.$anchorScroll = $anchorScroll;
         this.pages = [];
         this.results = [];
+        this.showSearchResults = false;
         this.titles = Object.assign({}, titles);
+        this.emptyPages = pages;
         this.tocTree = [];
         this.nestTitles();
         this.getPages();
     }
 
     getPages(){
-        ErdmanDataService.getPages().then(response => {
+        /*ErdmanDataService.getPages().then(response => {
             this.$rootScope.$apply(this.pages = response);
-        });
+        });*/
     }
 
     /*getNextPages(pageId){
@@ -37,20 +39,30 @@ class ErdmanController {
         }
         ErdmanDataService.getPageIdByHeading(heading).then(response => {
             const newHash = response[0].page_id;
-            console.log(newHash);
-            console.log(this.$location.hash());
+            console.log('new hash: '+newHash);
             if (this.$location.hash() !== newHash) {
                 this.$location.hash(newHash);
                 this.$anchorScroll();
             }
-            console.log(this.$location.hash());
         });
 
     }
 
     searchPages( query ){
         if(!query) return;
-        ErdmanDataService.search().then(response => this.$rootScope.$apply(this.results = response));
+
+        ErdmanDataService.search(query).then(response => {
+            const results = [];
+            for(const doc of response.docs) {
+                const result = {
+                    preview: response.highlighting[doc.id].contents,
+                    page_id: doc.page_id
+                };
+                results.push(result);
+            }
+            this.$rootScope.$apply(this.results = Object.assign([], results));
+        });
+        this.showSearchResults = true;
     }
 
     nestTitles() {
@@ -85,6 +97,11 @@ class ErdmanController {
             }
         }
         return children;
+    }
+
+    closeSearchResults() {
+        this.showSearchResults = false;
+        this.results = [];
     }
 
 }

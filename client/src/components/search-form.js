@@ -4,20 +4,16 @@ class SearchFormController {
     }
 
     onSubmit(){
+        console.log('submitting');
         this.onSearch({query: this.query});
     }
-
-    static create() {
-        return new SearchFormController();
-    }
-
 }
 
 const SearchFormComponent = {
     bindings: {
         onSearch: '&'
     },
-    controller: SearchFormController.create,
+    controller: SearchFormController,
     template: `
         <form class="navbar-form navbar-right" role="search" ng-submit="$ctrl.onSubmit();">
             <div class="form-group">
