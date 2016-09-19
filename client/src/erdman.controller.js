@@ -22,30 +22,28 @@ class ErdmanController {
         });
     }
 
-    /*getNextPages(pageId){
-        this.getting = true;
-        ErdmanDataService.getPageGroup(pageId).then(response => {
-            this.$rootScope.$apply(this.pages = this.pages.concat(response));
-            this.lastPage = response[response.length - 1].id;
-            console.log(this.lastPage);
-            this.getting = false;
-        });
-    }*/
-
     getPageByHeading( heading ) {
-        console.log(heading);
         if(!heading) {
             return;
         }
         ErdmanDataService.getPageIdByHeading(heading).then(response => {
             const newHash = response[0].page_id;
-            console.log('new hash: '+newHash);
             if (this.$location.hash() !== newHash) {
                 this.$location.hash(newHash);
                 this.$anchorScroll();
             }
         });
+    }
 
+    goToPage( pageId ) {
+        if (!pageId) {
+            return;
+        }
+        const newHash = pageId;
+        if (this.$location.hash() !== newHash) {
+            this.$location.hash(newHash);
+            this.$anchorScroll();
+        }
     }
 
     searchPages( query ){
@@ -61,8 +59,9 @@ class ErdmanController {
                 results.push(result);
             }
             this.$rootScope.$apply(this.results = Object.assign([], results));
+            this.showSearchResults = true;
+            this.highlightSearchResults(query);
         });
-        this.showSearchResults = true;
     }
 
     nestTitles() {
@@ -101,8 +100,13 @@ class ErdmanController {
 
     closeSearchResults() {
         this.showSearchResults = false;
-        this.results = [];
     }
+
+    /*highlightSearchResults(term) {
+        for (const page of this.pages){
+            page.contents[0] = page.contents[0].replace(/term/gim,`<span class="highlight">${term}</span>`);
+        }
+    }*/
 
 }
 

@@ -17716,6 +17716,11 @@
 	    }
 
 	    _createClass(SearchResultsController, [{
+	        key: 'handleGoToPage',
+	        value: function handleGoToPage(pageId) {
+	            this.goToPage({ pageId: pageId });
+	        }
+	    }, {
 	        key: 'renderPreview',
 	        value: function renderPreview(preview) {
 	            preview = preview.replace(/<em>/gi, '[startHighlight]');
@@ -17736,10 +17741,12 @@
 
 	var SearchResultsComponent = {
 	    bindings: {
-	        results: '<'
+	        results: '<',
+	        goToPage: '&',
+	        closeSearchResults: '&'
 	    },
 	    controller: SearchResultsController,
-	    template: '\n            <div class="container">\n                <div class="row">\n                    <h2 ng-if="$ctrl.results.length == 0">No results found</h2>\n                    <div ng-repeat="result in $ctrl.results">\n                        <h5>Page {{result.page_id}}</h5>\n                        <span class="preview" ng-repeat="preview in result.preview track by $index" ng-bind-html="$ctrl.renderPreview(preview)"></span>\n                    </div>\n                </div>\n            </div>\n        '
+	    template: '\n            <div class="container">\n                <div class="row">\n                    <h2 ng-if="$ctrl.results.length == 0">No results found</h2>\n                    <div ng-repeat="result in $ctrl.results">\n                        <h5><a href="#" ng-click="$ctrl.handleGoToPage(result.page_id); $ctrl.closeSearchResults()">Page {{result.page_id}}</a></h5>\n                        <span class="preview" ng-repeat="preview in result.preview track by $index" ng-bind-html="$ctrl.renderPreview(preview)"></span>\n                    </div>\n                </div>\n            </div>\n        '
 	};
 
 	var searchResults = angular.module('searchResults', ['ngSanitize']).component('searchResults', SearchResultsComponent).name;
@@ -17789,44 +17796,45 @@
 
 	    _createClass(ErdmanController, [{
 	        key: 'getPages',
-	        value: function getPages() {}
-	        /*ErdmanDataService.getPages().then(response => {
-	            this.$rootScope.$apply(this.pages = response);
-	        });*/
+	        value: function getPages() {
+	            var _this = this;
 
-
-	        /*getNextPages(pageId){
-	            this.getting = true;
-	            ErdmanDataService.getPageGroup(pageId).then(response => {
-	                this.$rootScope.$apply(this.pages = this.pages.concat(response));
-	                this.lastPage = response[response.length - 1].id;
-	                console.log(this.lastPage);
-	                this.getting = false;
+	            _services.ErdmanDataService.getPages().then(function (response) {
+	                _this.$rootScope.$apply(_this.pages = response);
 	            });
-	        }*/
-
+	        }
 	    }, {
 	        key: 'getPageByHeading',
 	        value: function getPageByHeading(heading) {
-	            var _this = this;
+	            var _this2 = this;
 
-	            console.log(heading);
 	            if (!heading) {
 	                return;
 	            }
 	            _services.ErdmanDataService.getPageIdByHeading(heading).then(function (response) {
 	                var newHash = response[0].page_id;
-	                console.log('new hash: ' + newHash);
-	                if (_this.$location.hash() !== newHash) {
-	                    _this.$location.hash(newHash);
-	                    _this.$anchorScroll();
+	                if (_this2.$location.hash() !== newHash) {
+	                    _this2.$location.hash(newHash);
+	                    _this2.$anchorScroll();
 	                }
 	            });
 	        }
 	    }, {
+	        key: 'goToPage',
+	        value: function goToPage(pageId) {
+	            if (!pageId) {
+	                return;
+	            }
+	            var newHash = pageId;
+	            if (this.$location.hash() !== newHash) {
+	                this.$location.hash(newHash);
+	                this.$anchorScroll();
+	            }
+	        }
+	    }, {
 	        key: 'searchPages',
 	        value: function searchPages(query) {
-	            var _this2 = this;
+	            var _this3 = this;
 
 	            if (!query) return;
 
@@ -17861,9 +17869,10 @@
 	                    }
 	                }
 
-	                _this2.$rootScope.$apply(_this2.results = Object.assign([], results));
+	                _this3.$rootScope.$apply(_this3.results = Object.assign([], results));
+	                _this3.showSearchResults = true;
+	                _this3.highlightSearchResults(query);
 	            });
-	            this.showSearchResults = true;
 	        }
 	    }, {
 	        key: 'nestTitles',
@@ -17905,8 +17914,14 @@
 	        key: 'closeSearchResults',
 	        value: function closeSearchResults() {
 	            this.showSearchResults = false;
-	            this.results = [];
 	        }
+
+	        /*highlightSearchResults(term) {
+	            for (const page of this.pages){
+	                page.contents[0] = page.contents[0].replace(/term/gim,`<span class="highlight">${term}</span>`);
+	            }
+	        }*/
+
 	    }]);
 
 	    return ErdmanController;

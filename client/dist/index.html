@@ -33,7 +33,7 @@
     </div>
     <div class="search-results" ng-class="{open: erdman.showSearchResults}">
         <span class="glyphicon glyphicon-remove" ng-click="erdman.closeSearchResults()"></span>
-        <search-results results="erdman.results"></search-results>
+        <search-results results="erdman.results" go-to-page="erdman.goToPage(pageId)" close-search-results="erdman.closeSearchResults()"></search-results>
     </div>
     <nav id="erdman-toc">
         <div class="erdman-toc-wrapper">
