@@ -1,53 +1,88 @@
-import {ErdmanDataService} from './services';
-import {titles} from './data';
+import jQuery from 'jquery';
+import {ErdmanDataService, PageService} from './services';
+import {titles, pages} from './data';
 
 class ErdmanController {
-    constructor($rootScope) {
-        this.$rootScope = $rootScope;
-        this.pages = [];
+    constructor($rootScope, $location, $anchorScroll) {
+        this.$location = $location;
+        this.$anchorScroll = $anchorScroll;
+        this.scope = $rootScope;
+        this.pages = pages.map(p => {
+            return {page_id: p.page_id, contents: ""}
+        });
+        jQuery(document).ready(() => this.loadPagesForViewport());
+        jQuery(document).scroll(() => {
+            clearTimeout(this.timeoutId);
+            this.timeoutId = setTimeout(() => this.loadPagesForViewport(), 150)
+        });
         this.results = [];
-        this.lastPage = 0;
-        this.getNextPages(0);
-        this.getting = false;
+        this.showSearchResults = false;
         this.titles = Object.assign({}, titles);
         this.tocTree = [];
         this.nestTitles();
     }
 
-    getPages(){
-        ErdmanDataService.getPages().then(response => {
-            this.$rootScope.$apply(this.pages = response)
+    updatePageContents(pages) {
+        let pageMap = {};
+        pages.forEach(page => pageMap[page.page_id] = page);
+
+        this.scope.$apply(() => {
+            this.pages.forEach(page => {
+                let newPage = pageMap[page.page_id];
+                if (newPage) {
+                    page.contents = newPage.contents;
+                }
+                else page.contents = "";
+            });
         });
     }
 
-    getNextPages(pageId){
-        this.getting = true;
-        ErdmanDataService.getPageGroup(pageId).then(response => {
-            this.$rootScope.$apply(this.pages = this.pages.concat(response));
-            this.lastPage = response[response.length - 1].id;
-            console.log(this.lastPage);
-            this.getting = false;
-        });
+    loadPagesForViewport() {
+        let active = PageService.active();
+        ErdmanDataService.getPages(active)
+          .then(response => this.updatePageContents(response));
     }
 
     getPageByHeading( heading ) {
-        console.log('getting pages by heading');
         if(!heading) {
             return;
         }
-
-        this.getting = true;
-        ErdmanDataService.getPageByHeading(heading).then(response => {
-            this.$rootScope.$apply(this.pages = response);
-            this.lastPage = response[response.length - 1].id;
-            console.log(this.lastPage);
-            this.getting = false;
+        ErdmanDataService.getPageIdByHeading(heading).then(response => {
+            const newHash = response[0].page_id;
+            if (this.$location.hash() !== newHash) {
+                this.$location.hash(newHash);
+                this.$anchorScroll();
+            }
         });
+    }
+
+    goToPage( pageId ) {
+        if (!pageId) {
+            return;
+        }
+        const newHash = pageId;
+        if (this.$location.hash() !== newHash) {
+            this.$location.hash(newHash);
+            this.$anchorScroll();
+        }
     }
 
     searchPages( query ){
         if(!query) return;
-        ErdmanDataService.search().then(response => this.$rootScope.$apply(this.results = response));
+
+        ErdmanDataService.search(query).then(response => {
+            const results = [];
+            for(const doc of response.docs) {
+                const result = {
+                    preview: response.highlighting[doc.id].contents,
+                    page_id: doc.page_id
+                };
+                results.push(result);
+            }
+            this.scope.$apply(this.results = Object.assign([], results));
+            this.showSearchResults = true;
+            this.highlightSearchResults(query);
+        });
     }
 
     nestTitles() {
@@ -83,6 +118,16 @@ class ErdmanController {
         }
         return children;
     }
+
+    closeSearchResults() {
+        this.showSearchResults = false;
+    }
+
+    /*highlightSearchResults(term) {
+        for (const page of this.pages){
+            page.contents[0] = page.contents[0].replace(/term/gim,`<span class="highlight">${term}</span>`);
+        }
+    }*/
 
 }
 

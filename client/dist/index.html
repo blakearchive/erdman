@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="Erdman">
 <head>
+    <base href="/">
     <meta charset="UTF-8">
     <title>Title</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -26,14 +27,19 @@
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
+    <div class="erdman-reader">
+        <div id="loader">LOADING...</div>
+        <reader pages="erdman.pages"></reader>
+    </div>
+    <div class="search-results" ng-class="{open: erdman.showSearchResults}">
+        <span class="glyphicon glyphicon-remove" ng-click="erdman.closeSearchResults()"></span>
+        <search-results results="erdman.results" go-to-page="erdman.goToPage(pageId)" close-search-results="erdman.closeSearchResults()"></search-results>
+    </div>
     <nav id="erdman-toc">
         <div class="erdman-toc-wrapper">
             <toc items="erdman.tocTree" on-get-page="erdman.getPageByHeading(heading)"></toc>
         </div>
     </nav>
-    <div class="erdman-reader" ng-class="{loading: erdman.getting}" infinite-scroll="erdman.getNextPages(erdman.lastPage)" infinite-scroll-immediate-check="false" infinite-scroll-distance="1">
-        <reader pages="erdman.pages"></reader>
-    </div>
 </body>
 <script src="bundle.js"></script>
 </html>

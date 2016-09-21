@@ -9,7 +9,7 @@ const components = angular
         reader,
         searchForm,
         searchResults,
-        toc
+        toc,
     ])
     .name;
 

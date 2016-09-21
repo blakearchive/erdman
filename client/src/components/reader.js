@@ -1,16 +1,17 @@
+import * as ngSanitize from 'angular-sanitize';
+
 class ReaderController {
-    constructor() {
-    }
+    constructor() {}
 }
 
 const ReaderComponent = {
     bindings: {
-        pages: '<'
+        pages: '='
     },
     controller: ReaderController,
     template: `
         <div id="reader">
-            <div ng-repeat="page in $ctrl.pages">
+            <div ng-repeat="page in $ctrl.pages" id="{{ page.page_id }}" class="page-container">
                 <div ng-bind-html="page.contents"></div>
             </div>
         </div>
