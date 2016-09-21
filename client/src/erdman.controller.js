@@ -1,25 +1,46 @@
-import {ErdmanDataService} from './services';
+import jQuery from 'jquery';
+import {ErdmanDataService, PageService} from './services';
 import {titles, pages} from './data';
 
 class ErdmanController {
     constructor($rootScope, $location, $anchorScroll) {
-        this.$rootScope = $rootScope;
         this.$location = $location;
         this.$anchorScroll = $anchorScroll;
-        this.pages = [];
+        this.scope = $rootScope;
+        this.pages = pages.map(p => {
+            return {page_id: p.page_id, contents: ""}
+        });
+        jQuery(document).ready(() => this.loadPagesForViewport());
+        jQuery(document).scroll(() => {
+            clearTimeout(this.timeoutId);
+            this.timeoutId = setTimeout(() => this.loadPagesForViewport(), 150)
+        });
         this.results = [];
         this.showSearchResults = false;
         this.titles = Object.assign({}, titles);
-        this.emptyPages = pages;
         this.tocTree = [];
         this.nestTitles();
-        this.getPages();
     }
 
-    getPages(){
-        ErdmanDataService.getPages().then(response => {
-            this.$rootScope.$apply(this.pages = response);
+    updatePageContents(pages) {
+        let pageMap = {};
+        pages.forEach(page => pageMap[page.page_id] = page);
+
+        this.scope.$apply(() => {
+            this.pages.forEach(page => {
+                let newPage = pageMap[page.page_id];
+                if (newPage) {
+                    page.contents = newPage.contents;
+                }
+                else page.contents = "";
+            });
         });
+    }
+
+    loadPagesForViewport() {
+        let active = PageService.active();
+        ErdmanDataService.getPages(active)
+          .then(response => this.updatePageContents(response));
     }
 
     getPageByHeading( heading ) {
@@ -58,7 +79,7 @@ class ErdmanController {
                 };
                 results.push(result);
             }
-            this.$rootScope.$apply(this.results = Object.assign([], results));
+            this.scope.$apply(this.results = Object.assign([], results));
             this.showSearchResults = true;
             this.highlightSearchResults(query);
         });

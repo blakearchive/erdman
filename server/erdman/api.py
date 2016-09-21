@@ -7,8 +7,10 @@ api = Blueprint('api', __name__, url_prefix='/api')
 
 @api.route("/pages")
 def get_pages():
-    pages = ErdmanDataService.get_pages()
+    page_ids = request.args.getlist("page_id")
+    pages = ErdmanDataService.get_pages(page_ids)
     return json.dumps(pages)
+
 
 @api.route("/heading")
 def get_pages_by_heading():

@@ -13,19 +13,21 @@
   "license": "MIT",
   "devDependencies": {
     "angular": "^1.5.7",
-    "angular-sanitize": "^1.5.7",
+    "angular-sanitize": "^1.5.8",
     "babel": "^6.5.2",
     "babel-core": "^6.10.4",
     "babel-loader": "^6.2.4",
     "babel-preset-es2015": "^6.9.0",
     "css-loader": "^0.23.1",
+    "db.js": "^0.15.0",
     "html-loader": "^0.4.3",
     "jasmine-core": "^2.4.1",
     "jquery": "^3.0.0",
+    "jquery-scrollstop": "^1.2.0",
     "karma-chrome-launcher": "^0.2.3",
     "karma-jasmine": "^0.3.8",
     "karma-webpack": "^1.7.0",
-    "ng-infinite-scroll": "^1.3.0",
+    "ng-sanitize": "0.0.2",
     "ngmin": "^0.5.0",
     "ngmin-webpack-plugin": "^0.1.3",
     "ngtemplate-loader": "^1.3.1",
@@ -36,6 +38,5 @@
     "presets": [
       "es2015"
     ]
-  },
-  "dependencies": {}
+  }
 }
