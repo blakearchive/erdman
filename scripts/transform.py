@@ -114,7 +114,10 @@ class ErdmanTransformer(ContentHandler):
         return ordered_dict_to_list(self.current_page["headings"])
 
     def save_page(self):
-        self.current_page["contents"] = self.generate_page_html()
+        page_html = self.generate_page_html()
+        page_text = etree.fromstring(page_html).xpath("string()")
+        self.current_page["contents"] = page_html
+        self.current_page["text_contents"] = page_text
         self.current_page["headings"] = self.generate_page_headings()
         self.pages.append(self.current_page)
 
@@ -205,7 +208,8 @@ def populate_solr(solr_url, pages):
             "id": i,
             "page_id": page["page_id"],
             "headings": json.dumps(page["headings"]),
-            "contents": page["contents"]
+            "contents": page["contents"],
+            "text_contents": page["text_contents"]
         }])
     solr.optimize()
 
