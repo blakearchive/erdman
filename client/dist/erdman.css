@@ -11,6 +11,116 @@ div.page {
     padding: 80px;
 }
 
+#erdman-toc {
+    margin-top: 50px;
+    height: calc(100vh - 50px);
+    display: inline-block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 28vw;
+    border-right: 1px solid black;
+    padding-left: 20px;
+    background-color: #fff;
+}
+.erdman-reader{
+    width: 68vw;
+    margin-left: 32vw;
+    padding-top: 60px;
+}
+
+.search-results {
+    height: calc(100vh - 50px);
+    margin-top: 50px;
+    display: inline-block;
+    position: fixed;
+    top: 0;
+    padding-left: 20px;
+    margin-left: 28vw;
+    overflow-y:auto;
+    width: 65vw;
+    left: -67vw;
+    background-color: #eee;
+    -webkit-box-shadow: 2px 0px 5px 2px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 0px 5px 2px rgba(0,0,0,0.75);
+    box-shadow: 2px 0px 5px 2px rgba(0,0,0,0.75);
+    -webkit-transition: all .2s ease;
+    -moz-transition: all .2s ease;
+    -ms-transition: all .2s ease;
+    -o-transition: all .2s ease;
+    transition: all .2s ease;
+}
+
+.search-results .glyphicon-remove {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+}
+
+.search-results.open {
+    left: 0;
+}
+
+.erdman-toc-wrapper {
+    height: 100%;
+    overflow-y: auto;
+}
+
+.toc-level {
+    display: none;
+    padding-left: 15px;
+}
+.toc-level-open  > .toc-item > .toc-level{
+    display: block;
+}
+
+.tree-bullet {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 2px;
+    vertical-align: middle;
+    border-radius: 50%;
+    border: solid black 2px;
+}
+
+.tree-children{
+    border-radius: 0;
+    border-left: 4px solid\9;
+    border-left: 4px dashed;
+    border-right: none;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+}
+
+.toc-level-open > .tree-children {
+    border-top: 4px solid\9;
+    border-top: 4px dashed;
+    border-bottom: none;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+}
+
+.navbar {
+    position: fixed;
+}
+
+div.page-container {
+    margin: 20px;
+    padding: 40px;
+    border-radius: 2px;
+    -webkit-box-shadow: 0px 0px 6px 0px rgba(94,94,94,1);
+    -moz-box-shadow: 0px 0px 6px 0px rgba(94,94,94,1);
+    box-shadow: 0px 0px 6px 0px rgba(94,94,94,1);
+    background: #fff;
+    min-height: 1000px;
+}
+
+.page-container table{
+    margin-bottom: 20px;
+}
+
 div.page-number {
     position: relative;
     top: 40px;
@@ -24,4 +134,16 @@ div.search-ctrl {
 
 td.tei-line-number {
     min-width: 50px;
+}
+
+#loader {
+    position: absolute;
+    bottom: 40px;
+    right: 50px;
+    z-index: -1;
+}
+
+.highlight {
+    font-weight: 600;
+    color: darkred;
 }

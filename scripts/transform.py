@@ -210,6 +210,7 @@ def populate_solr(solr_url, pages):
             "headings": json.dumps(page["headings"]),
             "contents": page["contents"],
             "text_contents": page["text_contents"]
+
         }])
     solr.optimize()
 
