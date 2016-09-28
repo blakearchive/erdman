@@ -1,3 +1,16 @@
+div.page-container {
+    min-height: 500px;
+    border-radius: 2px;
+    padding: 10px;
+    -webkit-box-shadow: 0px 0px 6px 0px rgba(94,94,94,1);
+    -moz-box-shadow: 0px 0px 6px 0px rgba(94,94,94,1);
+    box-shadow: 0px 0px 6px 0px rgba(94,94,94,1);
+}
+
+div.page {
+    padding: 80px;
+}
+
 #erdman-toc {
     margin-top: 50px;
     height: calc(100vh - 50px);
