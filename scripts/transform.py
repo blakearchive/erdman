@@ -19,7 +19,7 @@ class ErdmanTransformer(ContentHandler):
         self.current_heading = []
         self.current_page = self.create_page()
         self.transformer = XMLTransformer()
-        self.ignored_elements = {"front", "back", "body"}
+        self.ignored_elements = ["front", "back", "body"]
 
     def create_page(self, page_id=""):
         headings = OrderedDict()
