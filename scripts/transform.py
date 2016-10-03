@@ -63,7 +63,7 @@ class ErdmanTransformer(ContentHandler):
     def startElementNS(self, name, qname, attrs):
         uri, localname = name
         # Strip the namespace field from the attribute key
-        attrs = {k[1]: v for (k, v) in attrs.items()}
+        attrs = dict((k[1],v) for (k, v) in attrs.items())
         if localname == 'div1':
             self.current_heading.append((attrs["id"], attrs))
             self.add_current_page_heading(attrs["id"])
