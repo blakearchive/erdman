@@ -133,7 +133,7 @@ class ErdmanTransformer(ContentHandler):
 
     def endElementNS(self, name, qname):
         uri, localname = name
-        if localname in {'div1', 'div2', 'div3', 'div4'}:
+        if localname in ['div1', 'div2', 'div3', 'div4']:
             self.current_heading.pop()
         elif localname == 'pb':
             pass
