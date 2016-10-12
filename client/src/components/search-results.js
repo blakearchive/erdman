@@ -6,19 +6,6 @@ class SearchResultsController {
     handleGoToPage(pageId){
         this.goToPage({pageId: pageId});
     }
-
-    renderPreview(preview) {
-        preview = preview.replace(/<em>/gi,'[startHighlight]');
-        preview = preview.replace(/<\/em>/gi, '[endHighlight]');
-
-        preview = preview.replace(/<(.*?)>/gi,'');
-        preview = preview.replace(/<(.*?)$/gi,'');
-        preview = preview.replace(/^(.*?)>/gi,'');
-
-        preview = preview.replace(/\[startHighlight\]/gi,'<span class="highlight">');
-        preview = preview.replace(/\[endHighlight\]/gi,'</span>');
-        return preview;
-    }
 }
 
 const SearchResultsComponent = {
@@ -29,14 +16,15 @@ const SearchResultsComponent = {
     },
     controller: SearchResultsController,
     template: `
-            <div class="container">
-                <div class="row">
-                    <h2 ng-if="$ctrl.results.length == 0">No results found</h2>
-                    <div ng-repeat="result in $ctrl.results">
-                        <h5><a href="#" ng-click="$ctrl.handleGoToPage(result.page_id); $ctrl.closeSearchResults()">Page {{result.page_id}}</a></h5>
-                        <span class="preview" ng-repeat="preview in result.preview track by $index" ng-bind-html="$ctrl.renderPreview(preview)"></span>
-                    </div>
-                </div>
+            <h2 ng-if="$ctrl.results.keys.length == 0">No results found</h2>
+            <div ng-repeat="(id,heading) in $ctrl.results track by $index">
+                <h5>{{heading.heading}}</h5>
+                <ul class="list-unstyled">
+                    <li ng-repeat="result in heading.results track by $index" style="margin-left: 10px; padding: 3px 0;">
+                        <span class="preview" ng-bind-html="result.preview"></span>
+                        <a href="#" ng-click="$ctrl.handleGoToPage(result.page_id); $ctrl.closeSearchResults()">(...Page {{ result.page_id }})</a>
+                    </li>
+                </ul>
             </div>
         `
 };

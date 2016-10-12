@@ -48,6 +48,14 @@ class _ErdmanDataService {
         } else return _getPages();
     }
 
+    getPageIdByHeading(heading) {
+        let url = '/api/heading',
+          promise = jQuery.getJSON(url, {"heading": heading || []});
+        return promise.then(data => {
+            return data;
+        });
+    }
+
     search(query) {
         let url = '/api/search',
             promise = jQuery.getJSON(url, {"q": encodeURIComponent(query) || ''});

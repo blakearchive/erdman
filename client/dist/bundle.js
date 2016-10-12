@@ -17546,7 +17546,7 @@
 	        pages: '='
 	    },
 	    controller: ReaderController,
-	    template: '\n        <div id="reader">\n            <div ng-repeat="page in $ctrl.pages" id="{{ page.page_id }}" class="page-container">\n                <div ng-bind-html="page.contents"></div>\n            </div>\n        </div>\n        '
+	    template: '\n        <div id="reader">\n            <div ng-repeat="page in $ctrl.pages" id="{{ page.page_id }}" class="page-container">\n                <div class="page-id text-right">{{ page.page_id }}</div>\n                <div ng-bind-html="page.contents"></div>\n                <div class="page-id text-right">{{ page.page_id }}</div>\n            </div>\n        </div>\n        '
 	};
 
 	var reader = angular.module('reader', ['ngSanitize']).component('reader', ReaderComponent).name;
@@ -17726,20 +17726,6 @@
 	        value: function handleGoToPage(pageId) {
 	            this.goToPage({ pageId: pageId });
 	        }
-	    }, {
-	        key: 'renderPreview',
-	        value: function renderPreview(preview) {
-	            preview = preview.replace(/<em>/gi, '[startHighlight]');
-	            preview = preview.replace(/<\/em>/gi, '[endHighlight]');
-
-	            preview = preview.replace(/<(.*?)>/gi, '');
-	            preview = preview.replace(/<(.*?)$/gi, '');
-	            preview = preview.replace(/^(.*?)>/gi, '');
-
-	            preview = preview.replace(/\[startHighlight\]/gi, '<span class="highlight">');
-	            preview = preview.replace(/\[endHighlight\]/gi, '</span>');
-	            return preview;
-	        }
 	    }]);
 
 	    return SearchResultsController;
@@ -17752,7 +17738,7 @@
 	        closeSearchResults: '&'
 	    },
 	    controller: SearchResultsController,
-	    template: '\n            <div class="container">\n                <div class="row">\n                    <h2 ng-if="$ctrl.results.length == 0">No results found</h2>\n                    <div ng-repeat="result in $ctrl.results">\n                        <h5><a href="#" ng-click="$ctrl.handleGoToPage(result.page_id); $ctrl.closeSearchResults()">Page {{result.page_id}}</a></h5>\n                        <span class="preview" ng-repeat="preview in result.preview track by $index" ng-bind-html="$ctrl.renderPreview(preview)"></span>\n                    </div>\n                </div>\n            </div>\n        '
+	    template: '\n            <h2 ng-if="$ctrl.results.keys.length == 0">No results found</h2>\n            <div ng-repeat="(id,heading) in $ctrl.results track by $index">\n                <h5>{{heading.heading}}</h5>\n                <ul class="list-unstyled">\n                    <li ng-repeat="result in heading.results track by $index" style="margin-left: 10px; padding: 3px 0;">\n                        <span class="preview" ng-bind-html="result.preview"></span>\n                        <a href="#" ng-click="$ctrl.handleGoToPage(result.page_id); $ctrl.closeSearchResults()">(...Page {{ result.page_id }})</a>\n                    </li>\n                </ul>\n            </div>\n        '
 	};
 
 	var searchResults = angular.module('searchResults', ['ngSanitize']).component('searchResults', SearchResultsComponent).name;
@@ -17871,7 +17857,9 @@
 	            var newHash = pageId;
 	            if (this.$location.hash() !== newHash) {
 	                this.$location.hash(newHash);
-	                this.$anchorScroll();
+	                (0, _jquery2.default)('html, body').animate({
+	                    scrollTop: (0, _jquery2.default)("#" + newHash).offset().top
+	                }, 100);
 	            }
 	        }
 	    }, {
@@ -17882,20 +17870,46 @@
 	            if (!query) return;
 
 	            _services.ErdmanDataService.search(query).then(function (response) {
-	                var results = [];
+	                var results = {};
 	                var _iteratorNormalCompletion = true;
 	                var _didIteratorError = false;
 	                var _iteratorError = undefined;
 
 	                try {
-	                    for (var _iterator = response.docs[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+	                    var _loop = function _loop() {
 	                        var doc = _step.value;
 
+
+	                        var pageObject = _data.pages.filter(function (page) {
+	                            return page.page_id == doc.page_id;
+	                        });
+	                        var headingId = '';
+	                        if (Array.isArray(pageObject[0].headings[0][1])) {
+	                            headingId = pageObject[0].headings[0][1][0][0];
+	                        } else {
+	                            headingId = pageObject[0].headings[0][0];
+	                        }
+
+	                        var headingText = _data.titles[headingId];
+
 	                        var result = {
-	                            preview: response.highlighting[doc.id].contents,
+	                            preview: response.highlighting[doc.id].text_contents,
 	                            page_id: doc.page_id
 	                        };
-	                        results.push(result);
+
+	                        if (results[headingId]) {
+	                            results[headingId].results.push(result);
+	                        } else {
+	                            results[headingId] = {
+	                                'heading': headingText,
+	                                'results': []
+	                            };
+	                            results[headingId].results.push(result);
+	                        }
+	                    };
+
+	                    for (var _iterator = response.docs[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+	                        _loop();
 	                    }
 	                } catch (err) {
 	                    _didIteratorError = true;
@@ -17912,9 +17926,8 @@
 	                    }
 	                }
 
-	                _this5.scope.$apply(_this5.results = Object.assign([], results));
+	                _this5.scope.$apply(_this5.results = Object.assign({}, results));
 	                _this5.showSearchResults = true;
-	                _this5.highlightSearchResults(query);
 	            });
 	        }
 	    }, {
@@ -19711,6 +19724,15 @@
 	                    return _getPages();
 	                });
 	            } else return _getPages();
+	        }
+	    }, {
+	        key: 'getPageIdByHeading',
+	        value: function getPageIdByHeading(heading) {
+	            var url = '/api/heading',
+	                promise = _jquery2.default.getJSON(url, { "heading": heading || [] });
+	            return promise.then(function (data) {
+	                return data;
+	            });
 	        }
 	    }, {
 	        key: 'search',
