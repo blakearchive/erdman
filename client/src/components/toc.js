@@ -51,15 +51,19 @@ const TocComponent = {
     },
     controller: TocController,
     template: `
-        <ul class="list-unstyled">
-          <li ng-repeat="item in $ctrl.items track by $index" ng-class="{'toc-level-open': item.showChildren }" data-key="{{ item.key }}">
-            <span class="tree-bullet" ng-class="{ 'tree-children': item.children.length }"></span>
-            <span class="toc-item">
-                <a href="#" ng-click="item.showChildren = !item.showChildren; $ctrl.handleGetPage(item.key)">{{ item.title }}</a>
-                <div class="toc-level">
-                    <toc ng-if="item.children.length" items="item.children" on-get-page="$ctrl.handleGetPage(heading)"></toc>
+        <ul class="nav nav-sidebar">
+          <li ng-repeat="item in $ctrl.items track by $index" ng-class="{'active': item.showChildren && item.children.length }" data-key="{{ item.key }}">
+            <a href="#" ng-click="item.showChildren = !item.showChildren; $ctrl.handleGetPage(item.key)">
+                <div class="row">
+                    <div class="toc-icon">
+                        <span class="glyphicon glyphicon-chevron-right" ng-if="item.children.length"></span>
+                    </div>
+                    <div class="toc-title" ng-class="{'no-children': !item.children.length}">{{ item.title }}</div>
                 </div>
-            </span>
+            </a>
+            <div class="toc-level">
+                <toc ng-if="item.children.length" items="item.children" on-get-page="$ctrl.handleGetPage(heading)"></toc>
+            </div>
           </li>
         </ul>
     `
