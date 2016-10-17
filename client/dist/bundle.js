@@ -17546,7 +17546,7 @@
 	        pages: '='
 	    },
 	    controller: ReaderController,
-	    template: '\n        <div id="reader">\n            <div ng-repeat="page in $ctrl.pages" id="{{ page.page_id }}" class="page-container">\n                <div class="page-id text-right">{{ page.page_id }}</div>\n                <div ng-bind-html="page.contents"></div>\n                <div class="page-id text-right">{{ page.page_id }}</div>\n            </div>\n        </div>\n        '
+	    template: '\n        <div id="reader">\n            <div ng-repeat="page in $ctrl.pages" id="{{ page.page_id }}" class="page-container">\n                <div class="page-id text-right">{{ page.page_id }}</div>\n                <div ng-bind-html="page.contents"></div>\n            </div>\n        </div>\n        '
 	};
 
 	var reader = angular.module('reader', ['ngSanitize']).component('reader', ReaderComponent).name;
@@ -17726,6 +17726,13 @@
 	        value: function handleGoToPage(pageId) {
 	            this.goToPage({ pageId: pageId });
 	        }
+	    }, {
+	        key: 'scrubLineNumbers',
+	        value: function scrubLineNumbers(result) {
+	            console.log(result);
+	            var ret = result.replace(/\d/gi, ' ');
+	            return ret;
+	        }
 	    }]);
 
 	    return SearchResultsController;
@@ -17738,7 +17745,7 @@
 	        closeSearchResults: '&'
 	    },
 	    controller: SearchResultsController,
-	    template: '\n            <h2 ng-if="$ctrl.results.keys.length == 0">No results found</h2>\n            <div ng-repeat="(id,heading) in $ctrl.results track by $index">\n                <h5>{{heading.heading}}</h5>\n                <ul class="list-unstyled">\n                    <li ng-repeat="result in heading.results track by $index" style="margin-left: 10px; padding: 3px 0;">\n                        <span class="preview" ng-bind-html="result.preview"></span>\n                        <a href="#" ng-click="$ctrl.handleGoToPage(result.page_id); $ctrl.closeSearchResults()">(...Page {{ result.page_id }})</a>\n                    </li>\n                </ul>\n            </div>\n        '
+	    template: '\n            <h2 ng-if="$ctrl.results.keys.length == 0">No results found</h2>\n            <div ng-repeat="(id,heading) in $ctrl.results track by $index">\n                <h5>{{heading.heading}}</h5>\n                <ul class="list-unstyled" ng-repeat="result in heading.results track by $index">\n                    <li ng-repeat="preview in result.preview track by $index" style="margin-left: 10px; padding: 3px 0;">\n                        <span class="preview" ng-bind-html="$ctrl.scrubLineNumbers(preview)"></span>\n                        <a href="#" ng-click="$ctrl.handleGoToPage(result.page_id); $ctrl.closeSearchResults()">(...Page {{ result.page_id }})</a>\n                    </li>\n                </ul>\n            </div>\n        '
 	};
 
 	var searchResults = angular.module('searchResults', ['ngSanitize']).component('searchResults', SearchResultsComponent).name;
