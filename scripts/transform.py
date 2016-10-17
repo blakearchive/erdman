@@ -180,9 +180,10 @@ def parse_document(file_name):
     return handler, titles
 
 
-def do_import(solr_url):
+def do_import(solr_url, data_only):
     titles, pages = parse_documents()
-    populate_solr(solr_url, pages)
+    if not data_only:
+        populate_solr(solr_url, pages)
     write_data_files(pages, titles)
 
 
@@ -191,13 +192,18 @@ def parse_documents():
     (erd1, erd1_titles) = parse_document("../data/erd1.xml")
     (erd2, erd2_titles) = parse_document("../data/erd2.xml")
     (erd3, erd3_titles) = parse_document("../data/erd3.xml")
-    (erd4, erd4_titles) = parse_document("../data/erd4.xml")
-    pages = erd1.pages + erd2.pages + erd3.pages + erd4.pages
+    pages = erd1.pages + erd2.pages + erd3.pages
     titles.update(erd1_titles)
     titles.update(erd2_titles)
     titles.update(erd3_titles)
-    titles.update(erd4_titles)
     return titles, pages
+
+
+def get_notes():
+    transformer = XMLTransformer()
+    notes_document = etree.parse("../data/erd4.xml")
+    notes = notes_document.xpath(".//note")
+    return {n.attrib["id"]: etree.tostring(transformer.transform(n)) for n in notes if "id" in n.attrib}
 
 
 def populate_solr(solr_url, pages):
@@ -216,17 +222,21 @@ def populate_solr(solr_url, pages):
 
 
 def write_data_files(pages, titles):
+    notes = get_notes()
+    notes_json = json.dumps(notes)
     with open("../client/src/data.js", 'w') as f:
         pages = [{"headings": p["headings"], "page_id": p["page_id"]} for p in pages]
-        f.write("export const titles = %s, pages = %s;" % (json.dumps(titles), pages))
+        pages_json = json.dumps(pages)
+        f.write("export const titles = %s, pages = %s, notes = %s;" % (json.dumps(titles), pages_json, notes_json))
 
 
 def main():
     import argparse
     parser = argparse.ArgumentParser()
     parser.add_argument("solr_url", default='http://localhost:8983/solr/erdman')
+    parser.add_argument("-d", "--data_only", action="store_true", default=False)
     args = parser.parse_args()
-    do_import(args.solr_url)
+    do_import(args.solr_url, args.data_only)
 
 if __name__ == "__main__":
     main()
