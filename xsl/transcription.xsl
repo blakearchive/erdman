@@ -256,7 +256,7 @@ transforms transcriptions
                     </xsl:choose>
                     <!-- excludes note from display -->
                     <xsl:apply-templates
-                            select="vspace|space|physnumber|text()|foreign|hi|catchword|exist:match|add|del|subst|choose|sic|corr|hspace|orig|rep|instr|unclear|hr|choice|gap"/>
+                            select="vspace|space|physnumber|text()|foreign|hi|catchword|exist:match|add|del|subst|choose|sic|corr|hspace|orig|rep|instr|unclear|hr|choice|gap|ptr"/>
                 </span>
             </td>
         </tr>

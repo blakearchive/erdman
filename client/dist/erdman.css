@@ -263,3 +263,13 @@ nav.navbar form.navbar-form button.btn-default:hover {
     border-color: #51b1dd;
 }
 
+.note-reference {
+    vertical-align: super;
+    font-size: .7em;
+    color: #1276a4;
+    cursor: pointer;
+}
+.note-reference:hover {
+    color: #0c4e6d;
+    text-decoration: underline;
+}
