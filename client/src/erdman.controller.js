@@ -144,11 +144,9 @@ class ErdmanController {
         this.showSearchResults = false;
     }
 
-    /*highlightSearchResults(term) {
-        for (const page of this.pages){
-            page.contents[0] = page.contents[0].replace(/term/gim,`<span class="highlight">${term}</span>`);
-        }
-    }*/
+    openNote() {
+        console.log('opened');
+    }
 
 }
 

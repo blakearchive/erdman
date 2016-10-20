@@ -40,7 +40,7 @@
     </nav>
     <div class="erdman-reader">
         <div id="loader">LOADING...</div>
-        <reader pages="erdman.pages"></reader>
+        <reader pages="erdman.pages" open-note="$ctrl.openNote()"></reader>
     </div>
     <div class="search-results" ng-class="{open: erdman.showSearchResults}">
         <span class="glyphicon glyphicon-remove" ng-click="erdman.closeSearchResults()"></span>
