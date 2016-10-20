@@ -15,11 +15,16 @@ const SearchFormComponent = {
     },
     controller: SearchFormController,
     template: `
+
         <form class="navbar-form navbar-right" role="search" ng-submit="$ctrl.onSubmit();">
-            <div class="form-group">
+            <div class="input-group">
                 <input type="text" class="form-control" placeholder="Search" ng-model="$ctrl.query">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                    </button>
+                </span>
             </div>
-            <button type="submit" class="btn btn-default">Search</button>
         </form>
         `
 };
