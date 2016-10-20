@@ -1,6 +1,6 @@
 import jQuery from 'jquery';
 import {ErdmanDataService, PageService} from './services';
-import {titles, pages} from './data';
+import {titles, pages, notes} from './data';
 
 class ErdmanController {
     constructor($rootScope, $location, $anchorScroll) {
@@ -20,6 +20,7 @@ class ErdmanController {
         this.titles = Object.assign({}, titles);
         this.tocTree = [];
         this.nestTitles();
+        this.note = false;
     }
 
     updatePageContents(pages) {
@@ -144,9 +145,14 @@ class ErdmanController {
         this.showSearchResults = false;
     }
 
-    openNote() {
-        console.log('opened');
+    openNote(id) {
+        this.scope.$apply(this.note = notes[id]);
     }
+
+    closeNote() {
+        this.scope.$apply(this.note = false);
+    }
+
 
 }
 

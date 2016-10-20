@@ -8,8 +8,7 @@
     <link rel="stylesheet" href="fonts/Lato/lato.css">
     <link type="text/css" rel="stylesheet" href="erdman.css">
 </head>
-<body ng-controller="ErdmanController as erdman">
-    <note-overlay></note-overlay>
+<body ng-controller="ErdmanController as erdman" id="erdmanBody">
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -51,6 +50,17 @@
             <toc items="erdman.tocTree" on-get-page="erdman.getPageByHeading(heading)"></toc>
         </div>
     </nav>
+    <note-overlay note="erdman.note" close-note="erdman.closeNote()"></note-overlay>
 </body>
 <script src="bundle.js"></script>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script>
+    $(function(){
+        $('body').on('click','.note-reference',function(){
+            target = $(this).attr('target');
+            var scope = angular.element(document.getElementById('erdmanBody')).scope().erdman;
+            scope.openNote(target);
+        });
+    })
+</script>
 </html>
