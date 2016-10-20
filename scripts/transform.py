@@ -203,7 +203,7 @@ def get_notes():
     transformer = XMLTransformer()
     notes_document = etree.parse("../data/erd4.xml")
     notes = notes_document.xpath(".//note")
-    return {n.attrib["id"]: etree.tostring(transformer.transform(n)) for n in notes if "id" in n.attrib}
+    return dict((n.attrib["id"], etree.tostring(transformer.transform(n))) for n in notes if "id" in n.attrib)
 
 
 def populate_solr(solr_url, pages):
