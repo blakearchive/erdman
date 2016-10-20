@@ -263,13 +263,41 @@ nav.navbar form.navbar-form button.btn-default:hover {
     border-color: #51b1dd;
 }
 
+
+/* ---------------------------------------
+TEXT NOTES
+----------------------------------------- */
+h1 .note-reference, h2 .note-reference, h3 .note-reference, h4 .note-reference, h5 .note-reference, h6 .note-reference {
+    font-size: .6em;
+}
 .note-reference {
     vertical-align: super;
-    font-size: .7em;
     color: #1276a4;
     cursor: pointer;
+    padding: 3px;
 }
 .note-reference:hover {
     color: #0c4e6d;
     text-decoration: underline;
+}
+
+#note-overlay {
+    width: 100vh;
+    height: 100vh;
+    position: fixed;
+    z-index: 999;
+    background: transparent;
+}
+
+#note-overlay .note{
+    width: 50%;
+    height: 50%;
+    overflow: auto;
+    margin: auto;
+    position: fixed;
+    top: 0; left: 0; bottom: 0; right: 0;
+    background-color: #fff;
+    -webkit-box-shadow: 0px 3px 11px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 3px 11px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 3px 11px 0px rgba(0,0,0,0.75);
 }

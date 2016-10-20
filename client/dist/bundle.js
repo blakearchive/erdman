@@ -17505,6 +17505,10 @@
 
 	var _toc2 = _interopRequireDefault(_toc);
 
+	var _noteOverlay = __webpack_require__(17);
+
+	var _noteOverlay2 = _interopRequireDefault(_noteOverlay);
+
 	var _searchForm = __webpack_require__(8);
 
 	var _searchForm2 = _interopRequireDefault(_searchForm);
@@ -17515,7 +17519,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var components = _angular2.default.module('app.components', [_reader2.default, _searchForm2.default, _searchResults2.default, _toc2.default]).name;
+	var components = _angular2.default.module('app.components', [_reader2.default, _searchForm2.default, _searchResults2.default, _toc2.default, _noteOverlay2.default]).name;
 
 	exports.default = components;
 
@@ -20286,6 +20290,35 @@
 	};
 
 	exports.default = Page;
+
+/***/ },
+/* 17 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var NoteOverlayController = function NoteOverlayController() {
+	    _classCallCheck(this, NoteOverlayController);
+	};
+
+	var NoteOverlayComponent = {
+	    bindings: {
+	        note: '<',
+	        closeNote: '&'
+	    },
+	    controller: NoteOverlayController,
+	    template: '\n       <div id="note-overlay">\n         <div class="note">\n            test\n         </div>\n       </div>\n    '
+	};
+
+	var noteOverlay = angular.module('noteOverlay', ['ngSanitize']).component('noteOverlay', NoteOverlayComponent).name;
+
+	exports.default = noteOverlay;
 
 /***/ }
 /******/ ]);
