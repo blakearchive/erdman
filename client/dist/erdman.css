@@ -287,6 +287,7 @@ h1 .note-reference, h2 .note-reference, h3 .note-reference, h4 .note-reference, 
     position: fixed;
     z-index: 999;
     background: transparent;
+    display: none;
 }
 
 #note-overlay .note{

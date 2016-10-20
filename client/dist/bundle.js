@@ -17547,7 +17547,8 @@
 
 	var ReaderComponent = {
 	    bindings: {
-	        pages: '='
+	        pages: '=',
+	        openNote: '&'
 	    },
 	    controller: ReaderController,
 	    template: '\n        <div id="reader">\n            <div ng-repeat="page in $ctrl.pages" id="{{ page.page_id }}" class="page-container">\n                <div class="page-id text-right">{{ page.page_id }}</div>\n                <div ng-bind-html="page.contents"></div>\n            </div>\n        </div>\n        '
@@ -17982,13 +17983,11 @@
 	        value: function closeSearchResults() {
 	            this.showSearchResults = false;
 	        }
-
-	        /*highlightSearchResults(term) {
-	            for (const page of this.pages){
-	                page.contents[0] = page.contents[0].replace(/term/gim,`<span class="highlight">${term}</span>`);
-	            }
-	        }*/
-
+	    }, {
+	        key: 'openNote',
+	        value: function openNote() {
+	            console.log('opened');
+	        }
 	    }]);
 
 	    return ErdmanController;
