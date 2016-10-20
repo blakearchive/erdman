@@ -10,11 +10,7 @@ transforms transcriptions
         </div>
     </xsl:template>
     <xsl:template match="ptr">
-        <span class="note-reference">
-            <xsl:attribute name="target"><xsl:value-of select="@target"></xsl:value-of></xsl:attribute>
-            t
-            <xsl:apply-templates/>
-        </span>
+        <span class="note-reference"><xsl:attribute name="target"><xsl:value-of select="@target"></xsl:value-of></xsl:attribute>t<xsl:apply-templates/></span>
     </xsl:template>
     <xsl:template match="head[@class='heading-primary']">
         <h1><xsl:attribute name="id"><xsl:value-of select="@id"></xsl:value-of></xsl:attribute>
