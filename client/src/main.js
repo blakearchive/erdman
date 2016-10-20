@@ -12,5 +12,3 @@ angular.module("Erdman", [components])
     .config(function($locationProvider) {
       $locationProvider.html5Mode(true).hashPrefix('!');
     });
-
-

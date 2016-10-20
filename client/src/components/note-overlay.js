@@ -9,11 +9,9 @@ const NoteOverlayComponent = {
     },
     controller: NoteOverlayController,
     template: `
-       <div id="note-overlay">
-         <div class="note">
-            test
-         </div>
+       <div class="note-background" ng-click="$ctrl.closeNote()" ng-if="$ctrl.note">
        </div>
+       <div class="note-overlay" ng-if="$ctrl.note"><div style="padding: 20px;" ng-bind-html="$ctrl.note"></div></div>
     `
 };
 

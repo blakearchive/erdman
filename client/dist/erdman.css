@@ -281,16 +281,15 @@ h1 .note-reference, h2 .note-reference, h3 .note-reference, h4 .note-reference, 
     text-decoration: underline;
 }
 
-#note-overlay {
-    width: 100vh;
+.note-background {
+    width: 100vw;
     height: 100vh;
     position: fixed;
-    z-index: 999;
-    background: transparent;
-    display: none;
+    background: rgba(0,0,0,.5);
+    top: 0;
 }
 
-#note-overlay .note{
+.note-overlay{
     width: 50%;
     height: 50%;
     overflow: auto;

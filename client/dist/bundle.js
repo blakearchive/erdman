@@ -17813,6 +17813,7 @@
 	        this.titles = Object.assign({}, _data.titles);
 	        this.tocTree = [];
 	        this.nestTitles();
+	        this.note = false;
 	    }
 
 	    _createClass(ErdmanController, [{
@@ -17985,8 +17986,13 @@
 	        }
 	    }, {
 	        key: 'openNote',
-	        value: function openNote() {
-	            console.log('opened');
+	        value: function openNote(id) {
+	            this.scope.$apply(this.note = _data.notes[id]);
+	        }
+	    }, {
+	        key: 'closeNote',
+	        value: function closeNote() {
+	            this.scope.$apply(this.note = false);
 	        }
 	    }]);
 
@@ -20312,7 +20318,7 @@
 	        closeNote: '&'
 	    },
 	    controller: NoteOverlayController,
-	    template: '\n       <div id="note-overlay">\n         <div class="note">\n            test\n         </div>\n       </div>\n    '
+	    template: '\n       <div class="note-background" ng-click="$ctrl.closeNote()" ng-if="$ctrl.note">\n       </div>\n       <div class="note-overlay" ng-if="$ctrl.note"><div style="padding: 20px;" ng-bind-html="$ctrl.note"></div></div>\n    '
 	};
 
 	var noteOverlay = angular.module('noteOverlay', ['ngSanitize']).component('noteOverlay', NoteOverlayComponent).name;
