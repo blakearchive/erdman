@@ -141,27 +141,27 @@ transforms transcriptions
             <xsl:when test="ancestor::columns">
                 <xsl:choose>
                     <xsl:when test="$colnum='333'">
-                        <table class="tei-table-extra-small">
+                        <ol class="tei-linegroup-xs">
                             <xsl:attribute name="style">text-align:
                                 <xsl:value-of select="@justify"/>
                             </xsl:attribute>
                             <xsl:apply-templates/>
-                        </table>
+                        </ol>
                     </xsl:when>
                     <xsl:otherwise>
-                        <table class="tei-table-small">
+                        <ol class="tei-linegroup-xs">
                             <xsl:attribute name="style">text-align:
                                 <xsl:value-of select="@justify"/>
                             </xsl:attribute>
                             <xsl:apply-templates/>
-                        </table>
+                        </ol>
                     </xsl:otherwise>
                 </xsl:choose>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:choose>
                     <xsl:when test="@rend">
-                        <table>
+                        <ol class="tei-linegroup">
                             <xsl:attribute name="width">
                                 <xsl:value-of select="substring-after(@rend, 'width:')"/>
                             </xsl:attribute>
@@ -169,13 +169,13 @@ transforms transcriptions
                                 <xsl:value-of select="@justify"/>
                             </xsl:attribute>
                             <xsl:apply-templates/>
-                        </table>
+                        </ol>
                     </xsl:when>
                     <xsl:otherwise>
-                        <table class="tei-table">
+                        <ol class="tei-linegroup">
                             <xsl:attribute name="style">text-align:<xsl:value-of select="@justify"/></xsl:attribute>
                             <xsl:apply-templates/>
-                        </table>
+                        </ol>
                     </xsl:otherwise>
                 </xsl:choose>
             </xsl:otherwise>
@@ -224,8 +224,9 @@ transforms transcriptions
         </xsl:choose>
     </xsl:template>
     <xsl:template match="l">
-        <tr>
-            <td class="tei-line-number"> <!-- "width: 5%; font-family:Times New Roman;font-size:8pt;color:gray;" -->
+        <li>
+        <!--
+            <td class="tei-line-number">
                 <xsl:choose>
                     <xsl:when test="number(@n) = @n">
                         <xsl:value-of select="number(substring(@n, string-length(@n) - 1))"/>
@@ -235,10 +236,11 @@ transforms transcriptions
                     </xsl:otherwise>
                 </xsl:choose>
             </td>
-            <td class="tei-line-note"> <!-- width: 5% -->
+            -->
+            <span class="tei-line-note"> <!-- width: 5% -->
                 <xsl:apply-templates select="note"/>
-            </td>
-            <td class="tei-line-text"> <!-- width: 90%; font-family:Times New Roman; font-size:12pt -->
+            </span>
+            <span class="tei-line-text"> <!-- width: 90%; font-family:Times New Roman; font-size:12pt -->
                 <xsl:attribute name="style">text-align:<xsl:value-of select="@justify"/></xsl:attribute>
                 <span>
                     <xsl:choose>
@@ -261,8 +263,8 @@ transforms transcriptions
                     <xsl:apply-templates
                             select="vspace|space|physnumber|text()|foreign|hi|catchword|exist:match|add|del|subst|choose|sic|corr|hspace|orig|rep|instr|unclear|hr|choice|gap"/>
                 </span>
-            </td>
-        </tr>
+            </span>
+        </li>
     </xsl:template>
     <xsl:template match="space">
         <span>
