@@ -224,25 +224,28 @@ transforms transcriptions
         </xsl:choose>
     </xsl:template>
     <xsl:template match="l">
-        <li>
-        <!--
-            <td class="tei-line-number">
-                <xsl:choose>
-                    <xsl:when test="number(@n) = @n">
+        <li class="tei-linegroup">
+            <xsl:choose>
+                <xsl:when test="number(@n) = @n and @n mod 5 = 0">
+                    <div class="tei-line-number-mult-5">
                         <xsl:value-of select="number(substring(@n, string-length(@n) - 1))"/>
-                    </xsl:when>
-                    <xsl:otherwise>
-                        &#160;
-                    </xsl:otherwise>
-                </xsl:choose>
-            </td>
-            -->
-            <span class="tei-line-note"> <!-- width: 5% -->
+                    </div>
+                </xsl:when>
+                <xsl:when test="number(@n) = @n">
+                    <div class="tei-line-number-other">
+                        <xsl:value-of select="number(substring(@n, string-length(@n) - 1))"/>
+                    </div>
+                </xsl:when>
+                <xsl:otherwise>
+                    <!-- <div class="tei-line-nonumber">&#160;</div> -->
+                </xsl:otherwise>
+            </xsl:choose>
+            <div class="tei-line-note"> <!-- width: 5% -->
                 <xsl:apply-templates select="note"/>
-            </span>
-            <span class="tei-line-text"> <!-- width: 90%; font-family:Times New Roman; font-size:12pt -->
+            </div>
+            <div class="tei-line-text"> <!-- width: 90%; font-family:Times New Roman; font-size:12pt -->
                 <xsl:attribute name="style">text-align:<xsl:value-of select="@justify"/></xsl:attribute>
-                <span>
+                <div>
                     <xsl:choose>
                         <xsl:when test="@justify ='left'">
                             <xsl:if test="@indent">
@@ -262,8 +265,8 @@ transforms transcriptions
                     <!-- excludes note from display -->
                     <xsl:apply-templates
                             select="vspace|space|physnumber|text()|foreign|hi|catchword|exist:match|add|del|subst|choose|sic|corr|hspace|orig|rep|instr|unclear|hr|choice|gap"/>
-                </span>
-            </span>
+                </div>
+            </div>
         </li>
     </xsl:template>
     <xsl:template match="space">
