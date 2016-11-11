@@ -227,12 +227,12 @@ transforms transcriptions
         <li class="tei-linegroup">
             <xsl:choose>
                 <xsl:when test="number(@n) = @n and @n mod 5 = 0">
-                    <div class="tei-line-number-mult-5">
+                    <div class="tei-line-number tei-line-number-mult-5">
                         <xsl:value-of select="number(substring(@n, string-length(@n) - 1))"/>
                     </div>
                 </xsl:when>
                 <xsl:when test="number(@n) = @n">
-                    <div class="tei-line-number-other">
+                    <div class="tei-line-number tei-line-number-other">
                         <xsl:value-of select="number(substring(@n, string-length(@n) - 1))"/>
                     </div>
                 </xsl:when>

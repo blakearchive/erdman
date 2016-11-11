@@ -132,8 +132,16 @@ div.search-ctrl {
     padding-top: 20px;
 }
 
-td.tei-line-number {
+div.tei-line-number {
     min-width: 50px;
+}
+
+div.tei-line-number-mult-5 {
+    color: #404040;
+}
+
+div.tei-line-number-other {
+    color: #C0C0C0;
 }
 
 #loader {
@@ -146,4 +154,8 @@ td.tei-line-number {
 .highlight {
     font-weight: 600;
     color: darkred;
+}
+
+ol.tei-linegroup {
+    margin-bottom: 15px;
 }
