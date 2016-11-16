@@ -307,3 +307,6 @@ LINES
 .tei-line {
     list-style: none;
 }
+.tei-line-number{
+    float: right;
+}
