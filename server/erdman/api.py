@@ -22,5 +22,4 @@ def get_pages_by_heading():
 def search():
     q = request.form["q"]
     results = ErdmanDataService.search(q)
-    print results
     return json.dumps(results)

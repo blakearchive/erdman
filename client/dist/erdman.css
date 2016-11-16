@@ -3,6 +3,9 @@
     margin-left: 32vw;
     padding-top: 60px;
 }
+h1,h2,h3,h4 {
+    text-align: center;
+}
 
 /* ---------------------------------------
 TABLE OF CONTENTS
@@ -103,8 +106,9 @@ div.page {
 }
 
 div.page-id {
-    padding-right: 40px;
-    padding-top: 20px;
+    text-align: center;
+    /*padding-right: 40px;
+    padding-top: 20px;*/
 }
 
 td.tei-line-number {

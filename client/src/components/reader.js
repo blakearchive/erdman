@@ -13,7 +13,7 @@ const ReaderComponent = {
     template: `
         <div id="reader">
             <div ng-repeat="page in $ctrl.pages" id="{{ page.page_id }}" class="page-container">
-                <div class="page-id text-right">{{ page.page_id }}</div>
+                <div class="page-id">{{ page.page_id }}</div>
                 <div ng-bind-html="page.contents"></div>
             </div>
         </div>

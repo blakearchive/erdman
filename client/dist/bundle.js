@@ -17551,7 +17551,7 @@
 	        openNote: '&'
 	    },
 	    controller: ReaderController,
-	    template: '\n        <div id="reader">\n            <div ng-repeat="page in $ctrl.pages" id="{{ page.page_id }}" class="page-container">\n                <div class="page-id text-right">{{ page.page_id }}</div>\n                <div ng-bind-html="page.contents"></div>\n            </div>\n        </div>\n        '
+	    template: '\n        <div id="reader">\n            <div ng-repeat="page in $ctrl.pages" id="{{ page.page_id }}" class="page-container">\n                <div class="page-id">{{ page.page_id }}</div>\n                <div ng-bind-html="page.contents"></div>\n            </div>\n        </div>\n        '
 	};
 
 	var reader = angular.module('reader', ['ngSanitize']).component('reader', ReaderComponent).name;
