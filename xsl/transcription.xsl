@@ -256,6 +256,12 @@ transforms transcriptions
                             select="vspace|space|physnumber|text()|foreign|hi|catchword|exist:match|add|del|subst|choose|sic|corr|hspace|orig|rep|instr|unclear|hr|choice|gap|ptr"/>
                 </span>
             </span>
+            <xsl:choose>
+                <xsl:when test="contains(string(number(@n div 5)),'.')">
+                    <span class="tei-line-number">@n</span>
+                </xsl:when>
+                <xsl:otherwise> </xsl:otherwise>
+            </xsl:choose>
         </li>
     </xsl:template>
     <xsl:template match="space">

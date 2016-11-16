@@ -15,7 +15,6 @@ TABLE OF CONTENTS
     top: 0;
     left: 0;
     width: 28vw;
-    border-right: 1px solid black;
     background-color: #fff;
 }
 
@@ -300,4 +299,11 @@ h1 .note-reference, h2 .note-reference, h3 .note-reference, h4 .note-reference, 
     -webkit-box-shadow: 0px 3px 11px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 3px 11px 0px rgba(0,0,0,0.75);
     box-shadow: 0px 3px 11px 0px rgba(0,0,0,0.75);
+}
+
+/* ---------------------------------------
+LINES
+----------------------------------------- */
+.tei-line {
+    list-style: none;
 }
