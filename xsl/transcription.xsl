@@ -257,10 +257,10 @@ transforms transcriptions
                 </span>
             </span>
             <xsl:choose>
-                <xsl:when test="contains(string(number(@n div 5)),'.')">
-                    <span class="tei-line-number">{@n}</span>
-                </xsl:when>
-                <xsl:otherwise> </xsl:otherwise>
+                <xsl:when test="contains(string(number(@n div 5)),'.')"> </xsl:when>
+                <xsl:otherwise>
+                    <span class="tei-line-number"><xsl:value-of select="@n"/></span>
+                </xsl:otherwise>
             </xsl:choose>
         </li>
     </xsl:template>
