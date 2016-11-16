@@ -221,7 +221,7 @@ transforms transcriptions
         </xsl:choose>
     </xsl:template>
     <xsl:template match="l">
-        <li class="tei-line" data-number="{@n}">
+        <li class="tei-line tei-line-{@n}">
             <!--<xsl:choose>
                 <xsl:when test="number(@n) = @n">
                     <xsl:value-of select="number(substring(@n, string-length(@n) - 1))"/>
