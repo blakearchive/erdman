@@ -221,15 +221,14 @@ transforms transcriptions
         </xsl:choose>
     </xsl:template>
     <xsl:template match="l">
-        <li class="tei-line tei-line-{@n}">
-            <!--<xsl:choose>
-                <xsl:when test="number(@n) = @n">
-                    <xsl:value-of select="number(substring(@n, string-length(@n) - 1))"/>
-                </xsl:when>
-                <xsl:otherwise>
-                    &#160;
-                </xsl:otherwise>
-            </xsl:choose>-->
+        <li>
+            <xsl:attribute name="class">
+                <xsl:choose>
+                   <xsl:when test="contains(string(number(@n div 5)),'.')">tei-line</xsl:when>
+                   <xsl:otherwise>tei-line-5</xsl:otherwise>
+               </xsl:choose>
+            </xsl:attribute>
+
             <span class="tei-line-note"> <!-- width: 5% -->
                 <xsl:apply-templates select="note"/>
             </span>
