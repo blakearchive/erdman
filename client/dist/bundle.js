@@ -17551,7 +17551,7 @@
 	        openNote: '&'
 	    },
 	    controller: ReaderController,
-	    template: '\n        <div id="reader">\n            <div ng-repeat="page in $ctrl.pages" id="{{ page.page_id }}" class="page-container">\n                <div class="page-id text-center">{{ page.page_id }}</div>\n                <div ng-bind-html="page.contents"></div>\n            </div>\n        </div>\n        '
+	    template: '\n        <div id="reader">\n            <div ng-repeat="page in $ctrl.pages" id="{{ page.page_id }}" class="page-container">\n                <div class="page-id">{{ page.page_id }}</div>\n                <div ng-bind-html="page.contents"></div>\n            </div>\n        </div>\n        '
 	};
 
 	var reader = angular.module('reader', ['ngSanitize']).component('reader', ReaderComponent).name;
@@ -19852,7 +19852,7 @@
 /* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var require;var require;"use strict";
+	var require;var require;var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 

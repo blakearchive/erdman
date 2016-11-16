@@ -106,8 +106,9 @@ div.page {
 }
 
 div.page-id {
-    padding-right: 40px;
-    padding-top: 20px;
+    text-align: center;
+    /*padding-right: 40px;
+    padding-top: 20px;*/
 }
 
 td.tei-line-number {
