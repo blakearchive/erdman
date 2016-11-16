@@ -13,7 +13,7 @@ transforms transcriptions
         <span class="note-reference"><xsl:attribute name="target"><xsl:value-of select="@target"></xsl:value-of></xsl:attribute>t<xsl:apply-templates/></span>
     </xsl:template>
     <xsl:template match="milestone">
-        <div class="plate">[ <xsl:value-of select="@unit"></xsl:value-of> <xsl:value-of select="@n"></xsl:value-of> ]<xsl:apply-templates/></div>
+        <div class="plate">[ <xsl:value-of select="@unit"></xsl:value-of>&nbsp;<xsl:value-of select="@n"></xsl:value-of> ]<xsl:apply-templates/></div>
     </xsl:template>
     <xsl:template match="head[@class='heading-primary']">
         <h1><xsl:attribute name="id"><xsl:value-of select="@id"></xsl:value-of></xsl:attribute>
@@ -294,6 +294,40 @@ transforms transcriptions
         <xsl:choose>
             <xsl:when test="$spaces &gt; 0">&#160;<xsl:call-template name="spacemaker"><xsl:with-param name="spaces" select="$spaces -1"/></xsl:call-template></xsl:when>
             <xsl:otherwise/>
+        </xsl:choose>
+    </xsl:template>
+    <xsl:template match="hi">
+        <xsl:choose>
+            <xsl:when test="@rend='italic' or @rend='i'">
+                <span class="tei-hi-italic"> <!--  style="font-style:italic" -->
+                    <xsl:apply-templates/>
+                </span>
+            </xsl:when>
+            <xsl:when test="@rend='underscore' or @rend='u'">
+                <span class="tei-hi-underscore"> <!-- style="text-decoration:underline" -->
+                    <xsl:apply-templates/>
+                </span>
+            </xsl:when>
+            <xsl:when test="@rend='superscript' or @rend='sup'">
+                <sup>
+                    <xsl:apply-templates/>
+                </sup>
+            </xsl:when>
+            <xsl:when test="@rend='subscript' or @rend='sub'">
+                <sub>
+                    <xsl:apply-templates/>
+                </sub>
+            </xsl:when>
+            <xsl:when test="@rend= 'roman' or @rend = 'normal'">
+                <span class="tei-hi-normal"> <!-- style="font-style:normal" -->
+                    <xsl:apply-templates/>
+                </span>
+            </xsl:when>
+            <xsl:otherwise>
+                <span class="tei-hi-normal">
+                    <xsl:apply-templates/>
+                </span>
+            </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
 </xsl:stylesheet>
