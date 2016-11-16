@@ -76,7 +76,6 @@ class ErdmanController {
         ErdmanDataService.search(query).then(response => {
             const results = {};
             for(const doc of response.docs) {
-
                 const pageObject = pages.filter(page => page.page_id == doc.page_id);
                 let headingId = '';
                 if(Array.isArray(pageObject[0].headings[0][1])){
@@ -102,6 +101,7 @@ class ErdmanController {
                     results[headingId].results.push(result);
                 }
             }
+            console.log(results);
             this.scope.$apply(this.results = Object.assign({}, results));
             this.showSearchResults = true;
         });
