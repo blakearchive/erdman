@@ -225,7 +225,7 @@ transforms transcriptions
             <xsl:attribute name="class">
                 <xsl:choose>
                    <xsl:when test="contains(string(number(@n div 5)),'.')">tei-line</xsl:when>
-                   <xsl:otherwise>tei-line-5</xsl:otherwise>
+                   <xsl:otherwise>tei-line tei-line-5</xsl:otherwise>
                </xsl:choose>
             </xsl:attribute>
 
@@ -258,7 +258,7 @@ transforms transcriptions
             </span>
             <xsl:choose>
                 <xsl:when test="contains(string(number(@n div 5)),'.')">
-                    <span class="tei-line-number">@n</span>
+                    <span class="tei-line-number">{@n}</span>
                 </xsl:when>
                 <xsl:otherwise> </xsl:otherwise>
             </xsl:choose>
