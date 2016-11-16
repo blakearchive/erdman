@@ -13,7 +13,7 @@ transforms transcriptions
         <span class="note-reference"><xsl:attribute name="target"><xsl:value-of select="@target"></xsl:value-of></xsl:attribute>t<xsl:apply-templates/></span>
     </xsl:template>
     <xsl:template match="milestone">
-        <div class="plate">[ PLATE <xsl:value-of select="@n"></xsl:value-of> ]<xsl:apply-templates/></div>
+        <div class="plate">[ <xsl:value-of select="@unit"></xsl:value-of> <xsl:value-of select="@n"></xsl:value-of> ]<xsl:apply-templates/></div>
     </xsl:template>
     <xsl:template match="head[@class='heading-primary']">
         <h1><xsl:attribute name="id"><xsl:value-of select="@id"></xsl:value-of></xsl:attribute>

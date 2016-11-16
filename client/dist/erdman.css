@@ -270,10 +270,12 @@ h1 .note-reference, h2 .note-reference, h3 .note-reference, h4 .note-reference, 
     font-size: .6em;
 }
 .note-reference {
-    vertical-align: super;
+    vertical-align: baseline;
+    position: relative;
+    padding-left: 3px;
+    top: -0.4em;
     color: #1276a4;
     cursor: pointer;
-    padding: 3px;
 }
 .note-reference:hover {
     color: #0c4e6d;
@@ -304,9 +306,20 @@ h1 .note-reference, h2 .note-reference, h3 .note-reference, h4 .note-reference, 
 /* ---------------------------------------
 LINES
 ----------------------------------------- */
+.tei-line-group {
+    margin-top: 10px;
+}
 .tei-line {
     list-style: none;
 }
 .tei-line-number{
     float: right;
+}
+
+/* ---------------------------------------
+PLATES
+----------------------------------------- */
+.plate {
+    font-weight: 600;
+    margin: 15px 0 10px 0;
 }
