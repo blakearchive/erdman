@@ -17921,7 +17921,6 @@
 	                    var _loop = function _loop() {
 	                        var doc = _step.value;
 
-
 	                        var pageObject = _data.pages.filter(function (page) {
 	                            return page.page_id == doc.page_id;
 	                        });
@@ -17968,6 +17967,7 @@
 	                    }
 	                }
 
+	                console.log(results);
 	                _this5.scope.$apply(_this5.results = Object.assign({}, results));
 	                _this5.showSearchResults = true;
 	            });
@@ -19783,9 +19783,9 @@
 	        key: 'search',
 	        value: function search(query) {
 	            var url = '/api/search',
-	                promise = _jquery2.default.getJSON(url, { "q": encodeURIComponent(query) || '' });
+	                promise = _jquery2.default.post(url, { "q": query || '' });
 	            return promise.then(function (data) {
-	                return data;
+	                return JSON.parse(data);
 	            });
 	        }
 	    }]);
@@ -19852,7 +19852,7 @@
 /* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var require;var require;"use strict";
+	var require;var require;var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 

@@ -323,6 +323,11 @@ PLATES
     font-weight: 600;
     margin: 15px 0 10px 0;
 }
+.plate .plate-unit-name {
+    text-transform: uppercase;
+    padding-right: 4px;
+}
+
 
 /* ---------------------------------------
 TEI MISC
