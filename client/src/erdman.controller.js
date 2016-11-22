@@ -1,6 +1,6 @@
 import jQuery from 'jquery';
 import {ErdmanDataService, PageService} from './services';
-import {titles, pages} from './data';
+import {titles, pages, notes} from './data';
 
 class ErdmanController {
     constructor($rootScope, $location, $anchorScroll) {
@@ -20,6 +20,7 @@ class ErdmanController {
         this.titles = Object.assign({}, titles);
         this.tocTree = [];
         this.nestTitles();
+        this.note = false;
     }
 
     updatePageContents(pages) {
@@ -75,7 +76,6 @@ class ErdmanController {
         ErdmanDataService.search(query).then(response => {
             const results = {};
             for(const doc of response.docs) {
-
                 const pageObject = pages.filter(page => page.page_id == doc.page_id);
                 let headingId = '';
                 if(Array.isArray(pageObject[0].headings[0][1])){
@@ -101,6 +101,7 @@ class ErdmanController {
                     results[headingId].results.push(result);
                 }
             }
+            console.log(results);
             this.scope.$apply(this.results = Object.assign({}, results));
             this.showSearchResults = true;
         });
@@ -144,11 +145,14 @@ class ErdmanController {
         this.showSearchResults = false;
     }
 
-    /*highlightSearchResults(term) {
-        for (const page of this.pages){
-            page.contents[0] = page.contents[0].replace(/term/gim,`<span class="highlight">${term}</span>`);
-        }
-    }*/
+    openNote(id) {
+        this.scope.$apply(this.note = notes[id]);
+    }
+
+    closeNote() {
+        this.scope.$apply(this.note = false);
+    }
+
 
 }
 

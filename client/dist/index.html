@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="fonts/Lato/lato.css">
     <link type="text/css" rel="stylesheet" href="erdman.css">
 </head>
-<body ng-controller="ErdmanController as erdman">
+<body ng-controller="ErdmanController as erdman" id="erdmanBody">
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -18,18 +19,27 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Erdman</a>
+                <a class="navbar-brand" href="/"><span class="name">The William Blake Archive</span><span class="sig"></span></a>
             </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse">
+                <!-- Center Title -->
+                <div class="object-view-menu hidden-xs hidden-sm">
+                <span class="worktitle" style="padding: 19px;">
+                    <span>
+                        <a style="color:white;">(The Complete Poetry & Prose of William Blake)</a>
+                    </span>
+	            </span>
+                </div>
+
+                <!-- Search Form -->
                 <search-form on-search="erdman.searchPages(query)"></search-form>
-            </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
+            </div>
+        </div>
     </nav>
     <div class="erdman-reader">
         <div id="loader">LOADING...</div>
-        <reader pages="erdman.pages"></reader>
+        <reader pages="erdman.pages" open-note="$ctrl.openNote()"></reader>
     </div>
     <div class="search-results" ng-class="{open: erdman.showSearchResults}">
         <span class="glyphicon glyphicon-remove" ng-click="erdman.closeSearchResults()"></span>
@@ -40,6 +50,17 @@
             <toc items="erdman.tocTree" on-get-page="erdman.getPageByHeading(heading)"></toc>
         </div>
     </nav>
+    <note-overlay note="erdman.note" close-note="erdman.closeNote()"></note-overlay>
 </body>
 <script src="bundle.js"></script>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script>
+    $(function(){
+        $('body').on('click','.note-reference',function(){
+            target = $(this).attr('target');
+            var scope = angular.element(document.getElementById('erdmanBody')).scope().erdman;
+            scope.openNote(target);
+        });
+    })
+</script>
 </html>

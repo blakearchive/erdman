@@ -18,8 +18,8 @@ def get_pages_by_heading():
     page_ids = ErdmanDataService.get_pages_by_heading(heading)
     return json.dumps(page_ids)
 
-@api.route("/search")
+@api.route("/search", methods=["POST"])
 def search():
-    q = request.args.get("q")
+    q = request.form["q"]
     results = ErdmanDataService.search(q)
     return json.dumps(results)

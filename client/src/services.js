@@ -58,9 +58,9 @@ class _ErdmanDataService {
 
     search(query) {
         let url = '/api/search',
-            promise = jQuery.getJSON(url, {"q": encodeURIComponent(query) || ''});
+            promise = jQuery.post(url, {"q": query || ''});
         return promise.then(data => {
-            return data;
+            return JSON.parse(data);
         });
     }
 }

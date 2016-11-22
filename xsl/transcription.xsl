@@ -10,10 +10,20 @@ transforms transcriptions
         </div>
     </xsl:template>
     <xsl:template match="ptr">
-        <span class="note-reference">
-            <xsl:attribute name="target"><xsl:value-of select="@id"></xsl:value-of></xsl:attribute>
+        <span class="note-reference"><xsl:attribute name="target"><xsl:value-of select="@target"></xsl:value-of></xsl:attribute>t<xsl:apply-templates/></span>
+    </xsl:template>
+    <xsl:template match="milestone">
+        <div class="plate">
+            [
+            <span class="plate-unit-name">
+                <xsl:value-of select="@unit"></xsl:value-of>
+            </span>
+            <span class="plate-unit-number">
+                <xsl:value-of select="@n"></xsl:value-of>
+            </span>
+            ]
             <xsl:apply-templates/>
-        </span>
+        </div>
     </xsl:template>
     <xsl:template match="head[@class='heading-primary']">
         <h1><xsl:attribute name="id"><xsl:value-of select="@id"></xsl:value-of></xsl:attribute>
@@ -224,28 +234,20 @@ transforms transcriptions
         </xsl:choose>
     </xsl:template>
     <xsl:template match="l">
-        <li class="tei-linegroup">
-            <xsl:choose>
-                <xsl:when test="number(@n) = @n and @n mod 5 = 0">
-                    <div class="tei-line-number tei-line-number-mult-5">
-                        <xsl:value-of select="number(substring(@n, string-length(@n) - 1))"/>
-                    </div>
-                </xsl:when>
-                <xsl:when test="number(@n) = @n">
-                    <div class="tei-line-number tei-line-number-other">
-                        <xsl:value-of select="number(substring(@n, string-length(@n) - 1))"/>
-                    </div>
-                </xsl:when>
-                <xsl:otherwise>
-                    <!-- <div class="tei-line-nonumber">&#160;</div> -->
-                </xsl:otherwise>
-            </xsl:choose>
-            <div class="tei-line-note"> <!-- width: 5% -->
+        <li>
+            <xsl:attribute name="class">
+                <xsl:choose>
+                   <xsl:when test="contains(string(number(@n div 5)),'.')">tei-line</xsl:when>
+                   <xsl:otherwise>tei-line tei-line-5</xsl:otherwise>
+               </xsl:choose>
+            </xsl:attribute>
+
+            <span class="tei-line-note"> <!-- width: 5% -->
                 <xsl:apply-templates select="note"/>
-            </div>
-            <div class="tei-line-text"> <!-- width: 90%; font-family:Times New Roman; font-size:12pt -->
+            </span>
+            <span class="tei-line-text"> <!-- width: 90%; font-family:Times New Roman; font-size:12pt -->
                 <xsl:attribute name="style">text-align:<xsl:value-of select="@justify"/></xsl:attribute>
-                <div>
+                <span>
                     <xsl:choose>
                         <xsl:when test="@justify ='left'">
                             <xsl:if test="@indent">
@@ -264,9 +266,15 @@ transforms transcriptions
                     </xsl:choose>
                     <!-- excludes note from display -->
                     <xsl:apply-templates
-                            select="vspace|space|physnumber|text()|foreign|hi|catchword|exist:match|add|del|subst|choose|sic|corr|hspace|orig|rep|instr|unclear|hr|choice|gap"/>
-                </div>
-            </div>
+                            select="vspace|space|physnumber|text()|foreign|hi|catchword|exist:match|add|del|subst|choose|sic|corr|hspace|orig|rep|instr|unclear|hr|choice|gap|ptr"/>
+                </span>
+            </span>
+            <xsl:choose>
+                <xsl:when test="contains(string(number(@n div 5)),'.')"> </xsl:when>
+                <xsl:otherwise>
+                    <span class="tei-line-number"><xsl:value-of select="@n"/></span>
+                </xsl:otherwise>
+            </xsl:choose>
         </li>
     </xsl:template>
     <xsl:template match="space">
@@ -296,6 +304,40 @@ transforms transcriptions
         <xsl:choose>
             <xsl:when test="$spaces &gt; 0">&#160;<xsl:call-template name="spacemaker"><xsl:with-param name="spaces" select="$spaces -1"/></xsl:call-template></xsl:when>
             <xsl:otherwise/>
+        </xsl:choose>
+    </xsl:template>
+    <xsl:template match="hi">
+        <xsl:choose>
+            <xsl:when test="@rend='italic' or @rend='i'">
+                <span class="tei-hi-italic"> <!--  style="font-style:italic" -->
+                    <xsl:apply-templates/>
+                </span>
+            </xsl:when>
+            <xsl:when test="@rend='underscore' or @rend='u'">
+                <span class="tei-hi-underscore"> <!-- style="text-decoration:underline" -->
+                    <xsl:apply-templates/>
+                </span>
+            </xsl:when>
+            <xsl:when test="@rend='superscript' or @rend='sup'">
+                <sup>
+                    <xsl:apply-templates/>
+                </sup>
+            </xsl:when>
+            <xsl:when test="@rend='subscript' or @rend='sub'">
+                <sub>
+                    <xsl:apply-templates/>
+                </sub>
+            </xsl:when>
+            <xsl:when test="@rend= 'roman' or @rend = 'normal'">
+                <span class="tei-hi-normal"> <!-- style="font-style:normal" -->
+                    <xsl:apply-templates/>
+                </span>
+            </xsl:when>
+            <xsl:otherwise>
+                <span class="tei-hi-normal">
+                    <xsl:apply-templates/>
+                </span>
+            </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
 </xsl:stylesheet>
