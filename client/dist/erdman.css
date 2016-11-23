@@ -50,7 +50,7 @@ ul.nav-sidebar.nav li.active > a {
     display:none;
     margin-left: 15px;
 }
-li.active > .toc-level{
+li.expanded > .toc-level{
     display: block;
 }
 
@@ -70,7 +70,7 @@ li.active > .toc-level{
     font-size: 11px;
 }
 
-li.active > a .toc-icon .glyphicon {
+li.expanded > a .toc-icon .glyphicon {
     -webkit-transform: rotate(90deg);
     -moz-transform: rotate(90deg);
     -ms-transform: rotate(90deg);

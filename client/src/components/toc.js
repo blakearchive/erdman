@@ -1,6 +1,49 @@
 class TocController {
     constructor() {
         this.sortItems();
+        this.getPageRange();
+    }
+
+    $onChanges(changes){
+        if(changes.currentPage){
+            this.activateItem();
+        }
+    }
+
+    activateItem(){
+        for (const k of this.items){
+            if (k.page == this.currentPage) {
+                k.active = true;
+                k.showChildren = true;
+            } else if(k.children.length && k.childPages.includes(this.currentPage)){
+                k.active = false;
+                k.showChildren = true;
+            } else {
+                k.active = false;
+                k.showChildren = false;
+            }
+
+        }
+    }
+
+    getPageRange(){
+        for (const k of this.items){
+            if(k.children){
+                k.childPages = this.getChildrenPages(k.children);
+            }
+        }
+    }
+
+    getChildrenPages(children){
+        //console.log(children);
+        var pages = children.map(function(a) {return a.page;});
+        var additionalChildren = children.filter(function(a) {return a.children.length > 0});
+        if(additionalChildren.length){
+            for (const c of additionalChildren){
+                pages.concat(this.getChildrenPages(c.children));
+            }
+        }
+        return pages;
     }
 
     sortItems() {
@@ -47,12 +90,14 @@ class TocController {
 const TocComponent = {
     bindings: {
         items: '<',
-        onGetPage: '&'
+        onGetPage: '&',
+        currentPage: '<',
+        deactivateParents: '&'
     },
     controller: TocController,
     template: `
         <ul class="nav nav-sidebar">
-          <li ng-repeat="item in $ctrl.items track by $index" ng-class="{'active': item.showChildren && item.children.length }" data-key="{{ item.key }}">
+          <li ng-repeat="item in $ctrl.items track by $index" ng-class="{'expanded': item.showChildren && item.children.length, 'active': item.active }" data-key="{{ item.key }}" data-page="{{ item.page }}">
             <a href="#" ng-click="item.showChildren = !item.showChildren; $ctrl.handleGetPage(item.key)">
                 <div class="row">
                     <div class="toc-icon">
@@ -62,7 +107,7 @@ const TocComponent = {
                 </div>
             </a>
             <div class="toc-level">
-                <toc ng-if="item.children.length" items="item.children" on-get-page="$ctrl.handleGetPage(heading)"></toc>
+                <toc ng-if="item.children.length" items="item.children" on-get-page="$ctrl.handleGetPage(heading)" current-page="$ctrl.currentPage"></toc>
             </div>
           </li>
         </ul>

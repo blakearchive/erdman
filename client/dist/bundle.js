@@ -17582,9 +17582,122 @@
 	        _classCallCheck(this, TocController);
 
 	        this.sortItems();
+	        this.getPageRange();
 	    }
 
 	    _createClass(TocController, [{
+	        key: '$onChanges',
+	        value: function $onChanges(changes) {
+	            if (changes.currentPage) {
+	                this.activateItem();
+	            }
+	        }
+	    }, {
+	        key: 'activateItem',
+	        value: function activateItem() {
+	            var _iteratorNormalCompletion = true;
+	            var _didIteratorError = false;
+	            var _iteratorError = undefined;
+
+	            try {
+	                for (var _iterator = this.items[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+	                    var k = _step.value;
+
+	                    if (k.page == this.currentPage) {
+	                        k.active = true;
+	                        k.showChildren = true;
+	                    } else if (k.children.length && k.childPages.includes(this.currentPage)) {
+	                        k.active = false;
+	                        k.showChildren = true;
+	                    } else {
+	                        k.active = false;
+	                        k.showChildren = false;
+	                    }
+	                }
+	            } catch (err) {
+	                _didIteratorError = true;
+	                _iteratorError = err;
+	            } finally {
+	                try {
+	                    if (!_iteratorNormalCompletion && _iterator.return) {
+	                        _iterator.return();
+	                    }
+	                } finally {
+	                    if (_didIteratorError) {
+	                        throw _iteratorError;
+	                    }
+	                }
+	            }
+	        }
+	    }, {
+	        key: 'getPageRange',
+	        value: function getPageRange() {
+	            var _iteratorNormalCompletion2 = true;
+	            var _didIteratorError2 = false;
+	            var _iteratorError2 = undefined;
+
+	            try {
+	                for (var _iterator2 = this.items[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+	                    var k = _step2.value;
+
+	                    if (k.children) {
+	                        k.childPages = this.getChildrenPages(k.children);
+	                    }
+	                }
+	            } catch (err) {
+	                _didIteratorError2 = true;
+	                _iteratorError2 = err;
+	            } finally {
+	                try {
+	                    if (!_iteratorNormalCompletion2 && _iterator2.return) {
+	                        _iterator2.return();
+	                    }
+	                } finally {
+	                    if (_didIteratorError2) {
+	                        throw _iteratorError2;
+	                    }
+	                }
+	            }
+	        }
+	    }, {
+	        key: 'getChildrenPages',
+	        value: function getChildrenPages(children) {
+	            //console.log(children);
+	            var pages = children.map(function (a) {
+	                return a.page;
+	            });
+	            var additionalChildren = children.filter(function (a) {
+	                return a.children.length > 0;
+	            });
+	            if (additionalChildren.length) {
+	                var _iteratorNormalCompletion3 = true;
+	                var _didIteratorError3 = false;
+	                var _iteratorError3 = undefined;
+
+	                try {
+	                    for (var _iterator3 = additionalChildren[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+	                        var c = _step3.value;
+
+	                        pages.concat(this.getChildrenPages(c.children));
+	                    }
+	                } catch (err) {
+	                    _didIteratorError3 = true;
+	                    _iteratorError3 = err;
+	                } finally {
+	                    try {
+	                        if (!_iteratorNormalCompletion3 && _iterator3.return) {
+	                            _iterator3.return();
+	                        }
+	                    } finally {
+	                        if (_didIteratorError3) {
+	                            throw _iteratorError3;
+	                        }
+	                    }
+	                }
+	            }
+	            return pages;
+	        }
+	    }, {
 	        key: 'sortItems',
 	        value: function sortItems() {
 	            var _this = this;
@@ -17609,13 +17722,13 @@
 	        value: function normalizeKey(key) {
 	            var parts = key.split('.');
 	            var normalized = [];
-	            var _iteratorNormalCompletion = true;
-	            var _didIteratorError = false;
-	            var _iteratorError = undefined;
+	            var _iteratorNormalCompletion4 = true;
+	            var _didIteratorError4 = false;
+	            var _iteratorError4 = undefined;
 
 	            try {
-	                for (var _iterator = parts[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-	                    var part = _step.value;
+	                for (var _iterator4 = parts[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+	                    var part = _step4.value;
 
 	                    if (isNaN(part)) {
 	                        var alpha = part.substr(0, 1);
@@ -17628,16 +17741,16 @@
 	                    }
 	                }
 	            } catch (err) {
-	                _didIteratorError = true;
-	                _iteratorError = err;
+	                _didIteratorError4 = true;
+	                _iteratorError4 = err;
 	            } finally {
 	                try {
-	                    if (!_iteratorNormalCompletion && _iterator.return) {
-	                        _iterator.return();
+	                    if (!_iteratorNormalCompletion4 && _iterator4.return) {
+	                        _iterator4.return();
 	                    }
 	                } finally {
-	                    if (_didIteratorError) {
-	                        throw _iteratorError;
+	                    if (_didIteratorError4) {
+	                        throw _iteratorError4;
 	                    }
 	                }
 	            }
@@ -17658,10 +17771,12 @@
 	var TocComponent = {
 	    bindings: {
 	        items: '<',
-	        onGetPage: '&'
+	        onGetPage: '&',
+	        currentPage: '<',
+	        deactivateParents: '&'
 	    },
 	    controller: TocController,
-	    template: '\n        <ul class="nav nav-sidebar">\n          <li ng-repeat="item in $ctrl.items track by $index" ng-class="{\'active\': item.showChildren && item.children.length }" data-key="{{ item.key }}">\n            <a href="#" ng-click="item.showChildren = !item.showChildren; $ctrl.handleGetPage(item.key)">\n                <div class="row">\n                    <div class="toc-icon">\n                        <span class="glyphicon glyphicon-chevron-right" ng-if="item.children.length"></span>\n                    </div>\n                    <div class="toc-title" ng-class="{\'no-children\': !item.children.length}">{{ item.title }}</div>\n                </div>\n            </a>\n            <div class="toc-level">\n                <toc ng-if="item.children.length" items="item.children" on-get-page="$ctrl.handleGetPage(heading)"></toc>\n            </div>\n          </li>\n        </ul>\n    '
+	    template: '\n        <ul class="nav nav-sidebar">\n          <li ng-repeat="item in $ctrl.items track by $index" ng-class="{\'expanded\': item.showChildren && item.children.length, \'active\': item.active }" data-key="{{ item.key }}" data-page="{{ item.page }}">\n            <a href="#" ng-click="item.showChildren = !item.showChildren; $ctrl.handleGetPage(item.key)">\n                <div class="row">\n                    <div class="toc-icon">\n                        <span class="glyphicon glyphicon-chevron-right" ng-if="item.children.length"></span>\n                    </div>\n                    <div class="toc-title" ng-class="{\'no-children\': !item.children.length}">{{ item.title }}</div>\n                </div>\n            </a>\n            <div class="toc-level">\n                <toc ng-if="item.children.length" items="item.children" on-get-page="$ctrl.handleGetPage(heading)" current-page="$ctrl.currentPage"></toc>\n            </div>\n          </li>\n        </ul>\n    '
 	};
 
 	var toc = angular.module('toc', ['ngSanitize']).component('toc', TocComponent).name;
@@ -17829,6 +17944,7 @@
 	        this.$location = $location;
 	        this.$anchorScroll = $anchorScroll;
 	        this.scope = $rootScope;
+	        this.currentPage = 0;
 	        this.pages = _data.pages.map(function (p) {
 	            return { page_id: p.page_id, contents: "" };
 	        });
@@ -17846,6 +17962,8 @@
 	        this.titles = Object.assign({}, _data.titles);
 	        this.tocTree = [];
 	        this.nestTitles();
+	        this.enumerate(this.tocTree, 0);
+	        console.log(this.tocTree);
 	        this.note = false;
 	        this.query = '';
 	    }
@@ -17854,6 +17972,8 @@
 	        key: 'updatePageContents',
 	        value: function updatePageContents(pages) {
 	            var _this2 = this;
+
+	            this.currentPage = pages[0].page_id;
 
 	            var pageMap = {};
 	            pages.forEach(function (page) {
@@ -17902,6 +18022,7 @@
 	                return;
 	            }
 	            var newHash = pageId;
+
 	            if (this.$location.hash() !== newHash) {
 	                this.$location.hash(newHash);
 	                (0, _jquery2.default)('html, body').animate({
@@ -17987,7 +18108,8 @@
 	                        title: this.titles[k],
 	                        key: k,
 	                        children: this.getChildren(k),
-	                        showChildren: false
+	                        showChildren: false,
+	                        active: false
 	                    };
 	                    this.tocTree.push(toplvl);
 	                    delete this.titles[k];
@@ -18051,6 +18173,104 @@
 	            }
 
 	            return text;
+	        }
+
+	        /* WIP TESTING CRAP */
+
+	    }, {
+	        key: 'sortItems',
+	        value: function sortItems(tree) {
+	            var _this6 = this;
+
+	            // Sort the items
+	            tree.sort(function (a, b) {
+
+	                var aNorm = _this6.normalizeKey(a.key);
+	                var bNorm = _this6.normalizeKey(b.key);
+
+	                if (aNorm < bNorm) {
+	                    return -1;
+	                }
+	                if (aNorm > bNorm) {
+	                    return 1;
+	                }
+	                return 0;
+	            });
+	        }
+	    }, {
+	        key: 'normalizeKey',
+	        value: function normalizeKey(key) {
+	            var parts = key.split('.');
+	            var normalized = [];
+	            var _iteratorNormalCompletion2 = true;
+	            var _didIteratorError2 = false;
+	            var _iteratorError2 = undefined;
+
+	            try {
+	                for (var _iterator2 = parts[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+	                    var part = _step2.value;
+
+	                    if (isNaN(part)) {
+	                        var alpha = part.substr(0, 1);
+	                        var num = part.substr(1);
+	                        num = num.length == 1 ? '0' + num : num;
+	                        normalized.push(alpha + num);
+	                    } else {
+	                        var _num = part.length == 1 ? '0' + part : part;
+	                        normalized.push(_num);
+	                    }
+	                }
+	            } catch (err) {
+	                _didIteratorError2 = true;
+	                _iteratorError2 = err;
+	            } finally {
+	                try {
+	                    if (!_iteratorNormalCompletion2 && _iterator2.return) {
+	                        _iterator2.return();
+	                    }
+	                } finally {
+	                    if (_didIteratorError2) {
+	                        throw _iteratorError2;
+	                    }
+	                }
+	            }
+
+	            return normalized.join('.');
+	        }
+	    }, {
+	        key: 'enumerate',
+	        value: function enumerate(tree, start) {
+	            this.sortItems(tree);
+	            start++;
+	            var _iteratorNormalCompletion3 = true;
+	            var _didIteratorError3 = false;
+	            var _iteratorError3 = undefined;
+
+	            try {
+	                for (var _iterator3 = tree[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+	                    var k = _step3.value;
+
+	                    k.page = start;
+	                    if (k.children) {
+	                        start = this.enumerate(k.children, start);
+	                    }
+	                }
+	            } catch (err) {
+	                _didIteratorError3 = true;
+	                _iteratorError3 = err;
+	            } finally {
+	                try {
+	                    if (!_iteratorNormalCompletion3 && _iterator3.return) {
+	                        _iterator3.return();
+	                    }
+	                } finally {
+	                    if (_didIteratorError3) {
+	                        throw _iteratorError3;
+	                    }
+	                }
+	            }
+
+	            return start;
 	        }
 	    }]);
 
@@ -19881,7 +20101,7 @@
 /* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var require;var require;var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var require;var require;"use strict";
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
