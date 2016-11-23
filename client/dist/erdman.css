@@ -345,3 +345,6 @@ TEI MISC
 .tei-hi-normal{
     font-style: normal;
 }
+span.highlighted {
+    background: yellow;
+}

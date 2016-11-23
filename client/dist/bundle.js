@@ -17552,7 +17552,8 @@
 	var ReaderComponent = {
 	    bindings: {
 	        pages: '=',
-	        openNote: '&'
+	        openNote: '&',
+	        highlight: '@'
 	    },
 	    controller: ReaderController,
 	    template: '\n        <div id="reader">\n            <div ng-repeat="page in $ctrl.pages" id="{{ page.page_id }}" class="page-container">\n                <div class="page-id">{{ page.page_id }}</div>\n                <div ng-bind-html="page.contents"></div>\n            </div>\n        </div>\n        '
@@ -17767,7 +17768,6 @@
 	    }, {
 	        key: 'scrubLineNumbers',
 	        value: function scrubLineNumbers(result) {
-	            console.log(result);
 	            var ret = result.replace(/\d/gi, ' ');
 	            return ret;
 	        }
@@ -17847,6 +17847,7 @@
 	        this.tocTree = [];
 	        this.nestTitles();
 	        this.note = false;
+	        this.query = '';
 	    }
 
 	    _createClass(ErdmanController, [{
@@ -17863,7 +17864,7 @@
 	                _this2.pages.forEach(function (page) {
 	                    var newPage = pageMap[page.page_id];
 	                    if (newPage) {
-	                        page.contents = newPage.contents;
+	                        page.contents = _this2.highlightSearchTerm(_this2.query, newPage.contents, newPage.text_contents);
 	                    } else page.contents = "";
 	                });
 	            });
@@ -17914,6 +17915,8 @@
 	            var _this5 = this;
 
 	            if (!query) return;
+
+	            this.query = query;
 
 	            _services.ErdmanDataService.search(query).then(function (response) {
 	                var results = {};
@@ -18026,6 +18029,29 @@
 	        key: 'closeNote',
 	        value: function closeNote() {
 	            this.scope.$apply(this.note = false);
+	        }
+	    }, {
+	        key: 'highlightSearchTerm',
+	        value: function highlightSearchTerm(phrase, text, noHtmlText) {
+
+	            if (phrase !== '') {
+	                if (noHtmlText.match(new RegExp('(' + phrase + ')', 'gim'))) {
+
+	                    if (phrase.startsWith('"') && phrase.endsWith('"')) {
+	                        phrase = phrase.replace(/"/g, '');
+	                        text = text.replace(new RegExp('(' + phrase + ')', 'gim'), '<span class="highlighted">$1</span>');
+	                    } else if (phrase.indexOf(' ')) {
+	                        var phraseArray = phrase.split(' ');
+	                        angular.forEach(phraseArray, function (ph) {
+	                            text = text.replace(new RegExp('(\\b' + ph + '\\b)', 'gim'), '<span class="highlighted">$1</span>');
+	                        });
+	                    } else {
+	                        text = text.replace(new RegExp('(' + phrase + ')', 'gim'), '<span class="highlighted">$1</span>');
+	                    }
+	                }
+	            }
+
+	            return text;
 	        }
 	    }]);
 
