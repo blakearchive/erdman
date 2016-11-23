@@ -30,6 +30,7 @@ class ErdmanDataService(object):
              "hl.snippets":10,
              "hl.fragsize":50,
              "fl": "id, page_id",
-             "rows": 10000
+             "rows": 10000,
+             "sort": "id asc"
         })
         return {"docs":result.docs, "highlighting":result.highlighting}

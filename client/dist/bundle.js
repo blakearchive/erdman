@@ -17974,7 +17974,6 @@
 	                    }
 	                }
 
-	                console.log(results);
 	                _this5.scope.$apply(_this5.results = Object.assign({}, results));
 	                _this5.showSearchResults = true;
 	            });

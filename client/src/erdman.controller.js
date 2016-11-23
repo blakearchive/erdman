@@ -105,7 +105,7 @@ class ErdmanController {
                     results[headingId].results.push(result);
                 }
             }
-            console.log(results);
+            
             this.scope.$apply(this.results = Object.assign({}, results));
             this.showSearchResults = true;
         });
