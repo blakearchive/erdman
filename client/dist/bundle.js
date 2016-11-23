@@ -17517,9 +17517,13 @@
 
 	var _searchResults2 = _interopRequireDefault(_searchResults);
 
+	var _pageJump = __webpack_require__(18);
+
+	var _pageJump2 = _interopRequireDefault(_pageJump);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var components = _angular2.default.module('app.components', [_reader2.default, _searchForm2.default, _searchResults2.default, _toc2.default, _noteOverlay2.default]).name;
+	var components = _angular2.default.module('app.components', [_noteOverlay2.default, _pageJump2.default, _reader2.default, _searchForm2.default, _searchResults2.default, _toc2.default]).name;
 
 	exports.default = components;
 
@@ -17900,7 +17904,7 @@
 	            if (this.$location.hash() !== newHash) {
 	                this.$location.hash(newHash);
 	                (0, _jquery2.default)('html, body').animate({
-	                    scrollTop: (0, _jquery2.default)("#" + newHash).offset().top
+	                    scrollTop: (0, _jquery2.default)("#" + newHash).offset().top - 55
 	                }, 100);
 	            }
 	        }
@@ -20324,6 +20328,47 @@
 	};
 
 	exports.default = Page;
+
+/***/ },
+/* 18 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var PageJumpController = function () {
+	    function PageJumpController() {
+	        _classCallCheck(this, PageJumpController);
+	    }
+
+	    _createClass(PageJumpController, [{
+	        key: 'onSubmit',
+	        value: function onSubmit() {
+	            this.goToPage({ pageId: this.pageNum });
+	        }
+	    }]);
+
+	    return PageJumpController;
+	}();
+
+	var PageJumpComponent = {
+	    bindings: {
+	        goToPage: '&'
+	    },
+	    controller: PageJumpController,
+	    template: '\n        <form ng-submit="$ctrl.onSubmit();" class="form-inline" style="margin-bottom:20px;">\n            <div class="form-group">\n                <label for="pageNum">Go To Page:</label>\n                <div class="input-group">\n                    <input type="text" class="form-control" ng-model="$ctrl.pageNum">\n                    <span class="input-group-btn">\n                        <button class="btn btn-default" type="submit">\n                            <span class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true"></span>\n                        </button>\n                    </span>\n                </div>\n            </div>\n        </form>\n        '
+	};
+
+	var pageJump = angular.module('pageJump', []).component('pageJump', PageJumpComponent).name;
+
+	exports.default = pageJump;
 
 /***/ }
 /******/ ]);

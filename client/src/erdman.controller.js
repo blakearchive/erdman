@@ -65,7 +65,7 @@ class ErdmanController {
         if (this.$location.hash() !== newHash) {
             this.$location.hash(newHash);
             jQuery('html, body').animate({
-                scrollTop: jQuery("#"+newHash).offset().top
+                scrollTop: jQuery("#"+newHash).offset().top - 55
             }, 100);
         }
     }
