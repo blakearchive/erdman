@@ -51,19 +51,6 @@ class ErdmanController {
           .then(response => this.updatePageContents(response));
     }
 
-    getPageByHeading( heading ) {
-        if(!heading) {
-            return;
-        }
-        ErdmanDataService.getPageIdByHeading(heading).then(response => {
-            const newHash = response[0].page_id;
-            if (this.$location.hash() !== newHash) {
-                this.$location.hash(newHash);
-                this.$anchorScroll();
-            }
-        });
-    }
-
     goToPage( pageId ) {
         if (!pageId) {
             return;

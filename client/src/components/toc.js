@@ -1,49 +1,6 @@
 class TocController {
     constructor() {
         this.sortItems();
-        this.getPageRange();
-    }
-
-    $onChanges(changes){
-        if(changes.currentPage){
-            this.activateItem();
-        }
-    }
-
-    activateItem(){
-        for (const k of this.items){
-            if (k.page == this.currentPage) {
-                k.active = true;
-                k.showChildren = true;
-            } else if(k.children.length && k.childPages.includes(this.currentPage)){
-                k.active = false;
-                k.showChildren = true;
-            } else {
-                k.active = false;
-                k.showChildren = false;
-            }
-
-        }
-    }
-
-    getPageRange(){
-        for (const k of this.items){
-            if(k.children){
-                k.childPages = this.getChildrenPages(k.children);
-            }
-        }
-    }
-
-    getChildrenPages(children){
-        //console.log(children);
-        var pages = children.map(function(a) {return a.page;});
-        var additionalChildren = children.filter(function(a) {return a.children.length > 0});
-        if(additionalChildren.length){
-            for (const c of additionalChildren){
-                pages.concat(this.getChildrenPages(c.children));
-            }
-        }
-        return pages;
     }
 
     sortItems() {
@@ -80,25 +37,17 @@ class TocController {
 
         return normalized.join('.');
     }
-
-    handleGetPage($heading) {
-        console.log($heading);
-        this.onGetPage({heading: $heading});
-    }
 }
 
 const TocComponent = {
     bindings: {
         items: '<',
-        onGetPage: '&',
-        currentPage: '<',
-        deactivateParents: '&'
     },
     controller: TocController,
     template: `
         <ul class="nav nav-sidebar">
-          <li ng-repeat="item in $ctrl.items track by $index" ng-class="{'expanded': item.showChildren && item.children.length, 'active': item.active }" data-key="{{ item.key }}" data-page="{{ item.page }}">
-            <a href="#" ng-click="item.showChildren = !item.showChildren; $ctrl.handleGetPage(item.key)">
+          <li ng-repeat="item in $ctrl.items track by $index" du-scrollspy="{{item.page}}" ng-class="{'expandible': item.children.length}" class="toc-item">
+            <a href="#{{item.page}}" du-smooth-scroll>
                 <div class="row">
                     <div class="toc-icon">
                         <span class="glyphicon glyphicon-chevron-right" ng-if="item.children.length"></span>
@@ -115,7 +64,7 @@ const TocComponent = {
 };
 
 const toc = angular
-    .module('toc', ['ngSanitize'])
+    .module('toc', ['ngSanitize','duScroll'])
     .component('toc', TocComponent)
     .name;
 
