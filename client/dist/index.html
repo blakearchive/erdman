@@ -27,7 +27,7 @@
                 <div class="object-view-menu hidden-xs hidden-sm">
                 <span class="worktitle" style="padding: 19px;">
                     <span>
-                        <a style="color:white;">(The Complete Poetry & Prose of William Blake)</a>
+                        <a style="color:white;">The Complete Poetry & Prose of William Blake</a>
                     </span>
 	            </span>
                 </div>
@@ -39,7 +39,7 @@
     </nav>
     <div class="erdman-reader">
         <div id="loader">LOADING...</div>
-        <reader pages="erdman.pages" open-note="$ctrl.openNote()"></reader>
+        <reader pages="erdman.pages" open-note="$ctrl.openNote()" highlight="{{ erdman.query }}"></reader>
     </div>
     <div class="search-results" ng-class="{open: erdman.showSearchResults}">
         <span class="glyphicon glyphicon-remove" ng-click="erdman.closeSearchResults()"></span>
@@ -47,6 +47,7 @@
     </div>
     <nav id="erdman-toc">
         <div class="erdman-toc-wrapper">
+            <page-jump go-to-page="erdman.goToPage(pageId)"></page-jump>
             <toc items="erdman.tocTree" on-get-page="erdman.getPageByHeading(heading)"></toc>
         </div>
     </nav>

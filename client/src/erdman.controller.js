@@ -21,6 +21,7 @@ class ErdmanController {
         this.tocTree = [];
         this.nestTitles();
         this.note = false;
+        this.query = '';
     }
 
     updatePageContents(pages) {
@@ -31,7 +32,7 @@ class ErdmanController {
             this.pages.forEach(page => {
                 let newPage = pageMap[page.page_id];
                 if (newPage) {
-                    page.contents = newPage.contents;
+                    page.contents = this.highlightSearchTerm(this.query, newPage.contents, newPage.text_contents);
                 }
                 else page.contents = "";
             });
@@ -65,13 +66,16 @@ class ErdmanController {
         if (this.$location.hash() !== newHash) {
             this.$location.hash(newHash);
             jQuery('html, body').animate({
-                scrollTop: jQuery("#"+newHash).offset().top
+                scrollTop: jQuery("#"+newHash).offset().top - 55
             }, 100);
         }
     }
 
     searchPages( query ){
         if(!query) return;
+
+
+        this.query = query;
 
         ErdmanDataService.search(query).then(response => {
             const results = {};
@@ -101,7 +105,7 @@ class ErdmanController {
                     results[headingId].results.push(result);
                 }
             }
-            console.log(results);
+            
             this.scope.$apply(this.results = Object.assign({}, results));
             this.showSearchResults = true;
         });
@@ -151,6 +155,28 @@ class ErdmanController {
 
     closeNote() {
         this.scope.$apply(this.note = false);
+    }
+
+    highlightSearchTerm(phrase,text,noHtmlText) {
+
+        if (phrase !== ''){
+            if(noHtmlText.match(new RegExp('(' + phrase + ')', 'gim'))){
+
+                if (phrase.startsWith('"') && phrase.endsWith('"')) {
+                    phrase = phrase.replace(/"/g, '');
+                    text = text.replace(new RegExp('(' + phrase + ')', 'gim'), '<span class="highlighted">$1</span>');
+                } else if (phrase.indexOf(' ')) {
+                    var phraseArray = phrase.split(' ');
+                    angular.forEach(phraseArray, function (ph) {
+                        text = text.replace(new RegExp('(\\b' + ph + '\\b)', 'gim'), '<span class="highlighted">$1</span>');
+                    });
+                } else {
+                    text = text.replace(new RegExp('(' + phrase + ')', 'gim'), '<span class="highlighted">$1</span>');
+                }
+            }
+        }
+
+        return text;
     }
 
 
