@@ -168,7 +168,7 @@ class XMLTransformer(object):
 def get_titles(tree):
     heads = tree.xpath("//head")
     return dict((
-        head.getparent().attrib["id"]: {
+        head.getparent().attrib["id"], {
             'heading': head.xpath("string()").strip(),
             'page':head.getparent().attrib["page"]
         }) for head in heads if head.getparent().tag in ["div1", "div2", "div3", "div4"])
