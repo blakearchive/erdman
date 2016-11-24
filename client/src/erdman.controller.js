@@ -7,6 +7,7 @@ class ErdmanController {
         this.$location = $location;
         this.$anchorScroll = $anchorScroll;
         this.scope = $rootScope;
+        this.currentPage = 0;
         this.pages = pages.map(p => {
             return {page_id: p.page_id, contents: ""}
         });
@@ -25,6 +26,9 @@ class ErdmanController {
     }
 
     updatePageContents(pages) {
+
+        this.currentPage = pages[0].page_id;
+
         let pageMap = {};
         pages.forEach(page => pageMap[page.page_id] = page);
 
@@ -45,24 +49,12 @@ class ErdmanController {
           .then(response => this.updatePageContents(response));
     }
 
-    getPageByHeading( heading ) {
-        if(!heading) {
-            return;
-        }
-        ErdmanDataService.getPageIdByHeading(heading).then(response => {
-            const newHash = response[0].page_id;
-            if (this.$location.hash() !== newHash) {
-                this.$location.hash(newHash);
-                this.$anchorScroll();
-            }
-        });
-    }
-
     goToPage( pageId ) {
         if (!pageId) {
             return;
         }
         const newHash = pageId;
+
         if (this.$location.hash() !== newHash) {
             this.$location.hash(newHash);
             jQuery('html, body').animate({
@@ -105,7 +97,7 @@ class ErdmanController {
                     results[headingId].results.push(result);
                 }
             }
-            
+
             this.scope.$apply(this.results = Object.assign({}, results));
             this.showSearchResults = true;
         });
@@ -115,10 +107,10 @@ class ErdmanController {
         for (const k in this.titles) {
             if (k.indexOf('.') === -1) {
                 const toplvl = {
-                    title: this.titles[k],
+                    title: this.titles[k].heading,
                     key: k,
                     children: this.getChildren(k),
-                    showChildren: false
+                    page: this.titles[k].page
                 };
                 this.tocTree.push(toplvl);
                 delete this.titles[k];
@@ -130,13 +122,13 @@ class ErdmanController {
         const children = [];
         for (const k in this.titles) {
             const test = k.substring(0, k.lastIndexOf("."));
-            if(parent === test) {
+            if (parent === test) {
                 const grandChildren = this.getChildren(k);
                 const child = {
-                    title: this.titles[k],
+                    title: this.titles[k].heading,
                     key: k,
                     children: grandChildren,
-                    showChildren: false
+                    page: this.titles[k].page
                 };
                 children.push(child);
                 delete this.titles[k];
@@ -178,8 +170,6 @@ class ErdmanController {
 
         return text;
     }
-
-
 }
 
 export default ErdmanController

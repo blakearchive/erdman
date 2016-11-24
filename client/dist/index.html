@@ -48,7 +48,7 @@
     <nav id="erdman-toc">
         <div class="erdman-toc-wrapper">
             <page-jump go-to-page="erdman.goToPage(pageId)"></page-jump>
-            <toc items="erdman.tocTree" on-get-page="erdman.getPageByHeading(heading)"></toc>
+            <toc items="erdman.tocTree" on-get-page="erdman.getPageByHeading(heading)" current-page="erdman.currentPage"></toc>
         </div>
     </nav>
     <note-overlay note="erdman.note" close-note="erdman.closeNote()"></note-overlay>
