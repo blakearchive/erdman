@@ -21,8 +21,6 @@ class ErdmanController {
         this.titles = Object.assign({}, titles);
         this.tocTree = [];
         this.nestTitles();
-        this.enumerate(this.tocTree,0);
-        console.log(this.tocTree);
         this.note = false;
         this.query = '';
     }
@@ -109,11 +107,10 @@ class ErdmanController {
         for (const k in this.titles) {
             if (k.indexOf('.') === -1) {
                 const toplvl = {
-                    title: this.titles[k],
+                    title: this.titles[k].heading,
                     key: k,
                     children: this.getChildren(k),
-                    showChildren: false,
-                    active: false,
+                    page: this.titles[k].page
                 };
                 this.tocTree.push(toplvl);
                 delete this.titles[k];
@@ -128,10 +125,10 @@ class ErdmanController {
             if (parent === test) {
                 const grandChildren = this.getChildren(k);
                 const child = {
-                    title: this.titles[k],
+                    title: this.titles[k].heading,
                     key: k,
                     children: grandChildren,
-                    showChildren: false
+                    page: this.titles[k].page
                 };
                 children.push(child);
                 delete this.titles[k];
@@ -173,56 +170,6 @@ class ErdmanController {
 
         return text;
     }
-
-    /* WIP TESTING CRAP */
-    sortItems(tree) {
-        // Sort the items
-        tree.sort((a, b) => {
-
-            const aNorm = this.normalizeKey(a.key);
-            const bNorm = this.normalizeKey(b.key);
-
-            if (aNorm < bNorm) {
-                return -1;
-            }
-            if (aNorm > bNorm) {
-                return 1;
-            }
-            return 0;
-        });
-    }
-
-    normalizeKey(key) {
-        const parts = key.split('.');
-        const normalized = [];
-        for (const part of parts) {
-            if(isNaN(part)){
-                const alpha = part.substr(0,1);
-                let num = part.substr(1);
-                num = num.length == 1 ? '0' + num : num;
-                normalized.push(alpha + num);
-            } else {
-                const num = part.length == 1 ? '0' + part : part;
-                normalized.push(num);
-            }
-        }
-
-        return normalized.join('.');
-    }
-
-    enumerate(tree,start){
-        this.sortItems(tree);
-        start++;
-        for (const k of tree){
-            k.page = start;
-            if(k.children){
-                start = this.enumerate(k.children,start);
-            }
-        }
-        return start
-    }
-
-
 }
 
 export default ErdmanController
