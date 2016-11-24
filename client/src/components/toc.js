@@ -37,23 +37,17 @@ class TocController {
 
         return normalized.join('.');
     }
-
-    handleGetPage($heading) {
-        console.log($heading);
-        this.onGetPage({heading: $heading});
-    }
 }
 
 const TocComponent = {
     bindings: {
         items: '<',
-        onGetPage: '&'
     },
     controller: TocController,
     template: `
         <ul class="nav nav-sidebar">
-          <li ng-repeat="item in $ctrl.items track by $index" ng-class="{'active': item.showChildren && item.children.length }" data-key="{{ item.key }}">
-            <a href="#" ng-click="item.showChildren = !item.showChildren; $ctrl.handleGetPage(item.key)">
+          <li ng-repeat="item in $ctrl.items track by $index" du-scrollspy="{{item.page}}" ng-class="{'expandible': item.children.length}" class="toc-item">
+            <a href="#{{item.page}}" du-smooth-scroll>
                 <div class="row">
                     <div class="toc-icon">
                         <span class="glyphicon glyphicon-chevron-right" ng-if="item.children.length"></span>
@@ -62,7 +56,7 @@ const TocComponent = {
                 </div>
             </a>
             <div class="toc-level">
-                <toc ng-if="item.children.length" items="item.children" on-get-page="$ctrl.handleGetPage(heading)"></toc>
+                <toc ng-if="item.children.length" items="item.children" on-get-page="$ctrl.handleGetPage(heading)" current-page="$ctrl.currentPage"></toc>
             </div>
           </li>
         </ul>
@@ -70,7 +64,7 @@ const TocComponent = {
 };
 
 const toc = angular
-    .module('toc', ['ngSanitize'])
+    .module('toc', ['ngSanitize','duScroll'])
     .component('toc', TocComponent)
     .name;
 
