@@ -167,7 +167,7 @@ class XMLTransformer(object):
 
 def get_titles(tree):
     heads = tree.xpath("//head")
-    print heads
+    print head.getparent()
     return dict((
         head.getparent().attrib["id"], {
             'heading': head.xpath("string()").strip(),
