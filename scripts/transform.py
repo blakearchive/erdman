@@ -170,7 +170,7 @@ def get_titles(tree):
     return {
         head.getparent().attrib["id"]: {
             'heading': head.xpath("string()").strip(),
-            'page':head.getparent().attrib["page"]
+            'page': head.getparent().attrib["page"] if head.getparent().attrib["page"] else ""
         } for head in heads if head.getparent().tag in {"div1", "div2", "div3", "div4"}
     }
 
