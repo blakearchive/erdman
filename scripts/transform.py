@@ -172,7 +172,7 @@ def get_titles(tree):
 
     def should_add(head):
         parent = head.getparent()
-        if parent.tag in {"div1", "div2", "div3", "div4"}:
+        if parent.tag in ["div1", "div2", "div3", "div4"]:
             id_ = parent.attrib["id"]
             if id_ not in seen_pages:
                 seen_pages.add(id_)
