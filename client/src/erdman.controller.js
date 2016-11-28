@@ -7,6 +7,7 @@ class ErdmanController {
         this.$location = $location;
         this.$anchorScroll = $anchorScroll;
         this.scope = $rootScope;
+        this.currentPage = 0;
         this.pages = pages.map(p => {
             return {page_id: p.page_id, contents: ""}
         });
@@ -21,9 +22,13 @@ class ErdmanController {
         this.tocTree = [];
         this.nestTitles();
         this.note = false;
+        this.query = '';
     }
 
     updatePageContents(pages) {
+
+        this.currentPage = pages[0].page_id;
+
         let pageMap = {};
         pages.forEach(page => pageMap[page.page_id] = page);
 
@@ -31,7 +36,7 @@ class ErdmanController {
             this.pages.forEach(page => {
                 let newPage = pageMap[page.page_id];
                 if (newPage) {
-                    page.contents = newPage.contents;
+                    page.contents = this.highlightSearchTerm(this.query, newPage.contents, newPage.text_contents);
                 }
                 else page.contents = "";
             });
@@ -44,34 +49,25 @@ class ErdmanController {
           .then(response => this.updatePageContents(response));
     }
 
-    getPageByHeading( heading ) {
-        if(!heading) {
-            return;
-        }
-        ErdmanDataService.getPageIdByHeading(heading).then(response => {
-            const newHash = response[0].page_id;
-            if (this.$location.hash() !== newHash) {
-                this.$location.hash(newHash);
-                this.$anchorScroll();
-            }
-        });
-    }
-
     goToPage( pageId ) {
         if (!pageId) {
             return;
         }
         const newHash = pageId;
+
         if (this.$location.hash() !== newHash) {
             this.$location.hash(newHash);
             jQuery('html, body').animate({
-                scrollTop: jQuery("#"+newHash).offset().top
+                scrollTop: jQuery("#"+newHash).offset().top - 55
             }, 100);
         }
     }
 
     searchPages( query ){
         if(!query) return;
+
+
+        this.query = query;
 
         ErdmanDataService.search(query).then(response => {
             const results = {};
@@ -101,7 +97,7 @@ class ErdmanController {
                     results[headingId].results.push(result);
                 }
             }
-            console.log(results);
+
             this.scope.$apply(this.results = Object.assign({}, results));
             this.showSearchResults = true;
         });
@@ -111,10 +107,10 @@ class ErdmanController {
         for (const k in this.titles) {
             if (k.indexOf('.') === -1) {
                 const toplvl = {
-                    title: this.titles[k],
+                    title: this.titles[k].heading,
                     key: k,
                     children: this.getChildren(k),
-                    showChildren: false
+                    page: this.titles[k].page
                 };
                 this.tocTree.push(toplvl);
                 delete this.titles[k];
@@ -126,13 +122,13 @@ class ErdmanController {
         const children = [];
         for (const k in this.titles) {
             const test = k.substring(0, k.lastIndexOf("."));
-            if(parent === test) {
+            if (parent === test) {
                 const grandChildren = this.getChildren(k);
                 const child = {
-                    title: this.titles[k],
+                    title: this.titles[k].heading,
                     key: k,
                     children: grandChildren,
-                    showChildren: false
+                    page: this.titles[k].page
                 };
                 children.push(child);
                 delete this.titles[k];
@@ -153,7 +149,27 @@ class ErdmanController {
         this.scope.$apply(this.note = false);
     }
 
+    highlightSearchTerm(phrase,text,noHtmlText) {
 
+        if (phrase !== ''){
+            if(noHtmlText.match(new RegExp('(' + phrase + ')', 'gim'))){
+
+                if (phrase.startsWith('"') && phrase.endsWith('"')) {
+                    phrase = phrase.replace(/"/g, '');
+                    text = text.replace(new RegExp('(' + phrase + ')', 'gim'), '<span class="highlighted">$1</span>');
+                } else if (phrase.indexOf(' ')) {
+                    var phraseArray = phrase.split(' ');
+                    angular.forEach(phraseArray, function (ph) {
+                        text = text.replace(new RegExp('(\\b' + ph + '\\b)', 'gim'), '<span class="highlighted">$1</span>');
+                    });
+                } else {
+                    text = text.replace(new RegExp('(' + phrase + ')', 'gim'), '<span class="highlighted">$1</span>');
+                }
+            }
+        }
+
+        return text;
+    }
 }
 
 export default ErdmanController

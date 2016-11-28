@@ -7,7 +7,8 @@ class ReaderController {
 const ReaderComponent = {
     bindings: {
         pages: '=',
-        openNote: '&'
+        openNote: '&',
+        highlight: '@'
     },
     controller: ReaderController,
     template: `
