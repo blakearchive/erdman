@@ -30,6 +30,7 @@ transforms transcriptions
             <xsl:attribute name="id"><xsl:value-of select="@id"></xsl:value-of></xsl:attribute>
             <xsl:attribute name="class">sr-only</xsl:attribute>
             <xsl:value-of select="@id"></xsl:value-of>
+            <xsl:apply-templates/>
         </span>
     </xsl:template>
     <xsl:template match="head[@class='heading-primary']">
