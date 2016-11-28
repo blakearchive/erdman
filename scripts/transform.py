@@ -67,7 +67,7 @@ class ErdmanTransformer(ContentHandler):
         if localname == 'div1':
             self.current_heading.append((attrs["id"], attrs))
             self.add_current_page_heading(attrs["id"])
-            self.current_page["contents"].append("<span id='" + attrs["id"] + "'/>")
+            self.current_page["contents"].append("<anchor class="heading-anchor" id='" + attrs["id"] + "'></anchor>")
         elif localname == 'div2':
             self.current_heading.append((attrs["id"], attrs))
             self.add_current_page_heading(attrs["id"], 1)
