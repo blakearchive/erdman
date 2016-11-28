@@ -167,7 +167,6 @@ class XMLTransformer(object):
 
 def get_titles(tree):
     heads = tree.xpath("//head")
-
     seen_pages = set()
 
     def should_add(head):
@@ -180,7 +179,7 @@ def get_titles(tree):
         return False
 
     return dict((
-            head.getparent().attrib["id"]: {
+            head.getparent().attrib["id"], {
                 'heading': head.xpath("string()").strip(),
                 'page': head.getparent().attrib["page"] if head.getparent().attrib["page"] else ""
             }) for head in heads if should_add(head)
