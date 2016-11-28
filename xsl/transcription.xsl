@@ -25,6 +25,13 @@ transforms transcriptions
             <xsl:apply-templates/>
         </div>
     </xsl:template>
+    <xsl:template match="anchor[@class='heading-anchor']">
+        <span>
+            <xsl:attribute name="id"><xsl:value-of select="@id"></xsl:value-of></xsl:attribute>
+            <xsl:attribute name="class">sr-only</xsl:attribute>
+            <xsl:value-of select="@id"></xsl:value-of>
+        </span>
+    </xsl:template>
     <xsl:template match="head[@class='heading-primary']">
         <h1><xsl:attribute name="id"><xsl:value-of select="@id"></xsl:value-of></xsl:attribute>
             <xsl:apply-templates/>
