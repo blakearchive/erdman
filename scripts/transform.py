@@ -167,12 +167,24 @@ class XMLTransformer(object):
 
 def get_titles(tree):
     heads = tree.xpath("//head")
-    return dict((
-        head.getparent().attrib["id"], {
-            'heading': head.xpath("string()").strip(),
-            'page':head.getparent().attrib["page"] if head.getparent().attrib["page"] else ""
-        }) for head in heads if head.getparent().tag in ["div1", "div2", "div3", "div4"])
 
+    seen_pages = set()
+
+    def should_add(head):
+        parent = head.getparent()
+        if parent.tag in {"div1", "div2", "div3", "div4"}:
+            id_ = parent.attrib["id"]
+            if id_ not in seen_pages:
+                seen_pages.add(id_)
+                return True
+        return False
+
+    return dict((
+            head.getparent().attrib["id"]: {
+                'heading': head.xpath("string()").strip(),
+                'page': head.getparent().attrib["page"] if head.getparent().attrib["page"] else ""
+            }) for head in heads if should_add(head)
+        )
 
 def parse_document(file_name):
     tree = etree.parse(file_name)
