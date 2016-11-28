@@ -167,8 +167,18 @@ class XMLTransformer(object):
 
 def get_titles(tree):
     heads = tree.xpath("//head")
-    return {head.getparent().attrib["id"]: head.xpath("string()").strip() for head in heads
-            if head.getparent().tag in {"div1", "div2", "div3", "div4"}}
+    seen_pages = set()
+
+    def should_add(head):
+        parent = head.getparent()
+        if parent.tag in {"div1", "div2", "div3", "div4"}:
+            id_ = parent.attrib["id"]
+            if id_ not in seen_pages:
+                seen_pages.add(id_)
+                return True
+        return False
+
+    return {head.getparent().attrib["id"]: head.xpath("string()").strip() for head in heads if should_add(head)}
 
 
 def parse_document(file_name):
