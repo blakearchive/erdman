@@ -7,10 +7,11 @@ class ErdmanController {
         this.$location = $location;
         this.$anchorScroll = $anchorScroll;
         this.scope = $rootScope;
-        this.pages = pages.map(p => {
+        this.pages = {};
+        /*this.pages = pages.map(p => {
             return {page_id: p.page_id, contents: ""}
-        });
-        this.loadPages()
+        });*/
+        this.loadPages();
         this.results = [];
         this.showSearchResults = false;
         this.titles = Object.assign({}, titles);

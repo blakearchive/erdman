@@ -18329,7 +18329,7 @@
 	        items: '<'
 	    },
 	    controller: TocController,
-	    template: '\n        <ul class="nav nav-sidebar">\n          <li ng-repeat="item in $ctrl.items track by $index" du-scrollspy="{{item.key}}" ng-class="{\'expandible\': item.children.length}" class="toc-item" id="{{item.key}}">\n            <a href="#{{item.key}}" du-smooth-scroll>\n                <div class="row">\n                    <div class="toc-icon">\n                        <span class="glyphicon glyphicon-chevron-right" ng-if="item.children.length"></span>\n                    </div>\n                    <div class="toc-title" ng-class="{\'no-children\': !item.children.length}">{{ item.title }}</div>\n                </div>\n            </a>\n            <div class="toc-level">\n                <toc ng-if="item.children.length" items="item.children" on-get-page="$ctrl.handleGetPage(heading)" current-page="$ctrl.currentPage"></toc>\n            </div>\n          </li>\n        </ul>\n    '
+	    template: '\n        <ul class="nav nav-sidebar">\n          <li ng-repeat="item in $ctrl.items track by $index" du-scrollspy="{{item.key}}" ng-class="{\'expandible\': item.children.length}" class="toc-item" id="toc-{{item.key}}">\n            <a href="#{{item.key}}" du-smooth-scroll>\n                <div class="row">\n                    <div class="toc-icon">\n                        <span class="glyphicon glyphicon-chevron-right" ng-if="item.children.length"></span>\n                    </div>\n                    <div class="toc-title" ng-class="{\'no-children\': !item.children.length}">{{ item.title }}</div>\n                </div>\n            </a>\n            <div class="toc-level">\n                <toc ng-if="item.children.length" items="item.children" on-get-page="$ctrl.handleGetPage(heading)" current-page="$ctrl.currentPage"></toc>\n            </div>\n          </li>\n        </ul>\n    '
 	};
 
 	var toc = angular.module('toc', ['ngSanitize', 'duScroll']).component('toc', TocComponent).name;
@@ -18536,9 +18536,10 @@
 	        this.$location = $location;
 	        this.$anchorScroll = $anchorScroll;
 	        this.scope = $rootScope;
-	        this.pages = _data.pages.map(function (p) {
-	            return { page_id: p.page_id, contents: "" };
-	        });
+	        this.pages = {};
+	        /*this.pages = pages.map(p => {
+	            return {page_id: p.page_id, contents: ""}
+	        });*/
 	        this.loadPages();
 	        this.results = [];
 	        this.showSearchResults = false;
