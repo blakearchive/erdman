@@ -47,7 +47,7 @@ const TocComponent = {
     template: `
         <ul class="nav nav-sidebar">
           <li ng-repeat="item in $ctrl.items track by $index" du-scrollspy="{{item.key}}" ng-class="{'expandible': item.children.length}" class="toc-item" id="toc-{{item.key}}">
-            <a href="#{{item.key}}" du-smooth-scroll>
+            <a href="#{{item.key}}" du-smooth-scroll class="toc-a">
                 <div class="row">
                     <div class="toc-icon">
                         <span class="glyphicon glyphicon-chevron-right" ng-if="item.children.length"></span>

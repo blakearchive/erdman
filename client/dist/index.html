@@ -25,20 +25,24 @@
             <div class="collapse navbar-collapse" style="text-align: center">
                 <!-- Center Title -->
                 <div class="object-view-menu hidden-xs hidden-sm">
-                <span class="worktitle" style="padding: 19px;">
-                    <span>
-                        <a style="color:white;">The Complete Poetry & Prose of William Blake</a>
+                    <span class="worktitle" style="padding: 19px;">
+                        <span>
+                            <a style="color:white;">The Complete Poetry & Prose of William Blake</a>
+                        </span>
                     </span>
-	            </span>
                 </div>
-
                 <!-- Search Form -->
                 <search-form on-search="erdman.searchPages(query)"></search-form>
             </div>
         </div>
     </nav>
+
+
     <div class="erdman-reader">
-        <div id="loader">LOADING...</div>
+        <div id="loader" ng-if="erdman.loader">
+            <div class="loader"></div>
+            <div class="loading-text">LOADING...</div>
+        </div>
         <reader pages="erdman.pages" open-note="$ctrl.openNote()" highlight="{{ erdman.query }}"></reader>
     </div>
     <div class="search-results" ng-class="{open: erdman.showSearchResults}">

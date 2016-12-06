@@ -5,8 +5,12 @@ class ReaderController {
         this.$sce = $sce;
     }
 
-    safe(content){
-        return this.$sce.trustAsHtml(content);
+    safe(page){
+        if(page.highlight_contents){
+            return this.$sce.trustAsHtml(page.highlight_contents);
+        } else {
+            return this.$sce.trustAsHtml(page.contents);
+        }
     }
 }
 
@@ -19,9 +23,9 @@ const ReaderComponent = {
     controller: ReaderController,
     template: `
         <div id="reader">
-            <div ng-repeat="page in $ctrl.pages" id="{{ page.page_id }}" class="page-container" ng-class="{'hidden': page.contents == ''}">
+            <div ng-repeat="page in $ctrl.pages" id="{{ page.page_id }}" class="page-container">
                 <div class="page-id">{{ page.page_id }}</div>
-                <div ng-bind-html="$ctrl.safe(page.contents)"></div>
+                <div ng-bind-html="$ctrl.safe(page)"></div>
             </div>
         </div>
         `

@@ -8,9 +8,7 @@ class ErdmanController {
         this.$anchorScroll = $anchorScroll;
         this.scope = $rootScope;
         this.pages = {};
-        /*this.pages = pages.map(p => {
-            return {page_id: p.page_id, contents: ""}
-        });*/
+        this.loader = true;
         this.loadPages();
         this.results = [];
         this.showSearchResults = false;
@@ -21,30 +19,21 @@ class ErdmanController {
         this.query = '';
     }
 
-    updatePageContents(pages) {
-        let pageMap = {};
-        pages.forEach(page => pageMap[page.page_id] = page);
-
-        this.scope.$apply(() => {
-            this.pages.forEach(page => {
-                let newPage = pageMap[page.page_id];
-                if (newPage) {
-                    page.contents = this.highlightSearchTerm(this.query, newPage.contents, newPage.text_contents);
-                }
-                else page.contents = "";
-            });
-        });
-    }
-
     loadPages() {
         ErdmanDataService.getPages()
-          .then(response => {this.scope.$apply(this.pages = Object.assign({},response))});
+          .then(response => {
+              this.scope.$apply(() => {
+                  this.pages = Object.assign({},response);
+                  this.loader = false;
+              });
+          });
     }
 
     goToPage( pageId ) {
         if (!pageId) {
             return;
         }
+        console.log(pageId);
         const newHash = pageId;
 
         if (this.$location.hash() !== newHash) {
@@ -58,15 +47,19 @@ class ErdmanController {
     searchPages( query ){
         if(!query) return;
 
-
         this.query = query;
 
         ErdmanDataService.search(query).then(response => {
             const results = {};
+            const resultIds = [];
+
             for(const doc of response.docs) {
+
                 const pageObject = pages.filter(page => page.page_id == doc.page_id);
+                resultIds.push(doc.id);
+
                 let headingId = '';
-                if(Array.isArray(pageObject[0].headings[0][1])){
+                if(pageObject[0].headings[0][1].length > 0){
                     headingId = pageObject[0].headings[0][1][0][0];
                 } else {
                     headingId = pageObject[0].headings[0][0];
@@ -90,9 +83,23 @@ class ErdmanController {
                 }
             }
 
-            this.scope.$apply(this.results = Object.assign({}, results));
-            this.showSearchResults = true;
+            this.scope.$apply(() => {
+                this.results = Object.assign({}, results);
+                this.showSearchResults = true;
+                this.highlightPages(resultIds);
+            });
         });
+    }
+
+    highlightPages(resultIds){
+        console.log(resultIds);
+        for(const key in this.pages){
+            if(resultIds.includes(parseInt(key))){
+                this.pages[key].highlight_contents = this.highlightSearchTerm(this.query, this.pages[key].contents, this.pages[key].text_contents);
+            } else {
+                this.pages[key].highlight_contents = false;
+            }
+        }
     }
 
     nestTitles() {
@@ -101,7 +108,8 @@ class ErdmanController {
                 const toplvl = {
                     title: this.titles[k].heading,
                     key: k,
-                    children: this.getChildren(k)
+                    children: this.getChildren(k),
+                    expanded: false
                 };
                 this.tocTree.push(toplvl);
                 delete this.titles[k];
@@ -118,7 +126,8 @@ class ErdmanController {
                 const child = {
                     title: this.titles[k].heading,
                     key: k,
-                    children: grandChildren
+                    children: grandChildren,
+                    expanded: false
                 };
                 children.push(child);
                 delete this.titles[k];
