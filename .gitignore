@@ -2,4 +2,5 @@
 client/node_modules/
 client/typings/
 server/config.py
+client/src/data.js
 *.pyc
