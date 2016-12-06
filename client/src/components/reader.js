@@ -1,7 +1,13 @@
 import * as ngSanitize from 'angular-sanitize';
 
 class ReaderController {
-    constructor() {}
+    constructor($sce) {
+        this.$sce = $sce;
+    }
+
+    safe(content){
+        return this.$sce.trustAsHtml(content);
+    }
 }
 
 const ReaderComponent = {
@@ -13,9 +19,9 @@ const ReaderComponent = {
     controller: ReaderController,
     template: `
         <div id="reader">
-            <div ng-repeat="page in $ctrl.pages" id="{{ page.page_id }}" class="page-container">
+            <div ng-repeat="page in $ctrl.pages" id="{{ page.page_id }}" class="page-container" ng-class="{'hidden': page.contents == ''}">
                 <div class="page-id">{{ page.page_id }}</div>
-                <div ng-bind-html="page.contents"></div>
+                <div ng-bind-html="$ctrl.safe(page.contents)"></div>
             </div>
         </div>
         `

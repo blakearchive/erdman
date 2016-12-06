@@ -25,6 +25,7 @@ angular.module("Erdman", ['duScroll',components])
     })
     .run(function($rootScope){
       $rootScope.$on('duScrollspy:becameActive', function ($event, $element, $target) {
+        console.log($element);
         jQuery('.toc-item.expandible').each(function(k,v){
           if (jQuery(v).find('.active').length || jQuery(v).hasClass('active')) {
             jQuery(v).addClass('expanded');

@@ -7,15 +7,11 @@ class ErdmanController {
         this.$location = $location;
         this.$anchorScroll = $anchorScroll;
         this.scope = $rootScope;
-        this.currentPage = 0;
-        this.pages = pages.map(p => {
+        this.pages = {};
+        /*this.pages = pages.map(p => {
             return {page_id: p.page_id, contents: ""}
-        });
-        jQuery(document).ready(() => this.loadPagesForViewport());
-        jQuery(document).scroll(() => {
-            clearTimeout(this.timeoutId);
-            this.timeoutId = setTimeout(() => this.loadPagesForViewport(), 150)
-        });
+        });*/
+        this.loadPages();
         this.results = [];
         this.showSearchResults = false;
         this.titles = Object.assign({}, titles);
@@ -26,9 +22,6 @@ class ErdmanController {
     }
 
     updatePageContents(pages) {
-
-        this.currentPage = pages[0].page_id;
-
         let pageMap = {};
         pages.forEach(page => pageMap[page.page_id] = page);
 
@@ -43,10 +36,9 @@ class ErdmanController {
         });
     }
 
-    loadPagesForViewport() {
-        let active = PageService.active();
-        ErdmanDataService.getPages(active)
-          .then(response => this.updatePageContents(response));
+    loadPages() {
+        ErdmanDataService.getPages()
+          .then(response => {this.scope.$apply(this.pages = Object.assign({},response))});
     }
 
     goToPage( pageId ) {
@@ -109,8 +101,7 @@ class ErdmanController {
                 const toplvl = {
                     title: this.titles[k].heading,
                     key: k,
-                    children: this.getChildren(k),
-                    page: this.titles[k].page
+                    children: this.getChildren(k)
                 };
                 this.tocTree.push(toplvl);
                 delete this.titles[k];
@@ -127,8 +118,7 @@ class ErdmanController {
                 const child = {
                     title: this.titles[k].heading,
                     key: k,
-                    children: grandChildren,
-                    page: this.titles[k].page
+                    children: grandChildren
                 };
                 children.push(child);
                 delete this.titles[k];
