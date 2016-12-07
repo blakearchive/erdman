@@ -10,7 +10,16 @@ transforms transcriptions
         </div>
     </xsl:template>
     <xsl:template match="ptr">
-        <span class="note-reference"><xsl:attribute name="target"><xsl:value-of select="@target"></xsl:value-of></xsl:attribute>t<xsl:apply-templates/></span>
+        <span class="note-reference">
+            <xsl:attribute name="target"><xsl:value-of select="@target"></xsl:value-of></xsl:attribute>
+            <xsl:attribute name="note-reference"><xsl:value-of select="@target"></xsl:value-of></xsl:attribute>
+            t<xsl:apply-templates/>
+        </span>
+    </xsl:template>
+    <xsl:template match="figure">
+        <div class="cover-image">
+            <img src="erdmanCover.jpg"></img>
+        </div>
     </xsl:template>
     <xsl:template match="milestone">
         <div class="plate">
