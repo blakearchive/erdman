@@ -31010,8 +31010,8 @@ am glad you are come said quid</p>
 				<ptr target="tn466.1"/>
 			</p>
 			<milestone unit="[Written in a copy of Poetical Sketches]"/>
+			<head rend="center">Song 1st by a shepherd</head>
 			<lg>
-				<head rend="center">Song 1st by a shepherd</head>
 				<l n="1">Welcome stranger to this place,</l>
 				<l n="2">Where joy doth sit on every bough,</l>
 				<l n="3">Paleness flies from every face,</l>
@@ -31053,8 +31053,8 @@ am glad you are come said quid</p>
 				<ptr target="tn467.1"/>
 			</p>
 			<milestone unit="[From Blake's Notebook]"/>
+			<head type="incipits">&quot;Never pain to tell thy love&quot;</head>
 			<lg>
-				<head type="incipits">&quot;Never pain to tell thy love&quot;</head>
 				<l n="1">Never pain to tell thy Love   
 					<ptr target="tn467.2"/></l>
 				<l n="2">Love that never told can be</l>
@@ -31076,8 +31076,8 @@ am glad you are come said quid</p>
 			</lg>
 		</div2>
 		<div2 id="b5.4" page="467" type="poem">
+			<head type="incipits">&quot;I feard the fury of my wind&quot;</head>
 			<lg>
-				<head type="incipits">&quot;I feard the fury of my wind&quot;</head>
 				<l n="1">I feard the fury of my wind
 					<ptr target="tn467.4"/></l>
 				<l n="2">Would blight all blossoms fair &amp; true</l>
@@ -31093,8 +31093,8 @@ am glad you are come said quid</p>
 			</lg>
 		</div2>
 		<div2 id="b5.5" page="467" type="poem">
+			<head type="incipits">&quot;I saw a chapel all of gold&quot;</head>
 			<lg>
-				<head type="incipits">&quot;I saw a chapel all of gold&quot;</head>
 				<l n="1">I saw a chapel all of gold</l>
 				<l n="2">That none did dare to enter in</l>
 				<l n="3">And many weeping stood without</l>
@@ -31122,8 +31122,8 @@ am glad you are come said quid</p>
 			</lg>
 		</div2>
 		<div2 id="b5.6" page="468" type="poem">
+			<head type="incipits">&quot;I laid me down upon a bank&quot;</head>
 			<lg>
-				<head type="incipits">&quot;I laid me down upon a bank&quot;</head>
 				<l n="1">I laid me down upon a bank</l>
 				<l n="2">Where love lay sleeping</l>
 				<l n="3">I heard among the rushes dank</l>
@@ -31179,8 +31179,8 @@ am glad you are come said quid</p>
 			</lg>
 		</div2>
 		<div2 id="b5.8" page="468" type="poem">
+			<head type="incipits">&quot;I asked a thief to steal me a peach&quot;</head>
 			<lg>
-				<head type="incipits">&quot;I asked a thief to steal me a peach&quot;</head>
 				<l n="1">I asked a thief to steal me a peach
 					<ptr target="tn468.10"/></l>
 				<l n="2">He turned up his eyes
@@ -31209,9 +31209,9 @@ am glad you are come said quid</p>
 			</lg>
 		</div2>
 		<div2 id="b5.9" page="469" type="poem">
-			<lg>
-				<head rend="center">To my Mirtle
+			<head rend="center">To my Mirtle
 					<ptr target="tn469.6"/></head>
+			<lg>
 				<l n="1">To a lovely mirtle bound</l>
 				<l n="2">Blossoms showring all around</l>
 				<l n="3">O how sick &amp; weary I</l>
@@ -31224,8 +31224,8 @@ am glad you are come said quid</p>
 			<head rend="center">[To go] on I Plate
 				<ptr target="tn469.7"/></head>
 			<div3 id="b5.10.1" page="469" type="poem">
+				<head type="incipits">O lapwing thou fliest around the heath</head>
 				<lg>
-					<head type="incipits">O lapwing thou fliest around the heath</head>
 					<l n="1">O lapwing thou fliest around the heath</l>
 					<l n="2">Nor seest the net that is spread beneath</l>
 					<l n="3">Why dost thou not fly among the corn fields</l>
@@ -31234,20 +31234,20 @@ am glad you are come said quid</p>
 				<lb rend="hardrule"/>
 			</div3>
 			<div3 id="b5.10.2" page="469" type="poem">
+				<head rend="center">An answer to the parson</head>
 				<lg>
-					<head rend="center">An answer to the parson</head>
 					<l n="1">Why of the sheep do you not learn peace</l>
 					<l n="2">Because I dont want you to shear my fleece</l>
 				</lg>
 				<lb rend="hardrule"/>
 			</div3>
 			<div3 id="b5.10.3" page="469" type="poem">
-				<lg>
-					<head type="incipits">
+				<head type="incipits">
 						<supplied>[Experiment]</supplied>&quot;Thou hast a lap full of seed&quot;</head>
 					<head rend="center">
 						<supplied>[Experiment]</supplied>
 					</head>
+				<lg>
 					<l n="1">Thou hast a lap full of seed</l>
 					<l n="2">And this is a fine country</l>
 					<l n="3">Why dost thou not cast thy seed</l>
@@ -31282,8 +31282,8 @@ am glad you are come said quid</p>
 				<lb rend="hardrule"/>
 			</div3>
 			<div3 id="b5.10.5" page="470" type="poem">
+				<head type="incipits">&quot;If you trap the moment before its ripe&quot;</head>
 				<lg>
-					<head type="incipits">&quot;If you trap the moment before its ripe&quot;</head>
 					<l n="1">If you trap the moment before its ripe
 						<ptr target="tn470.5"/></l>
 					<l n="2">The tears of repentance youll certainly wipe</l>
@@ -31306,8 +31306,8 @@ am glad you are come said quid</p>
 			</lg>
 		</div2>
 		<div2 id="b5.12" page="470" type="poem">
+			<head type="incipits">&quot;I heard an Angel singing&quot;</head>
 			<lg>
-				<head type="incipits">&quot;I heard an Angel singing&quot;</head>
 				<l n="1">I heard an Angel singing</l>
 				<l n="2">When the day was springing </l>
 				<l n="3">Mercy Pity Peace                      
@@ -31344,8 +31344,8 @@ am glad you are come said quid</p>
 			</lg>
 		</div2>
 		<div2 id="b5.13" page="471" type="poem">
+			<head type="incipits">&quot;Silent Silent Night&quot;</head>
 			<lg>
-				<head type="incipits">&quot;Silent Silent Night&quot;</head>
 				<l n="1">Silent Silent Night</l>
 				<l n="2">Quench the holy light</l>
 				<l n="3">Of thy torches bright</l>
@@ -31388,8 +31388,8 @@ am glad you are come said quid</p>
 			</lg>
 		</div2>
 		<div2 id="b5.15" page="471" type="poem">
+			<head type="incipits">&quot;Are not the joys of morning sweeter&quot;</head>
 			<lg>
-				<head type="incipits">&quot;Are not the joys of morning sweeter&quot;</head>
 				<l n="1">Are not the joys of morning sweeter
 					<ptr target="tn471.7"/></l>
 				<l n="2">Than the joys of night</l>
@@ -31406,8 +31406,8 @@ am glad you are come said quid</p>
 			</lg>
 		</div2>
 		<div2 id="b5.16" page="472" type="poem">
+			<head type="incipits">&quot;How came pride in Man&quot;</head>
 			<lg>
-				<head type="incipits">&quot;How came pride in Man&quot;</head>
 				<l n="1">How came pride in Man</l>
 				<l n="2">From Mary it began</l>
 				<l n="3">How Contempt &amp; Scorn</l>
@@ -31490,8 +31490,8 @@ am glad you are come said quid</p>
 			</lg>
 		</div2>
 		<div2 id="b5.21" page="473" type="poem">
+			<head type="incipits">&quot;Why should I care for the men of thames&quot;</head>
 			<lg>
-				<head type="incipits">&quot;Why should I care for the men of thames&quot;</head>
 				<l n="1">Why should I care for the men of thames</l>
 				<l n="2">Or the cheating waves of charterd streams</l>
 				<l n="3">Or shrink at the little blasts of fear</l>
@@ -31520,8 +31520,8 @@ am glad you are come said quid</p>
 			</lg>
 		</div2>
 		<div2 id="b5.23" page="473" type="poem">
+			<head type="incipits">&quot;The sword sung on the barren heath&quot;</head>
 			<lg>
-				<head type="incipits">&quot;The sword sung on the barren heath&quot;</head>
 				<l n="1">The sword sung on the barren heath</l>
 				<l n="2">The sickle in the fruitful field</l>
 				<l n="3">The sword he sung a song of death</l>
@@ -31530,8 +31530,8 @@ am glad you are come said quid</p>
 		</div2>
 		<pb n="474"/>
 		<div2 id="b5.24" page="474" type="poem">
+			<head type="incipits">&quot;Abstinence sows sand all over&quot;</head>
 			<lg>
-				<head type="incipits">&quot;Abstinence sows sand all over&quot;</head>
 				<l n="1">Abstinence sows sand all over</l>
 				<l n="2">The ruddy limbs &amp; flaming hair  
 					<ptr target="tn474.1"/></l>
@@ -31540,8 +31540,8 @@ am glad you are come said quid</p>
 			</lg>
 		</div2>
 		<div2 id="b5.25" page="474" type="poem">
+			<head type="incipits">&quot;In a wife I would desire&quot;</head>
 			<lg>
-				<head type="incipits">&quot;In a wife I would desire&quot;</head>
 				<l n="1">In a wife I would desire</l>
 				<l n="2">What in whores is always found</l>
 				<l n="3">The lineaments of Gratified desire</l>
@@ -31556,8 +31556,8 @@ am glad you are come said quid</p>
 			</lg>
 		</div2>
 		<div2 id="b5.27" page="474" type="poem">
+			<head type="incipits">&quot;An old maid early eer I knew&quot;</head>
 			<lg>
-				<head type="incipits">&quot;An old maid early eer I knew&quot;</head>
 				<l n="1">An old maid early eer I knew</l>
 				<l n="2">Ought but the love that on me grew</l>
 				<l n="3">And now Im coverd oer &amp; oer</l>
@@ -31574,8 +31574,8 @@ am glad you are come said quid</p>
 			<head rend="center">Several Questions Answerd
 				<ptr target="tn474.3"/></head>
 			<div3 id="b5.28.1" page="474" type="poem">
+				<head type="incipits">&quot;He who binds to himself a joy&quot;</head>
 				<lg>
-					<head type="incipits">&quot;He who binds to himself a joy&quot;</head>
 					<l n="1">He who binds to himself a joy</l>
 					<l n="2">Doth the winged life destroy</l>
 					<l n="3">But he who kisses the joy as it flies</l>
@@ -31584,8 +31584,8 @@ am glad you are come said quid</p>
 				<lb rend="hardrule"/>
 			</div3>
 			<div3 id="b5.28.2" page="474" type="poem">
+				<head type="incipits">&quot;The look of love alarms&quot;</head>
 				<lg>
-					<head type="incipits">&quot;The look of love alarms&quot;</head>
 					<l n="1">The look of love alarms          </l>
 					<l n="2">Because tis filld with fire</l>
 					<l n="3">But the look of soft deceit</l>
@@ -31594,8 +31594,8 @@ am glad you are come said quid</p>
 				<lb rend="hardrule"/>
 			</div3>
 			<div3 id="b5.28.3" page="474" type="poem">
+				<head type="incipits">&quot;Soft deceit &amp; Idleness&quot;</head>
 				<lg>
-					<head type="incipits">&quot;Soft deceit &amp; Idleness&quot;</head>
 					<l n="1">Soft deceit &amp; Idleness</l>
 					<l n="2">These are Beautys sweetest dress
 						<ptr target="tn474.4"/></l>
@@ -31603,8 +31603,8 @@ am glad you are come said quid</p>
 				<lb rend="hardrule"/>
 			</div3>
 			<div3 id="b5.28.4" page="474" type="poem">
+				<head type="incipits">&quot;What is it men do in women require&quot;</head>
 				<lg>
-					<head type="incipits">&quot;What is it men do in women require&quot;</head>
 					<l n="1">What is it men in women do require 
 						<ptr target="tn474.5"/></l>
 					<l n="2">The lineaments of Gratified Desire</l>
@@ -31806,8 +31806,8 @@ am glad you are come said quid</p>
 		
 		</div2>
 		<div2 id="b5.33" page="477" type="poem">
+			<head type="incipits">&quot;Mock on Mock on Voltaire Rousseau&quot;</head>
 			<lg>
-				<head type="incipits">&quot;Mock on Mock on Voltaire Rousseau&quot;</head>
 				<l n="1">Mock on Mock on Voltaire Rousseau</l>
 				<l n="2">Mock on Mock on! tis all in vain!</l>
 				<l n="3">You throw the sand against the wind</l>
@@ -31849,8 +31849,8 @@ am glad you are come said quid</p>
 			</lg>
 		</div2>
 		<div2 id="b5.35" page="478" type="poem">
+			<head type="incipits">&quot;Terror in the house does roar&quot;</head>
 			<lg>
-				<head type="incipits">&quot;Terror in the house does roar&quot;</head>
 				<l n="1">Terror in the house does roar</l>
 				<l n="2">But Pity stands before the door</l>
 			</lg>
@@ -31890,8 +31890,8 @@ am glad you are come said quid</p>
 			</lg>
 		</div2>
 		<div2 id="b5.37" page="479" type="poem">
+			<head type="incipits">&quot;Why was Cupid a Boy&quot;</head>
 			<lg>
-				<head type="incipits">&quot;Why was Cupid a Boy&quot;</head>
 				<l n="1">Why was Cupid a Boy</l>
 				<l n="2">And why a boy was he</l>
 				<l n="3">He should have been a Girl</l>
@@ -31926,8 +31926,8 @@ am glad you are come said quid</p>
 			</lg>
 		</div2>
 		<div2 id="b5.38" page="479" type="poem">
+			<head type="center">&quot;Now Art has lost its mental Charms&quot;</head>
 			<lg>
-				<head type="center">&quot;Now Art has lost its mental Charms&quot;</head>
 				<l n="1">Now Art has lost its mental Charms
 					<ptr target="tn479.4"/></l>
 				<l n="2">France shall subdue the World in Arms</l>
@@ -31988,9 +31988,9 @@ am glad you are come said quid</p>
 			</closer>
 		</div2>
 		<div2 id="b5.40" page="480" type="poem">
-			<lg>
-				<milestone unit="[From Blake's Notebook]"/>
+			<milestone unit="[From Blake's Notebook]"/>
 				<head type="incipits">&quot;The Caverns of the Grave Ive seen&quot;</head>
+			<lg>
 				<l n="1">The Caverns of the Grave Ive seen       
 					<ptr target="tn480.2"/></l>
 				<l n="2">And these I shewd to Englands Queen</l>
@@ -32023,8 +32023,8 @@ am glad you are come said quid</p>
 			</lg>
 		</div2>
 		<div2 id="b5.41" page="481" type="poem">
+			<head type="incipits">&quot;I rose up at the dawn of day&quot;</head>
 			<lg>
-				<head type="incipits">&quot;I rose up at the dawn of day&quot;</head>
 				<l n="1">I rose up at the dawn of day</l>
 				<l n="2">Get thee away get thee away</l>
 				<l n="3">Prayst thou for Riches away away</l>
@@ -32073,9 +32073,9 @@ am glad you are come said quid</p>
 			</lg>
 		</div2>
 		<div2 id="b5.42" page="481" type="poem">
-			<lg>
-				<milestone unit="[A Separate Manuscript]"/>
+			<milestone unit="[A Separate Manuscript]"/>
 				<head type="incipits">&quot;A fairy skipd upon my knee&quot;</head>
+			<lg>
 				<l n="1">A fairy skipd upon my knee  
 					<ptr target="tn481.6"/></l>
 				<l n="2">Singing &amp; dancing merrily</l>
@@ -32100,9 +32100,9 @@ am glad you are come said quid</p>
 			<p>
 				<ptr target="tn482.2"/>
 			</p>
-			<lg>
-				<milestone unit="[With Blake's Illustrations to Gray's Poems]"/>
+			<milestone unit="[With Blake's Illustrations to Gray's Poems]"/>
 				<head type="incipits">&quot;Around the Springs of Gray my wild root weaves&quot;</head>
+			<lg>
 				<l n="1">Around the Springs of Gray my wild root weaves</l>
 				<l n="2">Traveller repose &amp; Dream among my leaves,</l>
 			</lg>
