@@ -88,6 +88,7 @@ class ErdmanController {
                 this.showSearchResults = true;
                 this.highlightPages(resultIds);
             });
+            this.scope.$broadcast('newSearch');
         });
     }
 

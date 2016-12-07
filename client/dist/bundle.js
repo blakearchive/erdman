@@ -105,6 +105,10 @@
 	      jQuery($element).removeClass('expanded');
 	    }*/
 	  });
+	}).run(function ($rootScope) {
+	  $rootScope.$on('newSearch', function ($event) {
+	    (0, _jquery2.default)('.search-results').animate({ scrollTop: 0 }, 'fast');
+	  });
 	}).config(function ($locationProvider) {
 	  $locationProvider.html5Mode(true).hashPrefix('!');
 	});
@@ -18665,6 +18669,7 @@
 	                    _this2.showSearchResults = true;
 	                    _this2.highlightPages(resultIds);
 	                });
+	                _this2.scope.$broadcast('newSearch');
 	            });
 	        }
 	    }, {

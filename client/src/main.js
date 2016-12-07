@@ -43,6 +43,11 @@ angular.module("Erdman", ['duScroll',components])
         }*/
       });
     })
+    .run(function($rootScope){
+      $rootScope.$on('newSearch', function($event){
+        jQuery('.search-results').animate({scrollTop: 0}, 'fast');
+      })
+    })
     .config(function($locationProvider) {
       $locationProvider.html5Mode(true).hashPrefix('!');
     });
