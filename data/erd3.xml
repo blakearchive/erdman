@@ -32908,7 +32908,7 @@ am glad you are come said quid</p>
 			<supplied>[SATIRIC VERSES AND EPIGRAMS]</supplied></head>
 		<lb rend="hardrule"/>
 		<div2 id="b6.1" page="499" type="section">
-			<div3 id="b6.1.1" page="499" type="poem">
+			
 				<milestone unit="[From Blake's Notebook]"/>
 				<head rend="center">Motto to the Songs of Innocence &amp; of Experience</head>
 				<lg>
@@ -32923,8 +32923,8 @@ am glad you are come said quid</p>
 					<l n="7">And all his good Friends shew their private ends</l>
 					<l n="8">And the Eagle is known from the Owl</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.2" page="499" type="poem">
+			</div2>
+			<div2 id="b6.2" page="499" type="poem">
 				<lg>
 					<head type="incipits">&quot;Let the Brothels of Paris be opened&quot;</head>
 					<l n="1">Let the Brothels of Paris be opened
@@ -32969,8 +32969,8 @@ am glad you are come said quid</p>
 					<l n="20">And a great many suckers grow all around 
 						<ptr target="tn500.3"/></l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.3" page="500" type="poem">
+			</div2>
+			<div2 id="b6.3" page="500" type="poem">
 				<lg>
 					<head type="incipits">&quot;Who will exchange his own fire side&quot;</head>
 					<l n="1">Who will exchange his own fire side
@@ -32994,8 +32994,8 @@ am glad you are come said quid</p>
 					<l n="11">Or who will exchange his new born child</l>
 					<l n="12">For the dog at the wintry door</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.4" page="500" type="poem">
+			</div2>
+			<div2 id="b6.4" page="500" type="poem">
 				<lg>
 					<head type="incipits">&quot;When Klopstock England defied&quot;</head>
 					<l n="1">When Klopstock England defied
@@ -33041,8 +33041,8 @@ am glad you are come said quid</p>
 						<ptr target="tn501.3"/></l>
 					<l n="32">What might he not do if he sat down to write</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.5" page="501" type="poem">
+			</div2>
+			<div2 id="b6.5" page="501" type="poem">
 				<head rend="center">On the Virginity of the Virgin 
 					<lb/>
 					Mary &amp; Johanna
@@ -33054,8 +33054,8 @@ Southcott</head>
 					<l n="3">Whether tis good or evil none's to blame</l>
 					<l n="4">No one can take the pride no one the shame</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.6" page="501" type="poem">
+			</div2>
+			<div2 id="b6.6" page="501" type="poem">
 				<lg>
 					<head type="incipits">&quot;You dont believe I wont attempt to make ye&quot;</head>
 					<l n="1">You dont believe I wont attempt to make ye
@@ -33074,8 +33074,8 @@ Southcott</head>
 						<ptr target="tn501.7"/></l>
 					<l n="12">Try Try &amp; never mind the Reason why</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.7" page="501" type="poem">
+			</div2>
+			<div2 id="b6.7" page="501" type="poem">
 				<lg>
 					<head type="incipits">&quot;If it is True What the Prophets write&quot;</head>
 					<l n="1">If it is True What the Prophets write</l>
@@ -33099,8 +33099,8 @@ Southcott</head>
 					<l n="3">All the Atonements of Jehovah spurnd</l>
 					<l n="4">And Criminals to Sacrifices Turnd</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.8" page="502" type="poem">
+			</div2>
+			<div2 id="b6.8" page="502" type="poem">
 				<lg>
 					<head type="incipits">&quot;I am no Homers Hero you all know&quot;</head>
 					<l n="1">I am no Homers Hero you all know</l>
@@ -33110,8 +33110,8 @@ Southcott</head>
 					<l n="5">The Generous to Enemies promotes their Ends</l>
 					<l n="6">And becomes the Enemy &amp; Betrayer of his Friends</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.9" page="502" type="poem">
+			</div2>
+			<div2 id="b6.9" page="502" type="poem">
 				<lg>
 					<head type="incipits">&quot;The Angel that presided oer my birth&quot;</head>
 					<l n="1">The Angel that presided oer my birth</l>
@@ -33120,8 +33120,8 @@ Southcott</head>
 					<l n="3">Go love without the help of any King on Earth 
 						<ptr target="tn502.2"/></l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.10" page="502" type="poem">
+			</div2>
+			<div2 id="b6.10" page="502" type="poem">
 				<lg>
 					<head type="incipits">&quot;Some Men created for destruction come&quot;</head>
 					<l n="1">Some Men created for destruction come </l>
@@ -33131,8 +33131,8 @@ Southcott</head>
 					<l n="4">Theyll still be called 'The Worlds' honest man 
 						<ptr target="tn502.4"/></l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.11" page="502" type="poem">
+			</div2>
+			<div2 id="b6.1.11" page="502" type="poem">
 				<lg>
 					<head type="incipits">&quot;If I eer Grow to Mans Estate&quot;</head>
 					<l n="1">If I eer Grow to Mans Estate</l>
@@ -33140,15 +33140,15 @@ Southcott</head>
 					<l n="3">May I govern all both great &amp; small</l>
 					<l n="4">Have the last word &amp; take the wall</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.12" page="502" type="poem">
+			</div2>
+			<div2 id="b6.12" page="502" type="poem">
 				<head rend="center">From Cratetos</head>
 				<lg>
 					<l n="1">Me Time has Crook'd. no good Workman</l>
 					<l n="2">Is he. Infirm is all that he does</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.13" page="502" type="poem">
+			</div2>
+			<div2 id="b6.13" page="502" type="poem">
 				<lg>
 					<head type="incipits">&quot;If Men will act like a maid smiling over a Churn&quot;</head>
 					<l n="1">If Men will act like a maid smiling over a Churn</l>
@@ -33164,9 +33164,9 @@ Southcott</head>
 					<l n="6">In spite we will be greater friends than ever
 						<ptr target="tn502.6"/></l>
 				</lg>
-			</div3>
+			</div2>
 			<pb n="503"/>
-			<div3 id="b6.1.14" page="503" type="poem">
+			<div2 id="b6.14" page="503" type="poem">
 				<lg>
 					<head type="incipits">&quot;Anger &amp; Wrath my bosom rends&quot;</head>
 					<l n="1">Anger &amp; Wrath my bosom rends </l>
@@ -33174,22 +33174,22 @@ Southcott</head>
 					<l n="3">But all my limbs with warmth glow </l>
 					<l n="4">I find them the Errors of the foe</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.15" page="503" type="poem">
+			</div2>
+			<div2 id="b6.15" page="503" type="poem">
 				<head rend="center">An Epitaph</head>
 				<lg>
 					<l n="1">Come knock your heads against this stone</l>
 					<l n="2">For sorrow that poor John Thompsons gone</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.16" page="503" type="poem">
+			</div2>
+			<div2 id="b6.16" page="503" type="poem">
 				<head rend="center">Another</head>
 				<lg>
 					<l n="1">I was buried near this Dike</l>
 					<l n="2">That my Friends may weep as much as they like</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.17" page="503" type="poem">
+			</div2>
+			<div2 id="b6.17" page="503" type="poem">
 				<head rend="center">Another</head>
 				<lg>
 					<l n="1">Here lies John Trot the Friend of all mankind</l>
@@ -33197,16 +33197,16 @@ Southcott</head>
 					<l n="3">Friends were quite hard to find old authors say</l>
 					<l n="4">But now they stand in every bodies way</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.18" page="503" type="poem">
+			</div2>
+			<div2 id="b6.18" page="503" type="poem">
 				<lg>
 					<head type="incipits">&quot;He is a Cock would&quot;</head>
 					<l n="1">He is a Cock would 
 						<ptr target="tn503.1"/></l>
 					<l n="2">And would be a Cock if he could </l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.19" page="503" type="poem">
+			</div2>
+			<div2 id="b6.19" page="503" type="poem">
 				<lg>
 					<head type="incipits">&quot;And his legs carried it like a long fork&quot;</head>
 					<l n="1">And his legs carried it like a long fork
@@ -33281,8 +33281,8 @@ Southcott</head>
 					<l n="51">Here lies Stewhard the Friend of All &amp;c
 						<ptr target="tn504.9"/></l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.20" page="504" type="poem">
+			</div2>
+			<div2 id="b6.20" page="504" type="poem">
 				<lg>
 					<head type="incipits">&quot;Was I angry with Hayley who usd me so ill&quot;</head>
 					<l n="1">Was I angry with Hayley who usd me so ill </l>
@@ -33297,9 +33297,9 @@ Southcott</head>
 					<l n="7">At a Friends Errors Anger shew</l>
 					<l n="8">Mirth at the Errors of a Foe</l>
 				</lg>
-			</div3>
+			</div2>
 			<pb n="505"/>
-			<div3 id="b6.1.21" page="505" type="poem">
+			<div2 id="b6.21" page="505" type="poem">
 				<head rend="center">Blakes apology for his Catalogue
 					<ptr target="tn505.1"/></head>
 				<lg>
@@ -33333,8 +33333,8 @@ Southcott</head>
 					<l n="21">This is my sweet apology to my friends</l>
 					<l n="22">That I may put them in mind of their latter Ends</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.22" page="505" type="poem">
+			</div2>
+			<div2 id="b6.22" page="505" type="poem">
 				<lg>
 					<head type="incipits">&quot;Cosway Frazer &amp; Baldwin of Egypts Lake&quot;</head>
 					<l n="1">Cosway Frazer &amp; Baldwin of Egypts Lake</l>
@@ -33348,8 +33348,8 @@ Southcott</head>
 					<l n="8">And all the Virtuous have shewn their backsides 
 						<ptr target="tn505.10"/></l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.23" page="505" type="poem">
+			</div2>
+			<div2 id="b6.23" page="505" type="poem">
 				<lg>
 					<head type="incipits">&quot;My title as 
 						<supplied>[a]</supplied>
@@ -33360,16 +33360,16 @@ Southcott</head>
 						<ptr target="tn505.11"/></l>
 					<l n="2">Not Praisd by Hayley nor by Flaxman lovd</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.24" page="505" type="poem">
+			</div2>
+			<div2 id="b6.24" page="505" type="poem">
 				<head rend="center">To H  
 					<ptr target="tn505.12"/></head>
 				<lg>
 					<l n="1">You think Fuseli is not a Great Painter Im Glad</l>
 					<l n="2">This is one of the best compliments he ever had</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.25" page="505" type="poem">
+			</div2>
+			<div2 id="b6.25" page="505" type="poem">
 				<lg>
 					<head type="incipits">&quot;P——loved me, not as he lovd his Friends&quot;</head>
 					<l n="1">P——loved me, not as he lovd his Friends 
@@ -33381,8 +33381,8 @@ Southcott</head>
 					<l n="5">To forgive Enemies H  .   does pretend</l>
 					<l n="6">Who never in his Life forgave a friend</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.26" page="506" type="poem">
+			</div2>
+			<div2 id="b6.26" page="506" type="poem">
 				<lg>
 					<head type="incipits">&quot;The Sussex Men are Noted Fools&quot;</head>
 					<l n="1">The Sussex Men are Noted Fools</l>
@@ -33391,16 +33391,16 @@ Southcott</head>
 						<ptr target="tn506.1"/></l>
 					<l n="4">Is not a Sussex Man</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.27" page="506" type="poem">
+			</div2>
+			<div2 id="b6.27" page="506" type="poem">
 				<lg>
 					<head type="incipits">&quot;Of H s birth this was the happy lot&quot;</head>
 					<l n="1">Of H s birth this was the happy lot
 						<ptr target="tn506.2"/></l>
 					<l n="2">His Mother on his Father him begot</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.28" page="506" type="poem">
+			</div2>
+			<div2 id="b6.28" page="506" type="poem">
 				<head rend="center">On H——ys Friendship</head>
 				<lg>
 					<l n="1">When H——y finds out what you cannot do</l>
@@ -33411,22 +33411,22 @@ Southcott</head>
 					<l n="5">And when he could not act upon my wife           </l>
 					<l n="6">Hired a Villain to bereave my Life</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.29" page="506" type="poem">
+			</div2>
+			<div2 id="b6.29" page="506" type="poem">
 				<head rend="center">To H——-</head>
 				<lg>
 					<l n="1">Thy Friendship oft has made my heart to ake               </l>
 					<l n="2">Do be my Enemy for Friendships sake</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.30" page="506" type="poem">
+			</div2>
+			<div2 id="b6.30" page="506" type="poem">
 				<head rend="center">On H——- the Pick thank</head>
 				<lg>
 					<l n="1">I write the Rascal Thanks till he &amp; I</l>
 					<l n="2">With Thanks &amp; Compliments are quite drawn dry</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.31" page="506" type="poem">
+			</div2>
+			<div2 id="b6.31" page="506" type="poem">
 				<head rend="center">Imitation of Pope  A Compliment to the Ladies</head>
 				<lg>
 					<l n="1">Wondrous the Gods more wondrous are the Men</l>
@@ -33434,9 +33434,9 @@ Southcott</head>
 					<l n="3">More wondrous still the Table Stool &amp; Chair</l>
 					<l n="4">But Ah More wondrous still the Charming Fair</l>
 				</lg>
-			</div3>
+			</div2>
 			<pb n="507"/>
-			<div3 id="b6.1.32" page="507" type="poem">
+			<div2 id="b6.32" page="507" type="poem">
 				<head rend="center">William Cowper Esq
 					<hi rend="sup">re</hi>
 					<ptr target="tn507.1"/></head>
@@ -33461,8 +33461,8 @@ Southcott</head>
 					<l n="11">And tis most wicked in a Christian Nation</l>
 					<l n="12">For any Man to pretend to Inspiration</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.33" page="507" type="poem">
+			</div2>
+			<div2 id="b6.33" page="507" type="poem">
 				<lg>
 					<head type="incipits">&quot;The only Man that eer I knew&quot;</head>
 					<l n="1">The only Man that eer I knew</l>
@@ -33471,40 +33471,40 @@ Southcott</head>
 					<l n="4">And so dear Christian Friends how do you do
 						<ptr target="tn507.5"/></l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.34" page="507" type="poem">
+			</div2>
+			<div2 id="b6.34" page="507" type="poem">
 				<lg>
 					<head type="incipits">&quot;Madman I have been calld Fool they Call thee&quot;</head>
 					<l n="1">Madman I have been calld Fool they Call thee</l>
 					<l n="2">I wonder which they Envy Thee or Me</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.35" page="507" type="poem">
+			</div2>
+			<div2 id="b6.35" page="507" type="poem">
 				<head rend="center">To F———
 					<ptr target="tn507.6"/></head>
 				<lg>
 					<l n="1">I mock thee not tho I by thee am Mocked</l>
 					<l n="2">Thou callst me Madman but I call thee Blockhead</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.36" page="507" type="poem">
+			</div2>
+			<div2 id="b6.36" page="507" type="poem">
 				<lg>
 					<head type="incipits">&quot;Hes a Blockhead who wants a proof of what he Can't Percieve&quot;</head>
 					<l n="1">Hes a Blockhead who wants a proof of what he Can't Percieve</l>
 					<l n="2">And he's a Fool who tries to make such a Blockhead believe 
 						<ptr target="tn507.7"/></l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.37" page="507" type="poem">
+			</div2>
+			<div2 id="b6.37" page="507" type="poem">
 				<head rend="center">To Nancy F———
 					<ptr target="tn507.8"/></head>
 				<lg>
 					<l n="1">How can I help thy Husbands copying Me</l>
 					<l n="2">Should that make difference twixt me &amp; Thee</l>
 				</lg>
-			</div3>
+			</div2>
 			<pb n="508"/>
-			<div3 id="b6.1.38" page="508" type="poem">
+			<div2 id="b6.38" page="508" type="poem">
 				<head rend="center">To F———</head>
 				<lg>
 					<l n="1">You call me Mad tis Folly to do so</l>
@@ -33513,8 +33513,8 @@ Southcott</head>
 						<ptr target="tn508.1"/></l>
 					<l n="4">If you do not you are but what you was</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.39" page="508" type="poem">
+			</div2>
+			<div2 id="b6.39" page="508" type="poem">
 				<lg>
 					<head type="incipits">&quot;S——- in Childhood on the Nursery floor&quot;</head>
 					<l n="1">S——- in Childhood on the Nursery floor
@@ -33523,16 +33523,16 @@ Southcott</head>
 					<l n="3">He is grown old &amp; rich &amp; what he will</l>
 					<l n="4">He is extreme old &amp; extreme poor still</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.40" page="508" type="poem">
+			</div2>
+			<div2 id="b6.40" page="508" type="poem">
 				<lg>
 					<head type="incipits">&quot;He has observd the Golden Rule&quot;</head>
 					<l n="1">He has observd the Golden Rule
 						<ptr target="tn508.3"/></l>
 					<l n="2">Till hes become the Golden Fool</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.41" page="508" type="poem">
+			</div2>
+			<div2 id="b6.41" page="508" type="poem">
 				<head rend="center">To S———d
 					<ptr target="tn508.4"/></head>
 				<lg>
@@ -33547,8 +33547,8 @@ Southcott</head>
 					<l n="6">Mine is the flesh the bones may be your Share
 						<ptr target="tn508.8"/></l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.42" page="508" type="poem">
+			</div2>
+			<div2 id="b6.42" page="508" type="poem">
 				<head rend="center">On S——-
 					<ptr target="tn508.9"/></head>
 				<lg>
@@ -33559,16 +33559,16 @@ Southcott</head>
 					<l n="4">By sweet reserve &amp; modesty get Fat
 						<ptr target="tn508.11"/></l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.43" page="508" type="poem">
+			</div2>
+			<div2 id="b6.43" page="508" type="poem">
 				<lg>
 					<head type="incipits">&quot;old acquaintance well renew&quot;</head>
 					<l n="1">old acquaintance well renew
 						<ptr target="tn508.12"/></l>
 					<l n="2">Prospero had One Caliban &amp; I have Two</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.44" page="508" type="poem">
+			</div2>
+			<div2 id="b6.44" page="508" type="poem">
 				<head rend="center">On F—— &amp; S——
 					<ptr target="tn508.13"/></head>
 				<lg>
@@ -33581,8 +33581,8 @@ Southcott</head>
 					<l n="4">A Fool to a bolt a knave to a glass of gin
 						<ptr target="tn509.1"/></l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.45" page="509" type="poem">
+			</div2>
+			<div2 id="b6.45" page="509" type="poem">
 				<head rend="center">M
 					<hi rend="sup">r</hi>
 					Stothard to M
@@ -33596,8 +33596,8 @@ Southcott</head>
 					<l n="4">Sneaking &amp; Backbiting &amp; Odds &amp; Ends
 						<ptr target="tn509.3"/></l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.46" page="509" type="poem">
+			</div2>
+			<div2 id="b6.46" page="509" type="poem">
 				<head rend="center">M
 					<hi rend="sup">r</hi>
 					Cromek to M
@@ -33609,16 +33609,16 @@ Southcott</head>
 					<l n="3">Turn back turn back you travel all in vain</l>
 					<l n="4">Turn thro the iron gate down Sneaking Lane</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.47" page="509" type="poem">
+			</div2>
+			<div2 id="b6.47" page="509" type="poem">
 				<lg>
 					<head type="incipits">&quot;Cr—— loves artists as he loves his Meat&quot;</head>
 					<l n="1">Cr—— loves artists as he loves his Meat</l>
 					<l n="2">He loves the Art but tis the Art to Cheat 
 						<ptr target="tn509.4"/></l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.48" page="509" type="poem">
+			</div2>
+			<div2 id="b6.48" page="509" type="poem">
 				<lg>
 					<head type="incipits">&quot;A Petty sneaking Knave I knew&quot;</head>
 					<l n="1">A Petty sneaking Knave I knew</l>
@@ -33626,8 +33626,8 @@ Southcott</head>
 						<hi rend="sup">r</hi>
 						Cr—— how do ye do</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.49" page="509" type="poem">
+			</div2>
+			<div2 id="b6.49" page="509" type="poem">
 				<head rend="center">Cromek Speaks</head>
 				<lg>
 					<l n="1">I always take my judgment from a Fool</l>
@@ -33637,8 +33637,8 @@ Southcott</head>
 					<l n="4">Amiable state he cannot feel at all 
 						<ptr target="tn509.6"/></l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.50" page="509" type="poem">
+			</div2>
+			<div2 id="b6.50" page="509" type="poem">
 				<head type="incipits">English Encouragement of Art
 					<supplied>[First reading]</supplied></head>
 				<head rend="center">English Encouragement of Art
@@ -33658,9 +33658,9 @@ Southcott</head>
 					<l n="7">For there is no use as it seems to me</l>
 					<l n="8">Of lighting a Lamp when you dont wish to see</l>
 				</lg>
-			</div3>
+			</div2>
 			<pb n="510"/>
-			<div3 id="b6.1.51" page="510" type="poem">
+			<div2 id="b6.51" page="510" type="poem">
 				<head type="incipits">English Encouragement of Art
 					<supplied>[Final reading]</supplied></head>
 				<head rend="left">
@@ -33681,8 +33681,8 @@ Southcott</head>
 					<l n="7">For its all sheer loss as it seems to me</l>
 					<l n="8">Of displaying up a light when we want not to see</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.52" page="510" type="poem">
+			</div2>
+			<div2 id="b6.52" page="510" type="poem">
 				<lg>
 					<head type="incipits">&quot;When you look at a picture you always can see&quot;</head>
 					<l n="1">When you look at a picture you always can see</l>
@@ -33698,15 +33698,15 @@ Southcott</head>
 					<l n="7">For the smell of water is but small</l>
 					<l n="8">So een let Ignorance do it all</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.53" page="510" type="poem">
+			</div2>
+			<div2 id="b6.53" page="510" type="poem">
 				<lg>
 					<head type="incipits">The Cunning sures &amp; the Aim at yours</head>
 					<l n="1">The Cunning sures &amp; the Aim at yours
 						<ptr target="tn510.5"/></l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.54" page="510" type="poem">
+			</div2>
+			<div2 id="b6.54" page="510" type="poem">
 				<lg>
 					<head type="incipits">&quot;All Pictures thats Panted with Sense &amp; with Thought&quot;</head>
 					<l n="1">All Pictures thats Panted with Sense &amp; with Thought 
@@ -33720,8 +33720,8 @@ Southcott</head>
 					<l n="7">When Men will draw outlines begin you to jaw them</l>
 					<l n="8">Madmen see outlines &amp; therefore they draw them</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.55" page="510" type="poem">
+			</div2>
+			<div2 id="b6.55" page="510" type="poem">
 				<lg>
 					<head type="incipits">&quot;You say their Pictures well Painted be&quot;</head>
 					<l n="1">You say their Pictures well Painted be</l>
@@ -33730,30 +33730,30 @@ Southcott</head>
 					<l n="4">To be Flogd into following the Style of a Fool 
 						<ptr target="tn510.7"/></l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.56" page="510" type="poem">
+			</div2>
+			<div2 id="b6.56" page="510" type="poem">
 				<lg>
 					<head type="incipits">&quot;The Errors of a Wise Man make your Rule&quot;</head>
 					<l n="1">The Errors of a Wise Man make your Rule</l>
 					<l n="2">Rather than the Perfections of a Fool</l>
 				</lg>
-			</div3>
+			</div2>
 			<pb n="511"/>
-			<div3 id="b6.1.57" page="511" type="poem">
+			<div2 id="b6.57" page="511" type="poem">
 				<lg>
 					<head type="incipits">&quot;Great things are done when Men &amp; Mountains meet&quot;</head>
 					<l n="1">Great things are done when Men &amp; Mountains meet</l>
 					<l n="2">This is not Done by jostling in the Street</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.58" page="511" type="poem">
+			</div2>
+			<div2 id="b6.58" page="511" type="poem">
 				<lg>
 					<head type="incipits">&quot;If you play a Game of Chance know before you begin&quot;</head>
 					<l n="1">If you play a Game of Chance know before you begin</l>
 					<l n="2">If you are benevolent you will never win</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.59" page="511" type="poem">
+			</div2>
+			<div2 id="b6.59" page="511" type="poem">
 				<lg>
 					<head type="incipits">&quot;No real Style of Colouring ever appears&quot;</head>
 					<l n="1">No real Style of Colouring ever appears</l>
@@ -33764,8 +33764,8 @@ Southcott</head>
 					<l n="4">Look at his Pictures All has taken Wing 
 						<ptr target="tn511.1"/></l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.60" page="511" type="poem">
+			</div2>
+			<div2 id="b6.60" page="511" type="poem">
 				<lg>
 					<head type="incipits">&quot;Can there be any thing more mean&quot;</head>
 					<l n="1">Can there be any thing more mean</l>
@@ -33777,8 +33777,8 @@ Southcott</head>
 						<ptr target="tn511.3"/></l>
 					<l n="6">When he praises Michael Angelo</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.61" page="511" type="poem">
+			</div2>
+			<div2 id="b6.61" page="511" type="poem">
 				<lg>
 					<head type="incipits">&quot;Sir Joshua Praises Michael Angelo&quot;</head>
 					<l n="1">Sir Joshua Praises Michael Angelo
@@ -33792,8 +33792,8 @@ Southcott</head>
 					<l n="5">Christ usd the Pharisees in a rougher way
 						<ptr target="tn511.8"/></l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.62" page="511" type="poem">
+			</div2>
+			<div2 id="b6.62" page="511" type="poem">
 				<lg>
 					<head type="incipits">&quot;Sir Jo
 						<supplied>[s]</supplied>
@@ -33809,8 +33809,8 @@ Southcott</head>
 					<l n="6">As Crooked limbs &amp; louzy heads of hair 
 						<ptr target="tn511.10"/></l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.63" page="511" type="poem">
+			</div2>
+			<div2 id="b6.63" page="511" type="poem">
 				<head rend="center">Florentine Ingratitude</head>
 				<lg>
 					<l n="1">Sir Joshua sent his own Portrait to</l>
@@ -33848,8 +33848,8 @@ Southcott</head>
 					<l n="26">Who whatever likeness he may have to Michael Angelo</l>
 					<l n="27">Never can have any to Sir Jehoshuan</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.64" page="512" type="poem">
+			</div2>
+			<div2 id="b6.64" page="512" type="poem">
 				<head rend="center">A Pitiful Case
 					<ptr target="tn512.4"/></head>
 				<lg>
@@ -33865,8 +33865,8 @@ Southcott</head>
 						<ptr target="tn512.5"/></l>
 					<l n="8">Michael Angelo Michael Angelo</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.65" page="512" type="poem">
+			</div2>
+			<div2 id="b6.65" page="512" type="poem">
 				<head rend="center">To the Royal Academy</head>
 				<lg>
 					<l n="1">A strange Erratum in all the Editions</l>
@@ -33884,9 +33884,9 @@ Southcott</head>
 						<ptr target="tn512.7"/></l>
 					<l n="8">In all that he has writ</l>
 				</lg>
-			</div3>
+			</div2>
 			<pb n="513"/>
-			<div3 id="b6.1.66" page="513" type="poem">
+			<div2 id="b6.66" page="513" type="poem">
 				<lg>
 					<head type="incipits">&quot;The Cripple every Step Drudges &amp; labours&quot;</head>
 					<l n="1">The Cripple every Step Drudges &amp; labours</l>
@@ -33898,8 +33898,8 @@ Southcott</head>
 					<l n="7">He walks &amp; stumbles as if he crep</l>
 					<l n="8">And how high labourd is every step</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.67" page="513" type="poem">
+			</div2>
+			<div2 id="b6.67" page="513" type="poem">
 				<lg>
 					<head type="incipits">&quot;I Rubens am a Statesman &amp; a Saint&quot;</head>
 					<l n="1">I Rubens am a Statesman &amp; a Saint 
@@ -33907,8 +33907,8 @@ Southcott</head>
 					<l n="2">Deceptions? O no—so I'll learn to Paint
 						<ptr target="tn513.2"/></l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.68" page="513" type="poem">
+			</div2>
+			<div2 id="b6.68" page="513" type="poem">
 				<head rend="center">To English Connoisseurs</head>
 				<lg>
 					<l n="1">You must agree that Rubens was a Fool</l>
@@ -33918,8 +33918,8 @@ Southcott</head>
 					<l n="5">I understood Christ was a Carpenter                       </l>
 					<l n="6">And not a Brewers Servant my good Sir</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.69" page="513" type="poem">
+			</div2>
+			<div2 id="b6.69" page="513" type="poem">
 				<lg>
 					<head type="incipits">&quot;Swelld limbs with no outline that you can descry&quot;</head>
 					<l n="1">Swelld limbs with no outline that you can descry</l>
@@ -33927,8 +33927,8 @@ Southcott</head>
 					<l n="3">But all the Pulp washd painted finishd with labour</l>
 					<l n="4">Of an hundred journeymens how dye do Neighbour</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.70" page="513" type="poem">
+			</div2>
+			<div2 id="b6.70" page="513" type="poem">
 				<head rend="center">A Pretty Epigram for the Entertainment of
 					<ptr target="tn513.3"/>
 					<lb/>
@@ -33942,8 +33942,8 @@ who have Paid Great Sums in the
 					<l n="3">Rubens thinks Tables Chairs &amp; Stools are Grand </l>
 					<l n="4">But Rafael thinks A Head a foot a hand</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.71" page="513" type="poem">
+			</div2>
+			<div2 id="b6.71" page="513" type="poem">
 				<lg>
 					<head type="incipits">&quot;These are the Idiots chiefest arts&quot;</head>
 					<l n="1">These are the Idiots chiefest arts
@@ -33957,8 +33957,8 @@ who have Paid Great Sums in the
 					<l n="7">To make out the parts is the wise mans aim</l>
 					<l n="8">But to lose them the Fool makes his foolish Game</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.72" page="514" type="poem">
+			</div2>
+			<div2 id="b6.72" page="514" type="poem">
 				<lg>
 					<head type="incipits">&quot;Rafael Sublime Majestic Graceful Wise&quot;</head>
 					<l n="1">Rafael Sublime Majestic Graceful Wise</l>
@@ -33971,8 +33971,8 @@ who have Paid Great Sums in the
 					<l n="6">And from an Idiots Actions form my rule</l>
 					<l n="7">Go send your Children to the Slobbering School</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.73" page="514" type="poem">
+			</div2>
+			<div2 id="b6.73" page="514" type="poem">
 				<head rend="center">On the Great Encouragement</head>
 				<head rend="center">Given by English Nobility &amp; Gentry to Correggio Rubens
 					<ptr target="tn514.3"/>
@@ -33992,8 +33992,8 @@ who have Paid Great Sums in the
 					<l n="5">And I call upon Colonel Wardle</l>
 					<l n="6">To give these Rascals a dose of Cawdle</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.74" page="514" type="poem">
+			</div2>
+			<div2 id="b6.74" page="514" type="poem">
 				<lg>
 					<head type="incipits">&quot;Give pensions to the Learned Pig&quot;</head>
 					<l n="1">Give pensions to the Learned Pig</l>
@@ -34001,8 +34001,8 @@ who have Paid Great Sums in the
 					<l n="3">Anglus can never see Perfection</l>
 					<l n="4">But in the Journeymans Labour</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.75" page="514" type="poem">
+			</div2>
+			<div2 id="b6.75" page="514" type="poem">
 				<lg>
 					<head type="incipits">&quot;When I see a Rubens Rembrant Correggio&quot;</head>
 					<l n="1">When I see a Rubens Rembrant Correggio
@@ -34018,17 +34018,17 @@ who have Paid Great Sums in the
 						<ptr target="tn514.10"/></l>
 					<l n="8">Id be an Ass a Hog a Worm a Chair a Stool</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.76" page="514" type="poem">
+			</div2>
+			<div2 id="b6.76" page="514" type="poem">
 				<lg>
 					<head type="incipits">&quot;Delicate Hands &amp; Heads will never appear&quot;</head>
 					<l n="1">Delicate Hands &amp; Heads will never appear</l>
 					<l n="2">While Titians &amp;c as in the Book of Moonlight p 5
 						<ptr target="tn514.11"/></l>
 				</lg>
-			</div3>
+			</div2>
 			<pb n="515"/>
-			<div3 id="b6.1.77" page="515" type="poem">
+			<div2 id="b6.77" page="515" type="poem">
 				<lg>
 					<head type="incipits">&quot;I askd my Dear Friend Orator Prigg&quot;</head>
 					<l n="1">I askd my Dear Friend Orator Prigg
@@ -34053,8 +34053,8 @@ who have Paid Great Sums in the
 					<l n="13">Perhaps this is all a Painter can want</l>
 					<l n="14">But look yonder that house is the house of Rembrant</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.78" page="515" type="poem">
+			</div2>
+			<div2 id="b6.78" page="515" type="poem">
 				<lg>
 					<head type="incipits">&quot;O dear Mother outline of knowledge most sage&quot;</head>
 					<l n="1">O dear Mother outline of knowledge most sage
@@ -34066,8 +34066,8 @@ who have Paid Great Sums in the
 					<l n="5">And what is the Third she put off Old Age            </l>
 					<l n="6">And smild like a Syren &amp; said Patronage</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.79" page="515" type="poem">
+			</div2>
+			<div2 id="b6.79" page="515" type="poem">
 				<head rend="center">To Venetian Artists</head>
 				<lg>
 					<l n="1">That God is Colouring Newton does shew 
@@ -34090,16 +34090,16 @@ who have Paid Great Sums in the
 					<l n="14">Those who taste colouring love it more &amp; more  
 						<ptr target="tn515.11"/></l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.80" page="515" type="poem">
+			</div2>
+			<div2 id="b6.80" page="515" type="poem">
 				<lg>
 					<head type="incipits">&quot;Great Men &amp; Fools do often me Inspire&quot;</head>
 					<l n="1">Great Men &amp; Fools do often me Inspire</l>
 					<l n="2">But the Greater Fool the Greater Liar</l>
 				</lg>
-			</div3>
+			</div2>
 			<pb n="516"/>
-			<div3 id="b6.1.81" page="516" type="poem">
+			<div2 id="b6.81" page="516" type="poem">
 				<lg>
 					<head type="incipits">&quot;Some people admire the work of a Fool&quot;</head>
 					<l n="1">Some people admire the work of a Fool</l>
@@ -34107,8 +34107,8 @@ who have Paid Great Sums in the
 					<l n="3">It does not reproach you with want of wit</l>
 					<l n="4">It is not like a lawyer serving a writ</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.82" page="516" type="poem">
+			</div2>
+			<div2 id="b6.82" page="516" type="poem">
 				<lg>
 					<head type="incipits">&quot;Her whole Life is an Epigram smack smooth &amp; nobly pend&quot;</head>
 					<l n="1">Her whole Life is an Epigram smack smooth &amp; nobly pend
@@ -34116,8 +34116,8 @@ who have Paid Great Sums in the
 					<l n="2">Platted quite neat to catch applause with a sliding noose at the
 end</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.83" page="516" type="poem">
+			</div2>
+			<div2 id="b6.83" page="516" type="poem">
 				<lg rend="center">
 					<head type="incipits">&quot;When a Man has Married a Wife&quot;</head>
 					<l n="1" part="i">When a Man has Married a Wife</l>
@@ -34126,29 +34126,29 @@ end</l>
 					<l n="4" part="f" rend="1">glued together
 						<ptr target="tn516.2"/></l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.84" page="516" type="poem">
+			</div2>
+			<div2 id="b6.84" page="516" type="poem">
 				<lg>
 					<head type="incipits">&quot;Grown old in Love from Seven till Seven times Seven&quot;</head>
 					<l n="1">Grown old in Love from Seven till Seven times Seven</l>
 					<l n="2">I oft have wishd for Hell for Ease from Heaven</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.85" page="516" type="poem">
+			</div2>
+			<div2 id="b6.85" page="516" type="poem">
 				<lg>
 					<head type="incipits">&quot;The Hebrew Nation did not write it&quot;</head>
 					<l n="1">The Hebrew Nation did not write it</l>
 					<l n="2">Avarice &amp; Chastity did shite it</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.86" page="516" type="poem">
+			</div2>
+			<div2 id="b6.86" page="516" type="poem">
 				<head rend="center">To God</head>
 				<lg>
 					<l n="1">If you have formd a Circle to go into</l>
 					<l n="2">Go into it yourself &amp; see how you would do</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.87" page="516" type="poem">
+			</div2>
+			<div2 id="b6.87" page="516" type="poem">
 				<lg>
 					<head type="incipits">&quot;Since all the Riches of this World&quot;</head>
 					<l n="1">Since all the Riches of this World 
@@ -34158,38 +34158,38 @@ end</l>
 					<l n="4">If I thankd my God for Worldly things 
 						<ptr target="tn516.4"/></l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.88" page="516" type="poem">
+			</div2>
+			<div2 id="b6.88" page="516" type="poem">
 				<lg>
 					<head type="incipits">&quot;To Chloes breast young Cupid slily stole&quot;</head>
 					<l n="1">To Chloes breast young Cupid slily stole</l>
 					<l n="2">But he crept in at Myras pocket hole</l>
 				</lg>
-			</div3>
+			</div2>
 			<pb n="517"/>
-			<div3 id="b6.1.89" page="517" type="poem">
+			<div2 id="b6.89" page="517" type="poem">
 				<lg>
 					<head type="incipits">&quot;Nail his neck to the Cross nail it with a nail&quot;</head>
 					<l n="1">Nail his neck to the Cross nail it with a nail</l>
 					<l n="2">Nail his neck to the Cross ye all have power over his tail</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.90" page="517" type="poem">
+			</div2>
+			<div2 id="b6.90" page="517" type="poem">
 				<lg>
 					<head type="incipits">&quot;A Woman Scaly &amp; a Man all Hairy&quot;</head>
 					<l n="1">A Woman Scaly &amp; a Man all Hairy</l>
 					<l n="2">Is such a Match as he who dares</l>
 					<l n="3">Will find the Womans Scales Scrape off the Mans Hairs</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.91" page="517" type="poem">
+			</div2>
+			<div2 id="b6.91" page="517" type="poem">
 				<head rend="center">The Washer Womans Song</head>
 				<lg>
 					<l n="1">I washd them out &amp; washd them in</l>
 					<l n="2">And they told me it was a great Sin</l>
 				</lg>
-			</div3>
-			<div3 id="b6.1.92" page="517" type="poem">
+			</div2>
+			<div2 id="b6.92" page="517" type="poem">
 				<head rend="center">The Phoenix to Mrs Butts</head>
 				<lg>
 					<l n="1">I saw a Bird rise from the East</l>
@@ -34220,8 +34220,8 @@ end</l>
 				<closer rend="right">
 					<signed>WILLIAM BLAKE</signed>
 				</closer>
-			</div3>
-		</div2>
+			</div2>
+		
 	</div1>
 	<pb n="518"/>
 	<div1 id="b7" n="7" page="518" type="chapter">
