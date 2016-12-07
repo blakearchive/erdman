@@ -33,7 +33,6 @@ class ErdmanController {
         if (!pageId) {
             return;
         }
-        console.log(pageId);
         const newHash = pageId;
 
         if (this.$location.hash() !== newHash) {
@@ -93,7 +92,6 @@ class ErdmanController {
     }
 
     highlightPages(resultIds){
-        console.log(resultIds);
         for(const key in this.pages){
             if(resultIds.includes(parseInt(key))){
                 this.pages[key].highlight_contents = this.highlightSearchTerm(this.query, this.pages[key].contents, this.pages[key].text_contents);

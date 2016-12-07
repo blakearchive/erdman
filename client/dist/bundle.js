@@ -106,8 +106,8 @@
 	    }*/
 	  });
 	}).run(function ($rootScope) {
-	  $rootScope.$on('newSearch', function ($event) {
-	    (0, _jquery2.default)('.search-results').animate({ scrollTop: 0 }, 'fast');
+	  $rootScope.$on('newSearch', function () {
+	    (0, _jquery2.default)('.search-results').animate({ scrollTop: 0 }, 'slow');
 	  });
 	}).config(function ($locationProvider) {
 	  $locationProvider.html5Mode(true).hashPrefix('!');
@@ -18584,7 +18584,6 @@
 	            if (!pageId) {
 	                return;
 	            }
-	            console.log(pageId);
 	            var newHash = pageId;
 
 	            if (this.$location.hash() !== newHash) {
@@ -18675,7 +18674,6 @@
 	    }, {
 	        key: 'highlightPages',
 	        value: function highlightPages(resultIds) {
-	            console.log(resultIds);
 	            for (var key in this.pages) {
 	                if (resultIds.includes(parseInt(key))) {
 	                    this.pages[key].highlight_contents = this.highlightSearchTerm(this.query, this.pages[key].contents, this.pages[key].text_contents);

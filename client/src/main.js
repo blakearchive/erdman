@@ -44,8 +44,8 @@ angular.module("Erdman", ['duScroll',components])
       });
     })
     .run(function($rootScope){
-      $rootScope.$on('newSearch', function($event){
-        jQuery('.search-results').animate({scrollTop: 0}, 'fast');
+      $rootScope.$on('newSearch', function(){
+        jQuery('.search-results').animate({scrollTop: 0}, 'slow');
       })
     })
     .config(function($locationProvider) {
