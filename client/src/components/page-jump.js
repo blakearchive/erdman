@@ -14,7 +14,7 @@ const PageJumpComponent = {
     },
     controller: PageJumpController,
     template: `
-        <form ng-submit="$ctrl.onSubmit();" class="form-inline" style="margin-bottom:20px;">
+        <form ng-submit="$ctrl.onSubmit();" class="form-inline page-jump" style="margin-bottom:20px;">
             <div class="form-group">
                 <label for="pageNum">Go To Page:</label>
                 <div class="input-group">

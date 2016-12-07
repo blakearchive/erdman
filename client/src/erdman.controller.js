@@ -7,6 +7,7 @@ class ErdmanController {
         this.$location = $location;
         this.$anchorScroll = $anchorScroll;
         this.scope = $rootScope;
+        this.scope.currentToc = '';
         this.pages = {};
         this.loader = true;
         this.loadPages();

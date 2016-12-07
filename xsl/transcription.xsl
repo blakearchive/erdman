@@ -16,7 +16,7 @@ transforms transcriptions
             t<xsl:apply-templates/>
         </span>
     </xsl:template>
-    <xsl:template match="figure">
+    <xsl:template match="figure[@entity='erdman.cover']">
         <div class="cover-image">
             <img src="erdman_cover.jpg"></img>
         </div>

@@ -74,19 +74,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	_angular2.default.module("Erdman", ['duScroll', _components2.default]).value('duScrollOffset', 60).controller('ErdmanController', _erdman2.default)
-	/*.run(function($rootScope) {
-	  if(!window.history || !history.replaceState) {
-	    return;
-	  }
-	  $rootScope.$on('duScrollspy:becameActive', function ($event, $element, $target) {
-	    var hash = $element.prop('hash');
-	    if (hash) {
-	      history.replaceState(null, null, hash);
-	    }
-	  });
-	})*/
-	.run(function ($rootScope) {
+	_angular2.default.module("Erdman", ['duScroll', _components2.default]).value('duScrollOffset', 60).controller('ErdmanController', _erdman2.default).run(function ($rootScope, $window) {
 	  $rootScope.$on('duScrollspy:becameActive', function ($event, $element, $target) {
 	    (0, _jquery2.default)('.toc-item.expandible').each(function (k, v) {
 	      if ((0, _jquery2.default)(v).find('.active').length || (0, _jquery2.default)(v).hasClass('active')) {
@@ -105,9 +93,22 @@
 	      jQuery($element).removeClass('expanded');
 	    }*/
 	  });
-	}).run(function ($rootScope) {
+
 	  $rootScope.$on('newSearch', function () {
 	    (0, _jquery2.default)('.search-results').animate({ scrollTop: 0 }, 'slow');
+	  });
+
+	  $rootScope.$on('expand', function ($event, $data) {
+	    if ($rootScope.currentToc == $data.key) {
+	      console.log('matching');
+	      var element = (0, _jquery2.default)('#toc-' + $data.key);
+	      if (element.hasClass('expanded')) {
+	        element.removeClass('expanded');
+	      } else {
+	        element.addClass('expanded');
+	      }
+	    }
+	    $rootScope.currentToc = $data.key;
 	  });
 	}).config(function ($locationProvider) {
 	  $locationProvider.html5Mode(true).hashPrefix('!');
@@ -18271,10 +18272,11 @@
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	var TocController = function () {
-	    function TocController() {
+	    function TocController($rootScope) {
 	        _classCallCheck(this, TocController);
 
 	        this.sortItems();
+	        this.scope = $rootScope;
 	    }
 
 	    _createClass(TocController, [{
@@ -18337,6 +18339,16 @@
 
 	            return normalized.join('.');
 	        }
+	    }, {
+	        key: 'expand',
+	        value: function expand(key) {
+	            this.scope.$broadcast('expand', { 'key': this.removeDots(key) });
+	        }
+	    }, {
+	        key: 'removeDots',
+	        value: function removeDots(key) {
+	            return key.replace(/\./g, '-');
+	        }
 	    }]);
 
 	    return TocController;
@@ -18347,7 +18359,7 @@
 	        items: '<'
 	    },
 	    controller: TocController,
-	    template: '\n        <ul class="nav nav-sidebar">\n          <li ng-repeat="item in $ctrl.items track by $index" du-scrollspy="{{item.key}}" ng-class="{\'expandible\': item.children.length}" class="toc-item" id="toc-{{item.key}}">\n            <a href="#{{item.key}}" du-smooth-scroll class="toc-a">\n                <div class="row">\n                    <div class="toc-icon">\n                        <span class="glyphicon glyphicon-chevron-right" ng-if="item.children.length"></span>\n                    </div>\n                    <div class="toc-title" ng-class="{\'no-children\': !item.children.length}">{{ item.title }}</div>\n                </div>\n            </a>\n            <div class="toc-level">\n                <toc ng-if="item.children.length" items="item.children" on-get-page="$ctrl.handleGetPage(heading)" current-page="$ctrl.currentPage"></toc>\n            </div>\n          </li>\n        </ul>\n    '
+	    template: '\n        <ul class="nav nav-sidebar">\n          <li ng-repeat="item in $ctrl.items track by $index" du-scrollspy="{{item.key}}" ng-class="{\'expandible\': item.children.length}" class="toc-item" id="toc-{{ $ctrl.removeDots(item.key) }}">\n            <a href="#{{item.key}}" du-smooth-scroll class="toc-a" ng-click="$ctrl.expand(item.key)">\n                <div class="row">\n                    <div class="toc-icon">\n                        <span class="glyphicon glyphicon-chevron-right" ng-if="item.children.length"></span>\n                    </div>\n                    <div class="toc-title" ng-class="{\'no-children\': !item.children.length}">{{ item.title }}</div>\n                </div>\n            </a>\n            <div class="toc-level">\n                <toc ng-if="item.children.length" items="item.children" on-get-page="$ctrl.handleGetPage(heading)" current-page="$ctrl.currentPage"></toc>\n            </div>\n          </li>\n        </ul>\n    '
 	};
 
 	var toc = angular.module('toc', ['ngSanitize', 'duScroll']).component('toc', TocComponent).name;
@@ -18510,7 +18522,7 @@
 	        goToPage: '&'
 	    },
 	    controller: PageJumpController,
-	    template: '\n        <form ng-submit="$ctrl.onSubmit();" class="form-inline" style="margin-bottom:20px;">\n            <div class="form-group">\n                <label for="pageNum">Go To Page:</label>\n                <div class="input-group">\n                    <input type="text" class="form-control" ng-model="$ctrl.pageNum">\n                    <span class="input-group-btn">\n                        <button class="btn btn-default" type="submit">\n                            <span class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true"></span>\n                        </button>\n                    </span>\n                </div>\n            </div>\n        </form>\n        '
+	    template: '\n        <form ng-submit="$ctrl.onSubmit();" class="form-inline page-jump" style="margin-bottom:20px;">\n            <div class="form-group">\n                <label for="pageNum">Go To Page:</label>\n                <div class="input-group">\n                    <input type="text" class="form-control" ng-model="$ctrl.pageNum">\n                    <span class="input-group-btn">\n                        <button class="btn btn-default" type="submit">\n                            <span class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true"></span>\n                        </button>\n                    </span>\n                </div>\n            </div>\n        </form>\n        '
 	};
 
 	var pageJump = angular.module('pageJump', []).component('pageJump', PageJumpComponent).name;
@@ -18554,6 +18566,7 @@
 	        this.$location = $location;
 	        this.$anchorScroll = $anchorScroll;
 	        this.scope = $rootScope;
+	        this.scope.currentToc = '';
 	        this.pages = {};
 	        this.loader = true;
 	        this.loadPages();

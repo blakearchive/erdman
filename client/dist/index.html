@@ -51,8 +51,8 @@
         <search-results results="erdman.results" go-to-page="erdman.goToPage(pageId)" close-search-results="erdman.closeSearchResults()"></search-results>
     </div>
     <nav id="erdman-toc">
+        <page-jump go-to-page="erdman.goToPage(pageId)"></page-jump>
         <div class="erdman-toc-wrapper">
-            <page-jump go-to-page="erdman.goToPage(pageId)"></page-jump>
             <toc items="erdman.tocTree" on-get-page="erdman.getPageByHeading(heading)" current-page="erdman.currentPage"></toc>
         </div>
     </nav>
