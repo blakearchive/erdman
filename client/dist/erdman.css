@@ -405,6 +405,9 @@ LINES
 .tei-line-number{
     float: right;
 }
+.tei-hi-italic {
+    font-style: italic;
+}
 
 /* ---------------------------------------
 PLATES

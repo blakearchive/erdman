@@ -18754,19 +18754,23 @@
 	    }, {
 	        key: 'highlightSearchTerm',
 	        value: function highlightSearchTerm(phrase, text, noHtmlText) {
-
 	            if (phrase !== '') {
-	                if (noHtmlText.match(new RegExp('(' + phrase + ')', 'gim'))) {
-
-	                    if (phrase.startsWith('"') && phrase.endsWith('"')) {
-	                        phrase = phrase.replace(/"/g, '');
+	                if (phrase.startsWith('"') && phrase.endsWith('"')) {
+	                    phrase = phrase.replace(/"/g, '');
+	                    if (noHtmlText.match(new RegExp('(' + phrase + ')', 'gim'))) {
 	                        text = text.replace(new RegExp('(' + phrase + ')', 'gim'), '<span class="highlighted">$1</span>');
-	                    } else if (phrase.indexOf(' ')) {
-	                        var phraseArray = phrase.split(' ');
-	                        angular.forEach(phraseArray, function (ph) {
-	                            text = text.replace(new RegExp('(\\b' + ph + '\\b)', 'gim'), '<span class="highlighted">$1</span>');
-	                        });
-	                    } else {
+	                    }
+	                } else if (phrase.indexOf(' ') > -1) {
+	                    var phraseArray = phrase.split(' ');
+	                    angular.forEach(phraseArray, function (ph) {
+	                        if (ph !== 'AND' || ph !== 'OR') {
+	                            if (noHtmlText.match(new RegExp('(\\b' + ph + '\\b)', 'gim'))) {
+	                                text = text.replace(new RegExp('(\\b' + ph + '\\b)', 'gim'), '<span class="highlighted">$1</span>');
+	                            }
+	                        }
+	                    });
+	                } else {
+	                    if (noHtmlText.match(new RegExp('(' + phrase + ')', 'gim'))) {
 	                        text = text.replace(new RegExp('(' + phrase + ')', 'gim'), '<span class="highlighted">$1</span>');
 	                    }
 	                }
