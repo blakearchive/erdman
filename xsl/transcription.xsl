@@ -18,7 +18,7 @@ transforms transcriptions
     </xsl:template>
     <xsl:template match="figure">
         <div class="cover-image">
-            <img src="erdmanCover.jpg"></img>
+            <img src="erdman_cover.jpg"></img>
         </div>
     </xsl:template>
     <xsl:template match="milestone">
