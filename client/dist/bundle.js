@@ -18466,8 +18466,12 @@
 	    }, {
 	        key: 'scrubLineNumbers',
 	        value: function scrubLineNumbers(result) {
-	            var ret = result.replace(/\d/gi, ' ');
-	            return ret;
+	            return result.replace(/\d/gi, ' ');
+	        }
+	    }, {
+	        key: 'noResults',
+	        value: function noResults() {
+	            return angular.equals(this.results, {});
 	        }
 	    }]);
 
@@ -18478,10 +18482,11 @@
 	    bindings: {
 	        results: '<',
 	        goToPage: '&',
-	        closeSearchResults: '&'
+	        closeSearchResults: '&',
+	        query: '@'
 	    },
 	    controller: SearchResultsController,
-	    template: '\n            <h2 ng-if="$ctrl.results.keys.length == 0">No results found</h2>\n            <div ng-repeat="(id,heading) in $ctrl.results track by $index" class="result-group">\n                <span class="result-heading">{{heading.heading.heading}}</span>\n                <ul class="list-unstyled" ng-repeat="result in heading.results track by $index">\n                    <li ng-repeat="preview in result.preview track by $index" style="margin-left: 20px; padding: 3px 0;">\n                        <span class="preview" ng-bind-html="$ctrl.scrubLineNumbers(preview)"></span>\n                        <a href="#{{ result.page_id }}" ng-click="$ctrl.closeSearchResults()">(...Page {{ result.page_id }})</a>\n                    </li>\n                </ul>\n            </div>\n        '
+	    template: '\n            <div class="no-results" ng-if="$ctrl.noResults()">\n                <h2>No results found for <em>{{ $ctrl.query }}</em></h2>\n            </div>\n            <div ng-repeat="(id,heading) in $ctrl.results track by $index" class="result-group">\n                <span class="result-heading">{{heading.heading.heading}}</span>\n                <ul class="list-unstyled" ng-repeat="result in heading.results track by $index">\n                    <li ng-repeat="preview in result.preview track by $index" style="margin-left: 20px; padding: 3px 0;">\n                        <span class="preview" ng-bind-html="$ctrl.scrubLineNumbers(preview)"></span>\n                        <a href="#{{ result.page_id }}" ng-click="$ctrl.closeSearchResults()">(...Page {{ result.page_id }})</a>\n                    </li>\n                </ul>\n            </div>\n        '
 	};
 
 	var searchResults = angular.module('searchResults', ['ngSanitize']).component('searchResults', SearchResultsComponent).name;

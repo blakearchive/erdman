@@ -259,6 +259,11 @@ div.search-ctrl {
     margin: 8px 0;
 }
 
+.no-results {
+    position: relative;
+    top: 40vh;
+}
+
 /* ---------------------------------------
 NAVIGATION
 ----------------------------------------- */

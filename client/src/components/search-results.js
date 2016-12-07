@@ -8,8 +8,11 @@ class SearchResultsController {
     }
 
     scrubLineNumbers(result){
-        const ret = result.replace(/\d/gi,' ');
-        return ret;
+        return result.replace(/\d/gi,' ');
+    }
+
+    noResults(){
+        return angular.equals(this.results,{});
     }
 }
 
@@ -17,11 +20,14 @@ const SearchResultsComponent = {
     bindings: {
         results: '<',
         goToPage: '&',
-        closeSearchResults: '&'
+        closeSearchResults: '&',
+        query: '@'
     },
     controller: SearchResultsController,
     template: `
-            <h2 ng-if="$ctrl.results.keys.length == 0">No results found</h2>
+            <div class="no-results" ng-if="$ctrl.noResults()">
+                <h2>No results found for <em>{{ $ctrl.query }}</em></h2>
+            </div>
             <div ng-repeat="(id,heading) in $ctrl.results track by $index" class="result-group">
                 <span class="result-heading">{{heading.heading.heading}}</span>
                 <ul class="list-unstyled" ng-repeat="result in heading.results track by $index">
