@@ -63,7 +63,7 @@ class ErdmanTransformer(ContentHandler):
     def startElementNS(self, name, qname, attrs):
         uri, localname = name
         # Strip the namespace field from the attribute key
-        attrs = {k[1]: v for (k, v) in attrs.items()}
+        attrs = dict((k[1],v) for (k, v) in attrs.items())
         if localname == 'div1':
             self.current_heading.append((attrs["id"], attrs))
             self.add_current_page_heading(attrs["id"])
@@ -133,7 +133,7 @@ class ErdmanTransformer(ContentHandler):
 
     def endElementNS(self, name, qname):
         uri, localname = name
-        if localname in {'div1', 'div2', 'div3', 'div4'}:
+        if localname in ['div1', 'div2', 'div3', 'div4']:
             self.current_heading.pop()
         elif localname == 'pb':
             pass
@@ -171,19 +171,19 @@ def get_titles(tree):
 
     def should_add(head):
         parent = head.getparent()
-        if parent.tag in {"div1", "div2", "div3", "div4"}:
+        if parent.tag in ["div1", "div2", "div3", "div4"]:
             id_ = parent.attrib["id"]
             if id_ not in seen_pages:
                 seen_pages.add(id_)
                 return True
         return False
 
-    return {
-            head.getparent().attrib["id"]: {
+    return dict((
+            head.getparent().attrib["id"], {
                 'heading': head.xpath("string()").strip(),
                 'page': head.getparent().attrib["page"] if head.getparent().attrib["page"] else ""
-            } for head in heads if should_add(head)
-        }
+            }) for head in heads if should_add(head)
+        )
 
 def parse_document(file_name):
     tree = etree.parse(file_name)
@@ -217,7 +217,7 @@ def get_notes():
     transformer = XMLTransformer()
     notes_document = etree.parse("../data/erd4.xml")
     notes = notes_document.xpath(".//note")
-    return {n.attrib["id"]: etree.tostring(transformer.transform(n)) for n in notes if "id" in n.attrib}
+    return dict((n.attrib["id"], etree.tostring(transformer.transform(n))) for n in notes if "id" in n.attrib)
 
 
 def populate_solr(solr_url, pages):
