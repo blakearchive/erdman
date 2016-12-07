@@ -17,7 +17,7 @@ h1,h2,h3,h4 {
 /* ---------------------------------------
 TABLE OF CONTENTS
 ----------------------------------------- */
-#erdman-toc {
+.erdman-toc {
     margin-top: 50px;
     height: calc(100vh - 50px);
     display: inline-block;
