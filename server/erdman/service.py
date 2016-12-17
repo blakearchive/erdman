@@ -6,9 +6,9 @@ erdman_pages = pysolr.Solr(os.environ.get("SOLR_URL","http://localhost:8983/solr
 
 class ErdmanDataService(object):
     @classmethod
-    def get_pages(cls, page_ids=None):
-        query = "page_id:(%s)" % " OR ".join(page_ids) if page_ids else "*:*"
-        results = list(erdman_pages.search(query))
+    def get_pages(cls):
+        query = "*:*"
+        results = list(erdman_pages.search(query, **{"rows":1000, "sort":"id asc"}))
         return results
 
 
@@ -23,7 +23,23 @@ class ErdmanDataService(object):
 
     @classmethod
     def search(cls, q):
-        query = "text_contents:"+q
+        if q.find('AND'):
+            q = q.replace("AND", "")
+            q = q.split()
+            final = []
+            for p in q:
+                final.append("text_contents:"+p)
+            query = " AND ".join(final)
+        elif q.find('OR'):
+            q = q.replace("OR", "")
+            q = q.split()
+            final = []
+            for p in q:
+                final.append("text_contents:"+p)
+            query = " OR ".join(final)
+        else:
+            query = "text_contents:"+q
+
         result = erdman_pages.search(query, **{
              "hl": "true",
              "hl.fl":"text_contents",

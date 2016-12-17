@@ -203,13 +203,13 @@ def do_import(solr_url, data_only):
 
 def parse_documents():
     titles = {}
-    (erd1, erd1_titles) = parse_document("../data/erd1.xml")
     (erd2, erd2_titles) = parse_document("../data/erd2.xml")
     (erd3, erd3_titles) = parse_document("../data/erd3.xml")
-    pages = erd1.pages + erd2.pages + erd3.pages
-    titles.update(erd1_titles)
+    (erd1, erd1_titles) = parse_document("../data/erd1.xml")
+    pages = erd2.pages + erd3.pages + erd1.pages
     titles.update(erd2_titles)
     titles.update(erd3_titles)
+    titles.update(erd1_titles)
     return titles, pages
 
 

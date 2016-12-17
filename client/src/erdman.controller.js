@@ -7,15 +7,10 @@ class ErdmanController {
         this.$location = $location;
         this.$anchorScroll = $anchorScroll;
         this.scope = $rootScope;
-        this.currentPage = 0;
-        this.pages = pages.map(p => {
-            return {page_id: p.page_id, contents: ""}
-        });
-        jQuery(document).ready(() => this.loadPagesForViewport());
-        jQuery(document).scroll(() => {
-            clearTimeout(this.timeoutId);
-            this.timeoutId = setTimeout(() => this.loadPagesForViewport(), 150)
-        });
+        this.scope.currentToc = '';
+        this.pages = {};
+        this.loader = true;
+        this.loadPages();
         this.results = [];
         this.showSearchResults = false;
         this.titles = Object.assign({}, titles);
@@ -25,28 +20,14 @@ class ErdmanController {
         this.query = '';
     }
 
-    updatePageContents(pages) {
-
-        this.currentPage = pages[0].page_id;
-
-        let pageMap = {};
-        pages.forEach(page => pageMap[page.page_id] = page);
-
-        this.scope.$apply(() => {
-            this.pages.forEach(page => {
-                let newPage = pageMap[page.page_id];
-                if (newPage) {
-                    page.contents = this.highlightSearchTerm(this.query, newPage.contents, newPage.text_contents);
-                }
-                else page.contents = "";
-            });
-        });
-    }
-
-    loadPagesForViewport() {
-        let active = PageService.active();
-        ErdmanDataService.getPages(active)
-          .then(response => this.updatePageContents(response));
+    loadPages() {
+        ErdmanDataService.getPages()
+          .then(response => {
+              this.scope.$apply(() => {
+                  this.pages = Object.assign({},response);
+                  this.loader = false;
+              });
+          });
     }
 
     goToPage( pageId ) {
@@ -66,15 +47,19 @@ class ErdmanController {
     searchPages( query ){
         if(!query) return;
 
-
         this.query = query;
 
         ErdmanDataService.search(query).then(response => {
             const results = {};
+            const resultIds = [];
+
             for(const doc of response.docs) {
+
                 const pageObject = pages.filter(page => page.page_id == doc.page_id);
+                resultIds.push(doc.id);
+
                 let headingId = '';
-                if(Array.isArray(pageObject[0].headings[0][1])){
+                if(pageObject[0].headings[0][1].length > 0){
                     headingId = pageObject[0].headings[0][1][0][0];
                 } else {
                     headingId = pageObject[0].headings[0][0];
@@ -98,9 +83,23 @@ class ErdmanController {
                 }
             }
 
-            this.scope.$apply(this.results = Object.assign({}, results));
-            this.showSearchResults = true;
+            this.scope.$apply(() => {
+                this.results = Object.assign({}, results);
+                this.showSearchResults = true;
+                this.highlightPages(resultIds);
+            });
+            this.scope.$broadcast('newSearch');
         });
+    }
+
+    highlightPages(resultIds){
+        for(const key in this.pages){
+            if(resultIds.includes(parseInt(key))){
+                this.pages[key].highlight_contents = this.highlightSearchTerm(this.query, this.pages[key].contents, this.pages[key].text_contents);
+            } else {
+                this.pages[key].highlight_contents = false;
+            }
+        }
     }
 
     nestTitles() {
@@ -110,7 +109,7 @@ class ErdmanController {
                     title: this.titles[k].heading,
                     key: k,
                     children: this.getChildren(k),
-                    page: this.titles[k].page
+                    expanded: false
                 };
                 this.tocTree.push(toplvl);
                 delete this.titles[k];
@@ -128,7 +127,7 @@ class ErdmanController {
                     title: this.titles[k].heading,
                     key: k,
                     children: grandChildren,
-                    page: this.titles[k].page
+                    expanded: false
                 };
                 children.push(child);
                 delete this.titles[k];
@@ -150,19 +149,23 @@ class ErdmanController {
     }
 
     highlightSearchTerm(phrase,text,noHtmlText) {
-
         if (phrase !== ''){
-            if(noHtmlText.match(new RegExp('(' + phrase + ')', 'gim'))){
-
-                if (phrase.startsWith('"') && phrase.endsWith('"')) {
-                    phrase = phrase.replace(/"/g, '');
+            if (phrase.startsWith('"') && phrase.endsWith('"')) {
+                phrase = phrase.replace(/"/g, '');
+                if(noHtmlText.match(new RegExp('(' + phrase + ')', 'gim'))) {
                     text = text.replace(new RegExp('(' + phrase + ')', 'gim'), '<span class="highlighted">$1</span>');
-                } else if (phrase.indexOf(' ')) {
-                    var phraseArray = phrase.split(' ');
-                    angular.forEach(phraseArray, function (ph) {
-                        text = text.replace(new RegExp('(\\b' + ph + '\\b)', 'gim'), '<span class="highlighted">$1</span>');
-                    });
-                } else {
+                }
+            } else if(phrase.indexOf(' ') > -1) {
+                var phraseArray = phrase.split(' ');
+                angular.forEach(phraseArray, function (ph) {
+                    if(ph !== 'AND' || ph !== 'OR'){
+                        if(noHtmlText.match(new RegExp('(\\b' + ph + '\\b)', 'gim'))) {
+                            text = text.replace(new RegExp('(\\b' + ph + '\\b)', 'gim'), '<span class="highlighted">$1</span>');
+                        }
+                    }
+                });
+            } else {
+                if(noHtmlText.match(new RegExp('(' + phrase + ')', 'gim'))) {
                     text = text.replace(new RegExp('(' + phrase + ')', 'gim'), '<span class="highlighted">$1</span>');
                 }
             }

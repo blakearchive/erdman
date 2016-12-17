@@ -1,7 +1,17 @@
 import * as ngSanitize from 'angular-sanitize';
 
 class ReaderController {
-    constructor() {}
+    constructor($sce) {
+        this.$sce = $sce;
+    }
+
+    safe(page){
+        if(page.highlight_contents){
+            return this.$sce.trustAsHtml(page.highlight_contents);
+        } else {
+            return this.$sce.trustAsHtml(page.contents);
+        }
+    }
 }
 
 const ReaderComponent = {
@@ -15,7 +25,7 @@ const ReaderComponent = {
         <div id="reader">
             <div ng-repeat="page in $ctrl.pages" id="{{ page.page_id }}" class="page-container">
                 <div class="page-id">{{ page.page_id }}</div>
-                <div ng-bind-html="page.contents"></div>
+                <div ng-bind-html="$ctrl.safe(page)"></div>
             </div>
         </div>
         `

@@ -3,10 +3,11 @@
 <head>
     <base href="/">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>The Complete Poetry & Prose of William Blake</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link rel="stylesheet" href="fonts/Lato/lato.css">
     <link type="text/css" rel="stylesheet" href="erdman.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body ng-controller="ErdmanController as erdman" id="erdmanBody">
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -25,29 +26,33 @@
             <div class="collapse navbar-collapse" style="text-align: center">
                 <!-- Center Title -->
                 <div class="object-view-menu hidden-xs hidden-sm">
-                <span class="worktitle" style="padding: 19px;">
-                    <span>
-                        <a style="color:white;">The Complete Poetry & Prose of William Blake</a>
+                    <span class="worktitle" style="padding: 19px;">
+                        <span>
+                            <a style="color:white;">The Complete Poetry & Prose of William Blake</a>
+                        </span>
                     </span>
-	            </span>
                 </div>
-
                 <!-- Search Form -->
                 <search-form on-search="erdman.searchPages(query)"></search-form>
             </div>
         </div>
     </nav>
+
+
     <div class="erdman-reader">
-        <div id="loader">LOADING...</div>
+        <div id="loader" ng-if="erdman.loader">
+            <div class="loader"></div>
+            <div class="loading-text">LOADING...</div>
+        </div>
         <reader pages="erdman.pages" open-note="$ctrl.openNote()" highlight="{{ erdman.query }}"></reader>
     </div>
     <div class="search-results" ng-class="{open: erdman.showSearchResults}">
         <span class="glyphicon glyphicon-remove" ng-click="erdman.closeSearchResults()"></span>
-        <search-results results="erdman.results" go-to-page="erdman.goToPage(pageId)" close-search-results="erdman.closeSearchResults()"></search-results>
+        <search-results results="erdman.results" query="{{ erdman.query }}" go-to-page="erdman.goToPage(pageId)" close-search-results="erdman.closeSearchResults()"></search-results>
     </div>
-    <nav id="erdman-toc">
+    <nav class="erdman-toc">
+        <page-jump go-to-page="erdman.goToPage(pageId)"></page-jump>
         <div class="erdman-toc-wrapper">
-            <page-jump go-to-page="erdman.goToPage(pageId)"></page-jump>
             <toc items="erdman.tocTree" on-get-page="erdman.getPageByHeading(heading)" current-page="erdman.currentPage"></toc>
         </div>
     </nav>

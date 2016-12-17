@@ -62,4 +62,8 @@ on that  page. For example, the fifth note on page 365 would have an ID of
 "TN365.5".</p><p>Within the primary text, each technical note marker indicated by a  superscript
 letter "t" in the print version has been replace with the  TEI tag "xptr,"
 which has a "target" attribute containing the ID value  defined above.</p><p>Within the end matter, each technical note is enclosed in TEI "note"  tags
-that have an "id" attribute whose value is described above.</p></refsdecl></encodingdesc><profiledesc><creation><date>1965</date></creation></profiledesc></teiheader>
+that have an "id" attribute whose value is described above.</p></refsdecl></encodingdesc><profiledesc><creation><date>1965</date></creation></profiledesc>
+ <div1 type="etitlepage" id="a1"><p><hi rend="i">  Note: The editors of the William Blake Archive believe that its digital version of Erdman's texts of Blake, which we first published in 2001, is a convenience to users.  We recognize, however, that it is far from flawless.  We hope to publish a corrected and improved version when our resources allow.  Meanwhile, use the current implementation with caution, and check all quotations against the printed edition.  Comments are welcome.<lb/><lb/></hi></p><p><xptr doc="erdman.cover"/></p><biblstruct><monogr><title>THE COMPLETE<lb/>POETRY AND PROSE OF<lb/><hi rend="i">
+  William Blake</hi></title><edition>ELECTRONIC EDITION</edition><respstmt><resp>EDITED BY</resp><name>David V. Erdman</name></respstmt><respstmt><resp>COMMENTARY BY</resp><name>Harold Bloom</name></respstmt><imprint><publisher>Morris Eaves <lb/>Robert Essick <lb/>Joseph Viscomi <lb/>Institute
+  for Advanced Technology in the Humanities</publisher><pubplace>Charlottesville, Virginia</pubplace><date>©2001</date></imprint></monogr></biblstruct></div1>
+</teiheader>
