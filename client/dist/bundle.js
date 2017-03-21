@@ -18420,7 +18420,7 @@
 	        key: 'onSubmit',
 	        value: function onSubmit() {
 	            console.log('submitting');
-	            this.query = decodeURIComponent(this.query);
+	            this.query = encodeURIComponent(this.query);
 	            this.onSearch({ query: this.query });
 	        }
 	    }]);
