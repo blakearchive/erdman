@@ -18618,7 +18618,8 @@
 
 	            if (!query) return;
 
-	            this.query = query;
+	            this.query = encodeURIComponent(query);
+	            console.log(query);
 
 	            _services.ErdmanDataService.search(query).then(function (response) {
 	                var results = {};
