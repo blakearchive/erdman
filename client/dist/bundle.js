@@ -20476,7 +20476,6 @@
 	    }, {
 	        key: 'search',
 	        value: function search(query) {
-	            query = encodeURIComponent(query);
 	            var url = '/api/search',
 	                promise = _jquery2.default.post(url, { "q": query || '' });
 	            return promise.then(function (data) {
