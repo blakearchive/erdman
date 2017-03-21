@@ -19465,6 +19465,8 @@
 
 	            if (!query) return;
 
+	            this.query = query;
+
 	            _services.ErdmanDataService.search(query).then(function (response) {
 	                var results = {};
 	                var resultIds = [];

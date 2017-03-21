@@ -47,6 +47,8 @@ class ErdmanController {
     searchPages( query ){
         if(!query) return;
 
+        this.query = query;
+
         ErdmanDataService.search(query).then(response => {
             const results = {};
             const resultIds = [];
