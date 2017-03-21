@@ -20,6 +20,5 @@ def get_pages_by_heading():
 @api.route("/search", methods=["POST"])
 def search():
     q = request.form["q"]
-    q = encodeURIComponent(q);
     results = ErdmanDataService.search(q)
     return json.dumps(results)
