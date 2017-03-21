@@ -1,6 +1,7 @@
 from flask import request, Blueprint
 from .service import ErdmanDataService
 import json
+import urllib
 
 api = Blueprint('api', __name__, url_prefix='/api')
 
@@ -20,5 +21,6 @@ def get_pages_by_heading():
 @api.route("/search", methods=["POST"])
 def search():
     q = request.form["q"]
+    q = urllib.quote(q.encode("utf-8"))
     results = ErdmanDataService.search(q)
     return json.dumps(results)
