@@ -17,6 +17,7 @@ class _ErdmanDataService {
     }
 
     search(query) {
+        query = encodeURIComponent(query);
         let url = '/api/search',
             promise = jQuery.post(url, {"q": query || ''});
         return promise.then(data => {
