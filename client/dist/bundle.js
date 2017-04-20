@@ -18432,7 +18432,7 @@
 	        onSearch: '&'
 	    },
 	    controller: SearchFormController,
-	    template: '\n\n        <form class="navbar-form navbar-right" role="search" ng-submit="$ctrl.onSubmit();">\n            <div class="input-group">\n                <input type="text" class="form-control" placeholder="Search" ng-model="$ctrl.query">\n                <span class="input-group-btn">\n                    <button class="btn btn-default" type="submit">\n                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>\n                    </button>\n                </span>\n            </div>\n        </form>\n        '
+	    template: '\n\n        <form class="navbar-form navbar-right" role="search" ng-submit="$ctrl.onSubmit();">\n            <div class="input-group">\n                <input type="text" class="form-control" placeholder="Search" ng-model="$ctrl.query">\n                <span class="input-group-btn">\n                    <button class="btn btn-default" type="submit" style="height:34px">\n                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>\n                    </button>\n                </span>\n            </div>\n        </form>\n        '
 	};
 
 	var searchForm = angular.module('searchForm', []).component('searchForm', SearchFormComponent).name;
