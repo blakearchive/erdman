@@ -20,7 +20,7 @@ const SearchFormComponent = {
             <div class="input-group">
                 <input type="text" class="form-control" placeholder="Search" ng-model="$ctrl.query">
                 <span class="input-group-btn">
-                    <button class="btn btn-default" type="submit">
+                    <button class="btn btn-default" type="submit" style="height:34px">
                         <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                     </button>
                 </span>
