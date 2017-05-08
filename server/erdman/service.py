@@ -1,5 +1,6 @@
 import pysolr
 import os
+import re
 
 erdman_pages = pysolr.Solr(os.environ.get("SOLR_URL","http://localhost:8983/solr/erdman"))
 
@@ -23,22 +24,13 @@ class ErdmanDataService(object):
 
     @classmethod
     def search(cls, q):
-        if q.find('AND'):
-            q = q.replace("AND", "")
-            q = q.split()
-            final = []
-            for p in q:
-                final.append("text_contents:"+p)
-            query = " AND ".join(final)
-        elif q.find('OR'):
-            q = q.replace("OR", "")
-            q = q.split()
-            final = []
-            for p in q:
-                final.append("text_contents:"+p)
-            query = " OR ".join(final)
-        else:
-            query = "text_contents:"+q
+        def process_element(e):
+            if e == "AND" or e == "OR":
+                return e
+            else:
+                return "text_contents:%s" % e
+        search_elements = re.findall("([^\\s\"']+|\"[^\"]*\"|'[^']*')", q)
+        query = " ".join(process_element(e) for e in search_elements)
 
         result = erdman_pages.search(query, **{
              "hl": "true",
