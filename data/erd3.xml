@@ -45539,7 +45539,7 @@ Effect. is Making out the Parts &amp; it is Nothing Else but That</p>
 					</note>
 				</div4>
 				<div4 id="b12.8.2.29" page="639">
-					<head type="hidden"/>
+					<!--<head type="hidden"/>-->
 					<quote>
 						<p>
 							<supplied>[P lvii, note 34, Malone on Reynolds' efforts to recover
@@ -45760,15 +45760,15 @@ of the FEROCIOUS and ENSLAVED Republick of France!”]</supplied>
 					</note>
 				</div4>
 				<div4 id="b12.8.2.44" page="641">
-					<head type="hidden"/>
+					<!--<head type="hidden"/>-->
 					<quote>
 						<p>
-							<supplied>
+							<!--<supplied>-->
 								<supplied>[P civ, Malone on Reynolds' good fortune to
 have escaped the present era of sedition]</supplied>. . . England is at present
 in an unparalleled state of wealth and prosperity. . . . These FACTS ought
 to be sounded from one end of England to the other, . . . a complete answer
-to all the SEDITIOUS DECLAMATIONS. . . .</supplied>
+to all the SEDITIOUS DECLAMATIONS. . . .<!--</supplied>-->
 						</p>
 					</quote>
 					<note resp="auth">
@@ -45804,7 +45804,7 @@ inordinate growth”of his liver]</supplied>
 					</note>
 				</div4>
 				<div4 id="b12.8.2.46" page="641">
-					<head type="hidden"/>
+					<!--<head type="hidden"/>-->
 					<quote>
 						<p>
 							<supplied>[P cxi, the Dukes, Marquisses, and other noblemen at Reynolds'
@@ -45957,8 +45957,9 @@ other Men</hi>
 					</note>
 				</div4>
 				<div4 id="b12.8.3.4" page="642">
-					<head type="hidden"/>
-					<milestone rend="small" unit="[P 5]"/>
+					<!--<head type="hidden"/>-->
+					<!--<milestone rend="small" unit="[P 5]"/>-->
+					<quote><p><supplied>[P 5]</supplied>
 					<note resp="auth">
 						<p>Reynoldss Opinion was that Genius May be Taught &amp;
 that all Pretence to Inspiration is a Lie &amp; a Deceit to say the least
