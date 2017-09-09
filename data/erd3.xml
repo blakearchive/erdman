@@ -34825,15 +34825,15 @@ by Private Contract,
 				<milestone n="[ii]" rend="left" unit="page"/>
 				<head rend="center">CONDITIONS OF SALE.</head>
 				<lb rend="hardrule"/>
-				<ul>
-					<li>I.  One third of the price to be paid at the time of Purchase
- and remainder on Delivery.</li>
-					<li>II.  The Pictures and Drawings to remain in the Exhibition till  its
+				<list>
+					<item>I.  One third of the price to be paid at the time of Purchase
+ and remainder on Delivery.</item>
+					<item>II.  The Pictures and Drawings to remain in the Exhibition till  its
 close, which will be the 29th of September 1809; and the  Picture of the Canterbury
 Pilgrims, which is to be engraved,  will be Sold only on condition of its
 remaining in the Artist's  hands twelve months, when it will be delivered
-to the Buyer.</li>
-				</ul>
+to the Buyer.</item>
+				</list>
 			</div3>
 			<div3 id="b8.3.2" page="529">
 				<milestone n="[iii]" rend="left" unit="page"/>
@@ -50116,12 +50116,12 @@ after Michael Angelo</p>
 				<ptr target="tn672.2"/>
 			</head>
 			<p>
-				<ul>
-					<li>1    Giants ancient inhabitants of England</li>
-					<li>2    The Landing of Brutus</li>
-					<li>3    Corineus throws Gogmagog the Giant into the sea</li>
-					<li>4    King Lear</li>
-					<li>
+				<list>
+					<item>1    Giants ancient inhabitants of England</item>
+					<item>2    The Landing of Brutus</item>
+					<item>3    Corineus throws Gogmagog the Giant into the sea</item>
+					<item>4    King Lear</item>
+					<item>
 						<supplied>[5]</supplied>The Ancient Britons according to Caesar
 						<del>
 							[
@@ -50130,10 +50130,10 @@ after Michael Angelo</p>
 								<hi rend="i">The frontispiece</hi>
 								&gt;</add>]</del>
 						<ptr target="tn672.3"/>
-					</li>
-					<li>6    The Druids</li>
-					<li>7    The Landing of Julius Caesar</li>
-					<li>8    Boadicea inspiring the Britons against the Romans
+					</item>
+					<item>6    The Druids</item>
+					<item>7    The Landing of Julius Caesar</item>
+					<item>8    Boadicea inspiring the Britons against the Romans
 						<lb/>
 						<add>
 							&lt;The Britons distress &amp; depopulation
@@ -50142,19 +50142,19 @@ after Michael Angelo</p>
 War
 							<lb/>
 							Women in a Siege&gt;</add>
-					</li>
-					<li>9    Alfred in the countrymans house</li>
-					<li>10   Edwin &amp; Morcar stirring up the Londoners to resist W the  
+					</item>
+					<item>9    Alfred in the countrymans house</item>
+					<item>10   Edwin &amp; Morcar stirring up the Londoners to resist W the  
     Conq
-						<hi rend="sup">r</hi></li>
-					<li>11   W the Conq Crownd</li>
-					<li>12   King John &amp; Mag Charta
+						<hi rend="sup">r</hi></item>
+					<item>11   W the Conq Crownd</item>
+					<item>12   King John &amp; Mag Charta
 						<lb/>
 						<add>&lt;A Famine occasiond
-by the Popish interdict&gt;</add></li>
-					<li>13   Edward at Calais</li>
-					<li>14   Edward the Black Prince brings his Captives to his father</li>
-					<li>15   The Penance of Jane Shore
+by the Popish interdict&gt;</add></item>
+					<item>13   Edward at Calais</item>
+					<item>14   Edward the Black Prince brings his Captives to his father</item>
+					<item>15   The Penance of Jane Shore
 						<lb/>
 						<add>
 							&lt;17 
@@ -50168,24 +50168,24 @@ by the Popish interdict&gt;</add></li>
 								[
 								<hi rend="i">Ch I beheaded</hi>
 								]</del>&gt;</add>
-					</li>
-					<li>
+					</item>
+					<item>
 						<del>[
 							<hi rend="i">16</hi>
 							]</del>
 						<supplied>[
 							<add>&lt;17&gt;</add>
 							]</supplied>
-						<add>&lt;19&gt;</add>The Plague</li>
-					<li>
+						<add>&lt;19&gt;</add>The Plague</item>
+					<item>
 						<del>[
 							<hi rend="i">17</hi>
 							]</del>
 						<supplied>[
 							<add>&lt;18&gt;</add>
 							]</supplied>
-						<add>&lt;20&gt;</add>The fire of London</li>
-					<li>
+						<add>&lt;20&gt;</add>The fire of London</item>
+					<item>
 						<del>[
 							<hi rend="i">18</hi>
 							]</del>
@@ -50195,18 +50195,18 @@ by Kings &amp; Priests
 							[
 							<hi rend="i">whose arts</hi>
 							]</del>
-					</li>
-					<li>
+					</item>
+					<item>
 						<del>[
 							<hi rend="i">19</hi>
 							]</del>
-						<add>&lt;21&gt;</add>A prospect of Liberty</li>
-					<li>
+						<add>&lt;21&gt;</add>A prospect of Liberty</item>
+					<item>
 						<del>[
 							<hi rend="i">20</hi>
 							]</del>
-						<add>&lt;22&gt;</add>A Cloud</li>
-				</ul>
+						<add>&lt;22&gt;</add>A Cloud</item>
+				</list>
 			</p>
 		</div2>
 		<pb n="673"/>
@@ -50433,41 +50433,41 @@ Death (794); Mirth (795); Hope (796); Affection &amp; Love (797); Return Alpheus
 			<div3 id="b13.19.1" page="676">
 				<milestone rend="small" unit="On back of title page"/>
 				<p rend="center">Ode on the Spring</p>
-				<ul>
+				<list>
 					<head>Design</head>
-					<li>1.    The Pindaric Genius recieving his Lyre</li>
-					<li>2.    Gray writing his Poems</li>
-					<li>3.    The Purple Year awaking from the Roots of Nature.
+					<item>1.    The Pindaric Genius recieving his Lyre</item>
+					<item>2.    Gray writing his Poems</item>
+					<item>3.    The Purple Year awaking from the Roots of Nature.
 						<lb/>
 						&amp;
-The Hours suckling their Flowery Infants</li>
-					<li>4.    “With me the Muse shall sit &amp; think
+The Hours suckling their Flowery Infants</item>
+					<item>4.    “With me the Muse shall sit &amp; think
 						<lb/>
 						At ease
-reclind in rustic. state”</li>
-					<li>5.    “Brush'd by the hand of rough Mischance
+reclind in rustic. state”</item>
+					<item>5.    “Brush'd by the hand of rough Mischance
 						<lb/>
 						Or chilld
-by Age”</li>
-					<li>6.    Summer Flies reproaching the Poet</li>
-				</ul>
+by Age”</item>
+					<item>6.    Summer Flies reproaching the Poet</item>
+				</list>
 			</div3>
 			<div3 id="b13.19.2" page="676">
 				<p rend="center">Ode on the Death of a Favourite Cat</p>
-				<ul>
+				<list>
 					<p>Design.</p>
-					<li>1.    “Midst the tide
+					<item>1.    “Midst the tide
 						<lb/>
 						Two Angel forms were seen
-to glide”</li>
-					<li>2.    “Demurest of the Tabby kind&quot;</li>
-					<li>3.    “The pensive Selima
+to glide”</item>
+					<item>2.    “Demurest of the Tabby kind&quot;</item>
+					<item>3.    “The pensive Selima
 						<lb/>
 						Her Ears of Jet &amp; Emrald
  Eyes
 						<lb/>
-						She saw &amp; purr'd applause”</li>
-					<li>4.    “Still had she gazd but midst the tide
+						She saw &amp; purr'd applause”</item>
+					<item>4.    “Still had she gazd but midst the tide
 						<lb/>
 						Two Angel
 forms were seen to glide.
@@ -50476,227 +50476,227 @@ forms were seen to glide.
 						<lb/>
 						A Whisker first &amp; then a Claw &amp;
 						<hi rend="sup">c</hi>
-						”</li>
-					<li>5.    “Malignant Fate sat by &amp; smild
+						”</item>
+					<item>5.    “Malignant Fate sat by &amp; smild
 						<lb/>
 						The slippery
 verge her feet beguild
 						<lb/>
-						She tumbled headlong in”</li>
-					<li>6.    “Nine times emerging from the flood
+						She tumbled headlong in”</item>
+					<item>6.    “Nine times emerging from the flood
 						<lb/>
 						“She
-mew'd to every watry God”</li>
-				</ul>
+mew'd to every watry God”</item>
+				</list>
 			</div3>
 			<pb n="677"/>
 			<div3 id="b13.19.3" page="677">
 				<p rend="center">Ode on a distant prospect of Eton College</p>
-				<ul>
+				<list>
 					<p>Design</p>
-					<li>1.    Windsor terrace. a Boy contemplating a distant view of Eton
-College.</li>
-					<li>2.    A Boy flying a Kite</li>
-					<li>3.    Two Boys wandering in the woods by Eton College.  The       Shade
+					<item>1.    Windsor terrace. a Boy contemplating a distant view of Eton
+College.</item>
+					<item>2.    A Boy flying a Kite</item>
+					<item>3.    Two Boys wandering in the woods by Eton College.  The       Shade
 of
 						<lb/>
 						Henry the Sixth is seen among the trees.
 						<lb/>
 						&quot;Henry's holy shade.”
-line 4</li>
-					<li>4.    “Say Father Thames for thou hast seen
+line 4</item>
+					<item>4.    “Say Father Thames for thou hast seen
 						<lb/>
 						Full many
 a sprightly race
 						<lb/>
 						Who foremost &amp;
 						<hi rend="sup">c</hi>
-						”</li>
-					<li>5.    “The captive linnet”
+						”</item>
+					<item>5.    “The captive linnet”
 						<lb/>
 						The rolling circle”
 						<lb/>
 						murmuring labours” &amp;
-						<hi rend="sup">c</hi></li>
-					<li>6.    Yet see how all around them wait . . 
+						<hi rend="sup">c</hi></item>
+					<item>6.    Yet see how all around them wait . . 
 						<lb/>
 						.       The vultures
-of the Mind</li>
-					<li>7.    Ambition this shall tempt to rise
+of the Mind</item>
+					<item>7.    Ambition this shall tempt to rise
 						<lb/>
 						Then whirl the wretch
 from high &amp;
-						<hi rend="sip">c</hi></li>
-					<li>8.    Lo in the Vale of Years beneath
+						<hi rend="sip">c</hi></item>
+					<item>8.    Lo in the Vale of Years beneath
 						<lb/>
 						The painful family of
-Death</li>
-					<li>9.    Where Ignorance is bliss
+Death</item>
+					<item>9.    Where Ignorance is bliss
 						<lb/>
-						Tis folly to be wise</li>
-					<li>10.   Boys playing at Top.</li>
-				</ul>
+						Tis folly to be wise</item>
+					<item>10.   Boys playing at Top.</item>
+				</list>
 			</div3>
 			<div3 id="b13.19.4" page="677">
 				<p rend="center">A Long Story</p>
-				<ul>
+				<list>
 					<p>Design</p>
-					<li>1.    A circular Dance</li>
-					<li>2.    Fairies riding on Flies</li>
-					<li>3.    “An ancient Pile of Bui
+					<item>1.    A circular Dance</item>
+					<item>2.    Fairies riding on Flies</item>
+					<item>3.    “An ancient Pile of Bui
 						<supplied>[l]</supplied>
 						ding which
 						<lb/>
-						Employd the power of Fairy hands”</li>
-					<li>4.    “The Seals &amp; Maces dancd before him”</li>
-					<li>5.    “A brace of warriors”</li>
-					<li>6.    “Bewitchd the children of the Peasants”</li>
-					<li>7.    “Upstairs in a whirlwind rattle”</li>
-					<li>8.    “Out of the window whisk they flew”</li>
-					<li>9.    “At the Chapel door stand centry”</li>
-					<li>10.   “A sudden fit of ague shook him”</li>
-					<li>11.   “My Lady rose &amp; with a grace
+						Employd the power of Fairy hands”</item>
+					<item>4.    “The Seals &amp; Maces dancd before him”</item>
+					<item>5.    “A brace of warriors”</item>
+					<item>6.    “Bewitchd the children of the Peasants”</item>
+					<item>7.    “Upstairs in a whirlwind rattle”</item>
+					<item>8.    “Out of the window whisk they flew”</item>
+					<item>9.    “At the Chapel door stand centry”</item>
+					<item>10.   “A sudden fit of ague shook him”</item>
+					<item>11.   “My Lady rose &amp; with a grace
 						<lb/>
 						She smild &amp;
-bid him come to dinner”</li>
+bid him come to dinner”</item>
 					<pb n="678"/>
-					<li>12.   ”Guard us from long winded lubbers
+					<item>12.   ”Guard us from long winded lubbers
 						<lb/>
 						That to Eternity would sing And keep my
 						<lb/>
-						Lady from her rubbers”</li>
-				</ul>
+						Lady from her rubbers”</item>
+				</list>
 			</div3>
 			<div3 id="b13.19.5" page="678">
 				<p rend="center">Ode to Adversity</p>
-				<ul>
+				<list>
 					<p>Design</p>
-					<li>1.    A Widower'&amp; children</li>
-					<li>2.    Grief among the roots of trees</li>
-					<li>3.    “Purple tyrant vainly groans”</li>
-					<li>4.    “Stern rugged Nurse”
+					<item>1.    A Widower'&amp; children</item>
+					<item>2.    Grief among the roots of trees</item>
+					<item>3.    “Purple tyrant vainly groans”</item>
+					<item>4.    “Stern rugged Nurse”
 						<lb/>
 						Virtue Nursd in the
-Lap of Adversity</li>
-					<li>5.    “In thy Gorgon terrors clad
+Lap of Adversity</item>
+					<item>5.    “In thy Gorgon terrors clad
 						<lb/>
 						Screaming horrors funeral
 cry
 						<lb/>
-						Despair &amp; Fell Disease &amp; ghastly Poverty”</li>
-					<li>6.    “Oh gently on thy suppliants head
+						Despair &amp; Fell Disease &amp; ghastly Poverty”</item>
+					<item>6.    “Oh gently on thy suppliants head
 						<lb/>
 						Dread Goddess
-lay thy chastening hand”</li>
-				</ul>
+lay thy chastening hand”</item>
+				</list>
 			</div3>
 			<div3 id="b13.19.6" page="678">
 				<p rend="center">The Progress of Poesy</p>
-				<ul>
-					<li>1.   The Beginning of Poesy.  The blind begging Bard</li>
-					<li>2.   Study</li>
-					<li>3.   “The Laughing flowers that round them blow”
+				<list>
+					<item>1.   The Beginning of Poesy.  The blind begging Bard</item>
+					<item>2.   Study</item>
+					<item>3.   “The Laughing flowers that round them blow”
 						<lb/>
-						Drink life &amp; fragrance as they flow</li>
-					<li>4.   “Perching on the Scepterd hand
+						Drink life &amp; fragrance as they flow</item>
+					<item>4.   “Perching on the Scepterd hand
 						<lb/>
 						Of Jove, thy magic
-lulls the featherd king”</li>
-					<li>5.   “Cythereas Day.&quot;</li>
-					<li>6.   “Hyperions march they spy &amp; glittering shafts of war”</li>
-					<li>7.   “Shaggy forms oer Ice built mountains roam”</li>
-					<li>8.   “Alike they scorn the pomp of Tyrant power
+lulls the featherd king”</item>
+					<item>5.   “Cythereas Day.&quot;</item>
+					<item>6.   “Hyperions march they spy &amp; glittering shafts of war”</item>
+					<item>7.   “Shaggy forms oer Ice built mountains roam”</item>
+					<item>8.   “Alike they scorn the pomp of Tyrant power
 						<lb/>
 						And coward
-Vice that revels in her chains</li>
-					<li>9.   “To him the mighty Mother did unveil
+Vice that revels in her chains</item>
+					<item>9.   “To him the mighty Mother did unveil
 						<lb/>
-						Her awful Face”</li>
-					<li>10.  “Dryden.
+						Her awful Face”</item>
+					<item>10.  “Dryden.
 						<lb/>
-						&quot;Bright Eyd Fancy hovering o'er”</li>
-					<li>11.     Oft before his Infant eyes would run
+						&quot;Bright Eyd Fancy hovering o'er”</item>
+					<item>11.     Oft before his Infant eyes would run
 						<lb/>
 						Such forms as glitter
-in the Muses ray</li>
-					<li>12.  A Muse,</li>
-				</ul>
+in the Muses ray</item>
+					<item>12.  A Muse,</item>
+				</list>
 			</div3>
 			<pb n="679"/>
 			<div3 id="b13.19.7" page="679">
 				<p rend="center">The Bard.</p>
-				<ul>
-					<li>1.   A Welch Bard.</li>
-					<li>2.   The Slaughterd Bards, taken from the line
+				<list>
+					<item>1.   A Welch Bard.</item>
+					<item>2.   The Slaughterd Bards, taken from the line
 						<lb/>
 						“The famishd
-Eagle screams &amp; passes by” Page 98.</li>
-					<li>3.   The Bard weaving Edwards fate</li>
-					<li>4.   Edward &amp; his Queen &amp; Nobles astonishd at the Bards Song</li>
-					<li>5.   “Hark how each Giant Oak &amp; Desart Cave
+Eagle screams &amp; passes by” Page 98.</item>
+					<item>3.   The Bard weaving Edwards fate</item>
+					<item>4.   Edward &amp; his Queen &amp; Nobles astonishd at the Bards Song</item>
+					<item>5.   “Hark how each Giant Oak &amp; Desart Cave
 						<lb/>
 						Sigh to
-the Torrents awful voice beneath”</li>
-					<li>6.   “On yonder cliffs.  “I see them Sit”</li>
-					<li>7.   “Oer thy country hangs” The scourge of heaven”</li>
-					<li>8.   The Whirlwind.  “Hushd in grim repose”</li>
-					<li>9.   “Fell thirst &amp; Famine scowl
+the Torrents awful voice beneath”</item>
+					<item>6.   “On yonder cliffs.  “I see them Sit”</item>
+					<item>7.   “Oer thy country hangs” The scourge of heaven”</item>
+					<item>8.   The Whirlwind.  “Hushd in grim repose”</item>
+					<item>9.   “Fell thirst &amp; Famine scowl
 						<lb/>
 						A baleful smile upon
-their baffled guest”</li>
-					<li>10.  The death of Edwards Queen Eleanor from this line
+their baffled guest”</item>
+					<item>10.  The death of Edwards Queen Eleanor from this line
 						<lb/>
 						“Half
-of thy heart we consecrate”</li>
-					<li>11.  Elizabeth.  “Girt with many a Baron bold”</li>
-					<li>12.  Spenser Creating his Fairies.</li>
-					<li>13.  “Headlong from the Mountains height 
+of thy heart we consecrate”</item>
+					<item>11.  Elizabeth.  “Girt with many a Baron bold”</item>
+					<item>12.  Spenser Creating his Fairies.</item>
+					<item>13.  “Headlong from the Mountains height 
 						<lb/>
 						Deep in the
-roaring tide he plungd to endless night”</li>
-					<li>14.  A poor Goatherd in Wales.--</li>
-				</ul>
+roaring tide he plungd to endless night”</item>
+					<item>14.  A poor Goatherd in Wales.--</item>
+				</list>
 			</div3>
 			<div3 id="b13.19.8" page="679">
 				<p rend="center">The Fatal Sisters</p>
-				<ul>
-					<li>1.   The Three Fatal Sisters</li>
-					<li>2.   A Muse</li>
-					<li>3.   Sigtryg with the Silken beard</li>
-					<li>4.   “Persons of Horseback riding full speed toward a hill
+				<list>
+					<item>1.   The Three Fatal Sisters</item>
+					<item>2.   A Muse</item>
+					<item>3.   Sigtryg with the Silken beard</item>
+					<item>4.   “Persons of Horseback riding full speed toward a hill
 						<lb/>
-						&amp; seeming to Enter into it</li>
-					<li>5.   “Iron sleet of arrowy shower
+						&amp; seeming to Enter into it</item>
+					<item>5.   “Iron sleet of arrowy shower
 						<lb/>
 						Hurtles in the darkend
-air”</li>
-					<li>6.   “Shafts for shuttle dyed in gore
+air”</item>
+					<item>6.   “Shafts for shuttle dyed in gore
 						<lb/>
 						Shoot the trembling
-cords along”</li>
-					<li>7.   “We the reins to Slaughter give”</li>
-					<li>8.   The Fatal Sisters riding thro the Battle. they are calld in   
+cords along”</item>
+					<item>7.   “We the reins to Slaughter give”</item>
+					<item>8.   The Fatal Sisters riding thro the Battle. they are calld in   
   Some
 						<lb/>
-						Northern poems “Choosers of the Slain”</li>
-					<li>9.   “Hurry Hurry to the field”</li>
-					<li>10.  A Battle.</li>
-				</ul>
+						Northern poems “Choosers of the Slain”</item>
+					<item>9.   “Hurry Hurry to the field”</item>
+					<item>10.  A Battle.</item>
+				</list>
 			</div3>
 			<pb n="680"/>
 			<div3 id="b13.19.9" page="680">
 				<p rend="center">The Descent of Odin</p>
-				<ul>
-					<li>1.   The Serpent who girds the Earth</li>
-					<li>2.   Spectres</li>
-					<li>3.   “Him the Dog of Darkness spied”</li>
-					<li>4.   “Right against the eastern gate
+				<list>
+					<item>1.   The Serpent who girds the Earth</item>
+					<item>2.   Spectres</item>
+					<item>3.   “Him the Dog of Darkness spied”</item>
+					<item>4.   “Right against the eastern gate
 						<lb/>
 						By the moss grown
-Pile he sat.”</li>
-					<li>5.   The Prophetess Rising from her Grave</li>
-					<li>6.   “Tis the Drink of Balder bold”</li>
-					<li>7.   “A wondrous boy shall Rinda bear
+Pile he sat.”</item>
+					<item>5.   The Prophetess Rising from her Grave</item>
+					<item>6.   “Tis the Drink of Balder bold”</item>
+					<item>7.   “A wondrous boy shall Rinda bear
 						<lb/>
 						Who neer shall comb
 his raven hair
@@ -50704,98 +50704,98 @@ his raven hair
 						Nor wash his visage in the stream
 						<lb/>
 						Till he on
-Hoders corse shall smile”</li>
-					<li>8.   “Ha! No traveller art thou
+Hoders corse shall smile”</item>
+					<item>8.   “Ha! No traveller art thou
 						<lb/>
 						King of Men I know thee
-Now”</li>
-					<li>9.   “Hie thee hence”</li>
-					<li>10.  The Serpent &amp; the Wolvish Dog. two terrors in the Northern
-     Mythology</li>
-				</ul>
+Now”</item>
+					<item>9.   “Hie thee hence”</item>
+					<item>10.  The Serpent &amp; the Wolvish Dog. two terrors in the Northern
+     Mythology</item>
+				</list>
 			</div3>
 			<div3 id="b13.19.10" page="680">
 				<p rend="center">The Triumphs of Owen</p>
-				<ul>
-					<li>1.   A Standard bearer fainting in the routed battle</li>
-					<li>2.   A 
+				<list>
+					<item>1.   A Standard bearer fainting in the routed battle</item>
+					<item>2.   A 
 						<supplied>[xxxx]</supplied>
 						<add>&lt;Festal&gt;</add>
-						board</li>
-					<li>3.   The Bard singing Owens praise</li>
-					<li>4.   “Dauntless on his native sands      The Dragon son of Mona
-stands”</li>
-					<li>5.   “Fear to Stop &amp; Shame to fly”</li>
-					<li>6.   The liberal Man inviting the traveller into his house</li>
-				</ul>
+						board</item>
+					<item>3.   The Bard singing Owens praise</item>
+					<item>4.   “Dauntless on his native sands      The Dragon son of Mona
+stands”</item>
+					<item>5.   “Fear to Stop &amp; Shame to fly”</item>
+					<item>6.   The liberal Man inviting the traveller into his house</item>
+				</list>
 			</div3>
 			<div3 id="b13.19.11" page="680">
 				<p rend="center">Ode for Music.</p>
-				<ul>
-					<li>1.   Fame.</li>
-					<li>2.   A bird singing</li>
-					<li>3.   A Genius driving away “Comus &amp; his midnight crew”</li>
-					<li>4.   Milton struck the corded Shell
+				<list>
+					<item>1.   Fame.</item>
+					<item>2.   A bird singing</item>
+					<item>3.   A Genius driving away “Comus &amp; his midnight crew”</item>
+					<item>4.   Milton struck the corded Shell
 						<lb/>
 						Newtons self bends from
-his state sublime</li>
+his state sublime</item>
 					<pb n="681"/>
-					<li>5.   “I wood the gleam of Cynthia silver bright
+					<item>5.   “I wood the gleam of Cynthia silver bright
 						<lb/>
-						Where willowy Comus lingers with delight”</li>
-					<li>6.   “Great Edward with the lillies on his brow 
+						Where willowy Comus lingers with delight”</item>
+					<item>6.   “Great Edward with the lillies on his brow 
 						<lb/>
 						To hail
-the festal morning come”</li>
-					<li>7.   “Leaning from her golden cloud 
+the festal morning come”</item>
+					<item>7.   “Leaning from her golden cloud 
 						<lb/>
-						The venerable Margaret“</li>
-					<li>8.   “The Laureate wreathe”</li>
-					<li>9.   “Nor fear the rocks nor seek the Shore”</li>
-					<li>10.  Fame.</li>
-				</ul>
+						The venerable Margaret“</item>
+					<item>8.   “The Laureate wreathe”</item>
+					<item>9.   “Nor fear the rocks nor seek the Shore”</item>
+					<item>10.  Fame.</item>
+				</list>
 			</div3>
 			<div3 id="b13.19.12" page="681">
 				<p rend="center">Epitaph</p>
-				<ul>
-					<li>1.   The mourner at the tomb</li>
-					<li>2.   Her infant image here below 
+				<list>
+					<item>1.   The mourner at the tomb</item>
+					<item>2.   Her infant image here below 
 						<lb/>
 						Sits smiling on a Fathers
-woe</li>
-				</ul>
+woe</item>
+				</list>
 			</div3>
 			<div3 id="b13.19.13" page="681">
 				<p rend="center">Elegy</p>
-				<ul>
-					<li>1.   The author writing</li>
-					<li>2.   Contemplation among Tombs</li>
-					<li>3.   “The Plowman homeward plods his weary way
+				<list>
+					<item>1.   The author writing</item>
+					<item>2.   Contemplation among Tombs</item>
+					<item>3.   “The Plowman homeward plods his weary way
 						<lb/>
 						And leaves
-the world to darkness &amp; to me”</li>
-					<li>4.   “For him no more the blazing hearth shall burn 
+the world to darkness &amp; to me”</item>
+					<item>4.   “For him no more the blazing hearth shall burn 
 						<lb/>
 						Nor
-children run to lisp their sires return”</li>
-					<li>5.   “Oft did the Harvest to their sickle yield”</li>
-					<li>6.   “Chill penury repressd their noble rage”</li>
-					<li>7.   “Some Village Hampden that with dauntless breast 
+children run to lisp their sires return”</item>
+					<item>5.   “Oft did the Harvest to their sickle yield”</item>
+					<item>6.   “Chill penury repressd their noble rage”</item>
+					<item>7.   “Some Village Hampden that with dauntless breast 
 						<lb/>
-						The little Tyrant of his Fields withstood”</li>
-					<li>8.   “Many a holy text around she straws”</li>
-					<li>9.   “Some kindred spirit shall enquire thy fate 
+						The little Tyrant of his Fields withstood”</item>
+					<item>8.   “Many a holy text around she straws”</item>
+					<item>9.   “Some kindred spirit shall enquire thy fate 
 						<lb/>
 						Haply
 some hoary beaded swain may say
 						<lb/>
 						Oft &amp;
 						<hi rend="sup">c</hi>
-						“</li>
-					<li>10.  “Slow thro the Churchway path we saw him borne”</li>
-					<li>11.  A Shepherd reading the Epitaph</li>
-					<li>12.  A Spirit conducted to Paradise</li>
-				</ul>
+						“</item>
+					<item>10.  “Slow thro the Churchway path we saw him borne”</item>
+					<item>11.  A Shepherd reading the Epitaph</item>
+					<item>12.  A Spirit conducted to Paradise</item>
+				</list>
 			</div3>
 		</div2>
 		<pb n="682"/>
@@ -51328,18 +51328,18 @@ of Heaven</p>
 from Purgatory after they have passed the Center</p>
 				<p>In Equivocal Worlds Up &amp; Down are Equivocal</p>
 				<p>Limbo</p>
-				<ul>
-					<p><li>1 Charon       3 Cerberus</li></p>
-					<p><li>2 Minos        4 Plutus &amp; Phlegyas</li></p>
-					<p><li>5 City of Dis furies &amp;   Queen of Endless Woe   Lesser Circle  
-Point of the Universe   Canto Eleventh line 68</li></p>
-					<p><li>6 Minotaur The City of Dis seems to occupy the Space between the Fifth
-&amp; Sixth Circles   or perhaps it occupies both Circles with its Environs</li></p>
-					<p><li>7 Centaurs   Most likely Dante describes the 7 8 &amp; 9 Circles in
-Canto XI v 18   3 Compartments   Dante calls them Cerchietti</li></p>
-					<p><li>8 Geryon Malebolge Containing 10 Gulphs</li></p>
-					<p><li>9 Lucifer Containing 9 Rounds</li></p>
-				</ul>
+				<list>
+					<p><item>1 Charon       3 Cerberus</item></p>
+					<p><item>2 Minos        4 Plutus &amp; Phlegyas</item></p>
+					<p><item>5 City of Dis furies &amp;   Queen of Endless Woe   Lesser Circle  
+Point of the Universe   Canto Eleventh line 68</item></p>
+					<p><item>6 Minotaur The City of Dis seems to occupy the Space between the Fifth
+&amp; Sixth Circles   or perhaps it occupies both Circles with its Environs</item></p>
+					<p><item>7 Centaurs   Most likely Dante describes the 7 8 &amp; 9 Circles in
+Canto XI v 18   3 Compartments   Dante calls them Cerchietti</item></p>
+					<p><item>8 Geryon Malebolge Containing 10 Gulphs</item></p>
+					<p><item>9 Lucifer Containing 9 Rounds</item></p>
+				</list>
 				<p>It seems as if Dantes supreme Good was something Superior to the Father
 or Jesus 
 					<del>
@@ -51419,55 +51419,55 @@ the History of England.</p>
 			<p>The following are the Subjects of the several Works now published
 and on Sale at Mr. Blake's, No. 13, Hercules Buildings, Lambeth.</p>
 			<pb n="693"/>
-			<ul>
-				<li>1.  Job, a Historical Engraving.  Size 1 ft.7 1/2 in. by
+			<list>
+				<item>1.  Job, a Historical Engraving.  Size 1 ft.7 1/2 in. by
 1 ft. 2 in.: price 12
 					<hi rend="i">s</hi>
-					.</li>
-				<li>2.  Edward and Elinor, a Historical Engraving.  Size 1 ft. 6 1/2
+					.</item>
+				<item>2.  Edward and Elinor, a Historical Engraving.  Size 1 ft. 6 1/2
 in. by 1 ft.: price 10
 					<hi rend="i">s</hi>
 					. 6
 					<hi rend="i">d</hi>
-					.</li>
-				<li>3.  America, a Prophecy, in Illuminated Printing.  Folio, with
+					.</item>
+				<item>3.  America, a Prophecy, in Illuminated Printing.  Folio, with
 18 designs: price 10
 					<hi rend="i">s</hi>
 					. 6
 					<hi rend="i">d</hi>
-					.</li>
-				<li>4.  Visions of the Daughters of Albion, in Illuminated Printing.
+					.</item>
+				<item>4.  Visions of the Daughters of Albion, in Illuminated Printing.
  Folio, with 8 designs, price 7
 					<hi rend="i">s</hi>
 					. 6
 					<hi rend="i">d</hi>
-					.</li>
-				<li>5.  The Book of Thel, a Poem in Illuminated Printing.  Quarto, with
+					.</item>
+				<item>5.  The Book of Thel, a Poem in Illuminated Printing.  Quarto, with
 6 designs, price 3
 					<hi rend="i">s</hi>
-					.</li>
-				<li>6.  The Marriage of Heaven  and Hell, in Illuminated Printing.
+					.</item>
+				<item>6.  The Marriage of Heaven  and Hell, in Illuminated Printing.
  Quarto, with 14 designs, price 7
 					<hi rend="i">s</hi>
 					. 6
 					<hi rend="i">d</hi>
-					.</li>
-				<li>7.  Songs of Innocence, in Illuminated Printing.  Octavo, with
+					.</item>
+				<item>7.  Songs of Innocence, in Illuminated Printing.  Octavo, with
 25 designs, price 5
 					<hi rend="i">s</hi>
-					.</li>
-				<li>8.  Songs of Experience, in Illuminated Printing.  Octavo, with
+					.</item>
+				<item>8.  Songs of Experience, in Illuminated Printing.  Octavo, with
 25 designs, price 5
 					<hi rend="i">s</hi>
-					.</li>
-				<li>9.  The History of England, a small book of Engravings.  Price
+					.</item>
+				<item>9.  The History of England, a small book of Engravings.  Price
 3
 					<hi rend="i">s</hi>
-					.</li>
-				<li>10. The Gates of Paradise, a small book of Engravings.  Price 3
+					.</item>
+				<item>10. The Gates of Paradise, a small book of Engravings.  Price 3
 					<hi rend="i">s</hi>
-					.</li>
-			</ul>
+					.</item>
+			</list>
 			<p>The Illuminated Books are Printed in Colours, and on the most beautiful
 wove paper that could be procured,</p>
 			<p>No Subscriptions for the numerous great works now in hand are asked,
@@ -55624,20 +55624,20 @@ procured</p>
 				<hi rend="sup">r</hi>
 				Flaxman named the following Eight as proper
 subjects for Prints</p>
-			<ul>
-				<li>1 The Vision of Atossa from Eschylus</li>
-				<li>2 Apparition of Darius
-					<pb n="753"/></li>
-				<li>3 Black Eyd Susan—a figure on the Sea shore embracing a Corse</li>
-				<li>4 The Shipwreck with the Man on Horseback &amp;c which I have</li>
-				<li>5 Hecate. a very fine thing indeed, which I have</li>
-				<li>6 Pliny very fine but very unfinishd. which I have</li>
-				<li>7 Lear &amp; Cordelia. belonging to M
+			<list>
+				<item>1 The Vision of Atossa from Eschylus</item>
+				<item>2 Apparition of Darius
+					<pb n="753"/></item>
+				<item>3 Black Eyd Susan—a figure on the Sea shore embracing a Corse</item>
+				<item>4 The Shipwreck with the Man on Horseback &amp;c which I have</item>
+				<item>5 Hecate. a very fine thing indeed, which I have</item>
+				<item>6 Pliny very fine but very unfinishd. which I have</item>
+				<item>7 Lear &amp; Cordelia. belonging to M
 					<hi rend="sup">r</hi>
-					Walker  </li>
-				<li>8 One other which I omitted to write down &amp; have forgot but think
-that it was a Figure with Children which he calld         a Charity</li>
-			</ul>
+					Walker  </item>
+				<item>8 One other which I omitted to write down &amp; have forgot but think
+that it was a Figure with Children which he calld         a Charity</item>
+			</list>
 			<p>I write immediately on recieving the Above Information. because no time
 should be lost in this truly interesting business</p>
 			<p>Richardson is not yet Published.  My Head of Romney is in very great
