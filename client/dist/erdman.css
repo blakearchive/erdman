@@ -1,3 +1,7 @@
+ul {
+    list-style:none;
+}
+
 .erdman-reader{
     width: 68vw;
     margin-left: 32vw;
