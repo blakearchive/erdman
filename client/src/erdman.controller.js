@@ -141,7 +141,6 @@ class ErdmanController {
     }
 
     openNote(id) {
-        console.log(notes[id]);
         this.scope.$apply(this.note = notes[id]);
     }
 
