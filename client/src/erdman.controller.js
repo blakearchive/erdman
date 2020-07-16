@@ -57,7 +57,7 @@ class ErdmanController {
 
                 const pageObject = pages.filter(page => page.page_id == doc.page_id);
                 resultIds.push(doc.id);
-
+                console.log(pageObject);
                 let headingId = '';
                 if(pageObject[0].headings[0][1].length > 0){
                     headingId = pageObject[0].headings[0][1][0][0];
