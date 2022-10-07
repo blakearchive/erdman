@@ -1,5 +1,5 @@
 import os
 
 secret_key = ""
-static_folder = "path/to/client/dir"
+static_folder = "../client/dist/"
 os.environ["SOLR_URL"] = "solrUrl"

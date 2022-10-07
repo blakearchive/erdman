@@ -29,7 +29,7 @@ class ErdmanTransformer(ContentHandler):
             current_heading = current_heading[idx]
         contents = [self.create_tag(tag_name, attrs) for (tag_name, attrs) in self.open_tags]
         if not page_id:
-            page_id = "unid_" + str(_counter.next())
+            page_id = "unid_" + str(next(_counter))
         return {
             "page_id": page_id,
             "headings": headings,
@@ -37,19 +37,19 @@ class ErdmanTransformer(ContentHandler):
         }
 
     @staticmethod
-    def key_value_pair_as_unicode(key, value):
-        return '%s="%s"'.encode('utf-8') % (key.encode('utf-8'), value.encode('utf-8'))
+    def key_value_pair(key, value):
+        return '%s="%s"' % (key, value)
 
     @classmethod
     def tag_with_attributes(cls, tag_name, attrs):
-        attrs_text = [cls.key_value_pair_as_unicode(k, v) for (k, v) in attrs.items() if v]
+        attrs_text = [cls.key_value_pair(k, v) for (k, v) in attrs.items() if v]
         if attrs_text:
-            tag_name += " %s".encode('utf-8') % ' '.encode('utf-8').join(attrs_text)
+            tag_name += " %s" % ' '.join(attrs_text)
         return tag_name
 
     @classmethod
     def create_tag(cls, tag_name, attrs=None):
-        template = "<%s>".encode('utf-8')
+        template = "<%s>"
         if attrs:
             return template % cls.tag_with_attributes(tag_name, attrs)
         return template % tag_name
@@ -94,7 +94,7 @@ class ErdmanTransformer(ContentHandler):
                 heading = self.current_heading[0]
                 attrs["class"] = "heading-secondary"
             self.open_tags.append((localname, attrs))
-            tag = self.create_tag('head'.encode('utf-8'), attrs)
+            tag = self.create_tag('head', attrs)
             self.current_page["contents"].append(tag)
         elif localname == 'pb':
             self.next_page_id = attrs["n"]
@@ -123,11 +123,11 @@ class ErdmanTransformer(ContentHandler):
 
     def generate_page_html(self):
         page_attrs = {"class": "page", "id": self.current_page["page_id"]}
-        page_tag = self.create_tag('div'.encode('utf-8'), page_attrs)
+        page_tag = self.create_tag('div', page_attrs)
         page_tags_unicode = [c for c in self.current_page["contents"]]
-        page_content = ''.encode('utf-8').join(page_tags_unicode)
-        page_closing_tags = ''.encode('utf-8').join('</%s>' % tag for (tag, attrs) in reversed(self.open_tags))
-        page_xml = page_tag + page_content + page_closing_tags + "</div>".encode('utf-8')
+        page_content = ''.join(page_tags_unicode)
+        page_closing_tags = ''.join('</%s>' % tag for (tag, attrs) in reversed(self.open_tags))
+        page_xml = page_tag + page_content + page_closing_tags + "</div>"
         page_html = self.transformer.transform(etree.fromstring(page_xml))
         return etree.tostring(page_html)
 
@@ -217,19 +217,20 @@ def get_notes():
     transformer = XMLTransformer()
     notes_document = etree.parse("../data/erd4.xml")
     notes = notes_document.xpath(".//note")
-    return dict((n.attrib["id"], etree.tostring(transformer.transform(n))) for n in notes if "id" in n.attrib)
+    return dict((n.attrib["id"], str(etree.tostring(transformer.transform(n)))) for n in notes if "id" in n.attrib)
 
 
 def populate_solr(solr_url, pages):
     solr = pysolr.Solr(solr_url)
     solr.delete(q='*:*')
     for (i, page) in enumerate(pages):
+        print(page)
         solr.add([{
             "id": i,
             "page_id": page["page_id"],
             "headings": json.dumps(page["headings"]),
-            "contents": page["contents"],
-            "text_contents": page["text_contents"]
+            "contents": page["contents"].decode(),
+            "text_contents": str(page["text_contents"])
 
         }])
     solr.optimize()
@@ -251,6 +252,7 @@ def main():
     parser.add_argument("-d", "--data_only", action="store_true", default=False)
     args = parser.parse_args()
     do_import(args.solr_url, args.data_only)
+
 
 if __name__ == "__main__":
     main()
