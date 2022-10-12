@@ -3,3 +3,4 @@ import os
 secret_key = ""
 static_folder = "../client/dist/"
 os.environ["SOLR_URL"] = "solrUrl"
+wsgi_path = "/htdocs/flask/<app name>"
