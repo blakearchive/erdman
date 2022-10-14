@@ -30,9 +30,7 @@ namespace :deploy do
   task :seed do
     on roles(:app) do |h|
       info 'Seeding Solr'
-      within "#{current_path}/scripts" do
-        execute :python, "transform.py", "'#{fetch(:solrUrl)}:8983/solr/erdman'"
-      end
+      execute "source /htdocs/flask/erdman/bin/activate && cd #{current_path}/scripts && python3 transform.py #{fetch(:solrUrl)}:8983/solr/erdman"
     end
   end
 
@@ -44,5 +42,5 @@ if fetch(:index_solr) == 'y'
   after 'deploy:cleanup', 'deploy:seed'
 end
 
-#after 'deploy:cleanup', 'deploy:restartSolr'
-#after 'deploy:cleanup', 'deploy:restartPython'
+after 'deploy:cleanup', 'deploy:restartSolr'
+after 'deploy:cleanup', 'deploy:restartPython'
