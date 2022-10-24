@@ -3,3 +3,4 @@ client/node_modules/
 client/typings/
 server/config.py
 *.pyc
+.DS_Store
