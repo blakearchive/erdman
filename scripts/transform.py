@@ -248,7 +248,7 @@ def write_data_files(pages, titles):
 def main():
     import argparse
     parser = argparse.ArgumentParser()
-    parser.add_argument("solr_url", default='http://localhost:8983/solr/erdman')
+    parser.add_argument("solr_url", default='http://127.0.0.1:8983/solr/erdman')
     parser.add_argument("-d", "--data_only", action="store_true", default=False)
     args = parser.parse_args()
     do_import(args.solr_url, args.data_only)
