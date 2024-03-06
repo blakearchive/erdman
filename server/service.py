@@ -2,7 +2,7 @@ import pysolr
 import os
 import re
 
-erdman_pages = pysolr.Solr(os.environ.get("SOLR_URL","http://localhost:28983/solr/erdman"))
+erdman_pages = pysolr.Solr(os.environ.get("SOLR_URL","http://localhost:8983/solr/erdman"))
 
 
 class ErdmanDataService(object):
