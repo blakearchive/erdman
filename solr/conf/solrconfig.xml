@@ -1427,14 +1427,14 @@
   </queryResponseWriter>
 
     <!-- @todo I don't think this gets used -->
-  <!-- XSLT response writer transforms the XML output by any xslt file found
+   XSLT response writer transforms the XML output by any xslt file found
        in Solr's conf/xslt directory.  Changes to xslt files are checked for
        every xsltCacheLifetimeSeconds.
 
   <queryResponseWriter name="xslt" class="solr.scripting.xslt.XSLTResponseWriter">
     <int name="xsltCacheLifetimeSeconds">5</int>
   </queryResponseWriter>
-  -->
+  
 
   <!-- Query Parsers
 
