@@ -6,6 +6,7 @@ from collections import OrderedDict
 from itertools import count
 import json
 import pysolr
+
 # import config
 
 _counter = count(1)
@@ -37,19 +38,19 @@ class ErdmanTransformer(ContentHandler):
         }
 
     @staticmethod
-    def key_value_pair(key, value):
-        return '%s="%s"' % (key, value)
+    def key_value_pair_as_unicode(key, value):
+        return '%s="%s"'.encode('utf-8') % (key.encode('utf-8'), value.encode('utf-8'))
 
     @classmethod
     def tag_with_attributes(cls, tag_name, attrs):
-        attrs_text = [cls.key_value_pair(k, v) for (k, v) in attrs.items() if v]
+        attrs_text = [cls.key_value_pair_as_unicode(k, v) for (k, v) in attrs.items() if v]
         if attrs_text:
-            tag_name += " %s" % ' '.join(attrs_text)
+            tag_name += " %s".encode('utf-8') % ' '.encode('utf-8').join(attrs_text)
         return tag_name
 
     @classmethod
     def create_tag(cls, tag_name, attrs=None):
-        template = "<%s>"
+        template = "<%s>".encode('utf-8')
         if attrs:
             return template % cls.tag_with_attributes(tag_name, attrs)
         return template % tag_name
@@ -63,23 +64,27 @@ class ErdmanTransformer(ContentHandler):
     def startElementNS(self, name, qname, attrs):
         uri, localname = name
         # Strip the namespace field from the attribute key
-        attrs = dict((k[1],v) for (k, v) in attrs.items())
+        attrs = dict((k[1], v) for (k, v) in attrs.items())
         if localname == 'div1':
             self.current_heading.append((attrs["id"], attrs))
             self.add_current_page_heading(attrs["id"])
-            self.current_page["contents"].append("<span class='sr-only' id='" + attrs["id"] + "'>" + attrs["id"] + "</span>")
+            self.current_page["contents"].append(
+                "<span class='sr-only' id='" + attrs["id"] + "'>" + attrs["id"] + "</span>")
         elif localname == 'div2':
             self.current_heading.append((attrs["id"], attrs))
             self.add_current_page_heading(attrs["id"], 1)
-            self.current_page["contents"].append("<span class='sr-only' id='" + attrs["id"] + "'>" + attrs["id"] + "</span>")
+            self.current_page["contents"].append(
+                "<span class='sr-only' id='" + attrs["id"] + "'>" + attrs["id"] + "</span>")
         elif localname == 'div3':
             self.current_heading.append((attrs["id"], attrs))
             self.add_current_page_heading(attrs["id"], 2)
-            self.current_page["contents"].append("<span class='sr-only' id='" + attrs["id"] + "'>" + attrs["id"] + "</span>")
+            self.current_page["contents"].append(
+                "<span class='sr-only' id='" + attrs["id"] + "'>" + attrs["id"] + "</span>")
         elif localname == 'div4':
             self.current_heading.append((attrs["id"], attrs))
             self.add_current_page_heading(attrs["id"], 3)
-            self.current_page["contents"].append("<span class='sr-only' id='" + attrs["id"] + "'>" + attrs["id"] + "</span>")
+            self.current_page["contents"].append(
+                "<span class='sr-only' id='" + attrs["id"] + "'>" + attrs["id"] + "</span>")
         elif localname == 'head':
             if len(self.current_heading) == 4:
                 heading = self.current_heading[3]
@@ -94,7 +99,7 @@ class ErdmanTransformer(ContentHandler):
                 heading = self.current_heading[0]
                 attrs["class"] = "heading-secondary"
             self.open_tags.append((localname, attrs))
-            tag = self.create_tag('head', attrs)
+            tag = self.create_tag('head'.encode('utf-8'), attrs)
             self.current_page["contents"].append(tag)
         elif localname == 'pb':
             self.next_page_id = attrs["n"]
@@ -111,6 +116,7 @@ class ErdmanTransformer(ContentHandler):
     def generate_page_headings(self):
         def ordered_dict_to_list(ordered_dict):
             return [[k, ordered_dict_to_list(v)] for (k, v) in ordered_dict.items()]
+
         return ordered_dict_to_list(self.current_page["headings"])
 
     def save_page(self):
@@ -123,11 +129,11 @@ class ErdmanTransformer(ContentHandler):
 
     def generate_page_html(self):
         page_attrs = {"class": "page", "id": self.current_page["page_id"]}
-        page_tag = self.create_tag('div', page_attrs)
+        page_tag = self.create_tag('div'.encode('utf-8'), page_attrs)
         page_tags_unicode = [c for c in self.current_page["contents"]]
-        page_content = ''.join(page_tags_unicode)
-        page_closing_tags = ''.join('</%s>' % tag for (tag, attrs) in reversed(self.open_tags))
-        page_xml = page_tag + page_content + page_closing_tags + "</div>"
+        page_content = ''.encode('utf-8').join(page_tags_unicode)
+        page_closing_tags = ''.encode('utf-8').join('</%s>' % tag for (tag, attrs) in reversed(self.open_tags))
+        page_xml = page_tag + page_content + page_closing_tags + "</div>".encode('utf-8')
         page_html = self.transformer.transform(etree.fromstring(page_xml))
         return etree.tostring(page_html)
 
@@ -179,11 +185,12 @@ def get_titles(tree):
         return False
 
     return dict((
-            head.getparent().attrib["id"], {
-                'heading': head.xpath("string()").strip(),
-                'page': head.getparent().attrib["page"] if head.getparent().attrib["page"] else ""
-            }) for head in heads if should_add(head)
-        )
+                    head.getparent().attrib["id"], {
+                        'heading': head.xpath("string()").strip(),
+                        'page': head.getparent().attrib["page"] if head.getparent().attrib["page"] else ""
+                    }) for head in heads if should_add(head)
+                )
+
 
 def parse_document(file_name):
     tree = etree.parse(file_name)
@@ -229,8 +236,8 @@ def populate_solr(solr_url, pages):
             "id": i,
             "page_id": page["page_id"],
             "headings": json.dumps(page["headings"]),
-            "contents": page["contents"].decode(),
-            "text_contents": str(page["text_contents"])
+            "contents": page["contents"],
+            "text_contents": page["text_contents"]
 
         }])
     solr.optimize()
