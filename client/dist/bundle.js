@@ -21844,7 +21844,7 @@
 	            var regExp = new RegExp('.*<em>.*', "g");
 	            var singleLineResult = result.match(regExp);
 	            //console.log(singleLineResult);
-	            var joined = singleLineResult.join();
+	            var joined = singleLineResult.join('<br/>');
 	            return joined.replace(/\d/gi, ' ');
 	        }
 	    }, {
