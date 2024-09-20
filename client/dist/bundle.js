@@ -21841,7 +21841,7 @@
 	        key: 'scrubLineNumbers',
 	        value: function scrubLineNumbers(result) {
 	            singleLineResult = result.match(/.*<em>.*/);
-	            return result.replace(/\d/gi, ' ');
+	            return singleLineResult.replace(/\d/gi, ' ');
 	        }
 	    }, {
 	        key: 'noResults',
