@@ -21811,7 +21811,7 @@
 
 /***/ }),
 /* 13 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -21820,6 +21820,12 @@
 	});
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _angularSanitize = __webpack_require__(3);
+
+	var ngSanitize = _interopRequireWildcard(_angularSanitize);
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -21843,6 +21849,15 @@
 	        value: function noResults() {
 	            return angular.equals(this.results, {});
 	        }
+	    }, {
+	        key: 'safe',
+	        value: function safe(page) {
+	            if (page.highlight_contents) {
+	                return this.$sce.trustAsHtml(page.highlight_contents);
+	            } else {
+	                return this.$sce.trustAsHtml(page.contents);
+	            }
+	        }
 	    }]);
 
 	    return SearchResultsController;
@@ -21856,7 +21871,7 @@
 	        query: '@'
 	    },
 	    controller: SearchResultsController,
-	    template: '\n            <div class="no-results" ng-if="$ctrl.noResults()">\n                <h2>No results found for <em>{{ $ctrl.query }}</em></h2>\n            </div>\n            <div ng-repeat="(id,heading) in $ctrl.results track by $index" class="result-group">\n                <span class="result-heading">{{heading.heading.heading}}</span>\n                <ul class="list-unstyled" ng-repeat="result in heading.results track by $index">\n                    <li ng-repeat="preview in result.preview track by $index" style="margin-left: 20px; padding: 3px 0;">\n                        <span class="preview" ng-bind-html="trustAsHtml($ctrl.scrubLineNumbers(preview))"></span>\n                        <a href="#{{ result.page_id }}" ng-click="$ctrl.closeSearchResults()">(...Page {{ result.page_id }})</a>\n                    </li>\n                </ul>\n            </div>\n        '
+	    template: '\n            <div class="no-results" ng-if="$ctrl.noResults()">\n                <h2>No results found for <em>{{ $ctrl.query }}</em></h2>\n            </div>\n            <div ng-repeat="(id,heading) in $ctrl.results track by $index" class="result-group">\n                <span class="result-heading">{{heading.heading.heading}}</span>\n                <ul class="list-unstyled" ng-repeat="result in heading.results track by $index">\n                    <li ng-repeat="preview in result.preview track by $index" style="margin-left: 20px; padding: 3px 0;">\n                        <span class="preview" ng-bind-html="$ctrl.safe(scrubLineNumbers(preview))"></span>\n                        <a href="#{{ result.page_id }}" ng-click="$ctrl.closeSearchResults()">(...Page {{ result.page_id }})</a>\n                    </li>\n                </ul>\n            </div>\n        '
 	};
 
 	var searchResults = angular.module('searchResults', ['ngSanitize']).component('searchResults', SearchResultsComponent).name;
