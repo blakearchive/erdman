@@ -1,4 +1,4 @@
-import * as ngSanitize from 'angular-sanitize';
+//import * as ngSanitize from 'angular-sanitize';
 
 class SearchResultsController {
     constructor($sce) {
@@ -16,10 +16,11 @@ class SearchResultsController {
     noResults(){
         return angular.equals(this.results,{});
     }
-
+/*
     safe(string){
         return this.$sce.trustAsHtml(string);
     }
+*/
 }
 
 const SearchResultsComponent = {

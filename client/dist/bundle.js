@@ -21811,7 +21811,7 @@
 
 /***/ }),
 /* 13 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
 	'use strict';
 
@@ -21821,13 +21821,9 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _angularSanitize = __webpack_require__(3);
-
-	var ngSanitize = _interopRequireWildcard(_angularSanitize);
-
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	//import * as ngSanitize from 'angular-sanitize';
 
 	var SearchResultsController = function () {
 	    function SearchResultsController($sce) {
@@ -21851,11 +21847,12 @@
 	        value: function noResults() {
 	            return angular.equals(this.results, {});
 	        }
-	    }, {
-	        key: 'safe',
-	        value: function safe(string) {
-	            return this.$sce.trustAsHtml(string);
-	        }
+	        /*
+	            safe(string){
+	                return this.$sce.trustAsHtml(string);
+	            }
+	        */
+
 	    }]);
 
 	    return SearchResultsController;
