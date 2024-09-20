@@ -10,6 +10,7 @@ class SearchResultsController {
     }
 
     scrubLineNumbers(result){
+        console.log(result);
         return result.replace(/\d/gi,' ');
     }
 
