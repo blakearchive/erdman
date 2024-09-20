@@ -11,7 +11,8 @@ class SearchResultsController {
 
     scrubLineNumbers(result){
         console.log(result);
-        singleLineResult = result.match(/.*<em>.*/);
+        const regExp = new RegExp('.*<em>.*', 'g')
+        singleLineResult = result.match(regExp);
         console.log(singleLineResult);
         return singleLineResult.replace(/\d/gi,' ');
     }

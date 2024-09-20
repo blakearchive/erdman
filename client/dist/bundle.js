@@ -21841,7 +21841,8 @@
 	        key: 'scrubLineNumbers',
 	        value: function scrubLineNumbers(result) {
 	            console.log(result);
-	            singleLineResult = result.match(/.*<em>.*/);
+	            var regExp = new RegExp('.*<em>.*', 'g');
+	            singleLineResult = result.match(regExp);
 	            console.log(singleLineResult);
 	            return singleLineResult.replace(/\d/gi, ' ');
 	        }
