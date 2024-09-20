@@ -3,7 +3,6 @@ import * as ngSanitize from 'angular-sanitize';
 class SearchResultsController {
     constructor($sce, $scope) {
         this.$sce = $sce;
-        this.$sce = $scope;
     }
 
     handleGoToPage(pageId){
@@ -19,10 +18,10 @@ class SearchResultsController {
     }
 
     safe(string){
-        console.log(string);
-        resultWithoutLineNumbers = scrubLineNumbers(string)
-        console.log(this.$sce.trustAsHtml(resultWithoutLineNumbers));
-        return this.$sce.trustAsHtml(resultWithoutLineNumbers);
+        //console.log(string);
+        //resultWithoutLineNumbers = scrubLineNumbers(string)
+        //console.log(this.$sce.trustAsHtml(resultWithoutLineNumbers));
+        return this.$sce.trustAsHtml(string);
     }
 }
 

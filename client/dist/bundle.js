@@ -21834,7 +21834,6 @@
 	        _classCallCheck(this, SearchResultsController);
 
 	        this.$sce = $sce;
-	        this.$sce = $scope;
 	    }
 
 	    _createClass(SearchResultsController, [{
@@ -21855,10 +21854,10 @@
 	    }, {
 	        key: 'safe',
 	        value: function safe(string) {
-	            console.log(string);
-	            resultWithoutLineNumbers = scrubLineNumbers(string);
-	            console.log(this.$sce.trustAsHtml(resultWithoutLineNumbers));
-	            return this.$sce.trustAsHtml(resultWithoutLineNumbers);
+	            //console.log(string);
+	            //resultWithoutLineNumbers = scrubLineNumbers(string)
+	            //console.log(this.$sce.trustAsHtml(resultWithoutLineNumbers));
+	            return this.$sce.trustAsHtml(string);
 	        }
 	    }]);
 
