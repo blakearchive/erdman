@@ -34,7 +34,7 @@ class ErdmanDataService(object):
 
         result = erdman_pages.search(query, **{
              "hl": "true",
-             "hl.fl": "contents",
+             "hl.fl": "text_contents",
              "hl.snippets": 10,
              "hl.fragsize": 50,
              "fl": "id, page_id",

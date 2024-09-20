@@ -21840,6 +21840,7 @@
 	    }, {
 	        key: 'scrubLineNumbers',
 	        value: function scrubLineNumbers(result) {
+	            singleLineResult = result.match(/.*<em>.*/);
 	            return result.replace(/\d/gi, ' ');
 	        }
 	    }, {
@@ -22028,7 +22029,7 @@
 	                        var headingText = _data.titles[headingId];
 
 	                        var result = {
-	                            preview: response.highlighting[doc.id].contents,
+	                            preview: response.highlighting[doc.id].text_contents,
 	                            page_id: doc.page_id
 	                        };
 

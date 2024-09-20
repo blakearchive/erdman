@@ -10,6 +10,7 @@ class SearchResultsController {
     }
 
     scrubLineNumbers(result){
+        singleLineResult = result.match(/.*<em>.*/);
         return result.replace(/\d/gi,' ');
     }
 
