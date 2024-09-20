@@ -1,8 +1,8 @@
 import * as ngSanitize from 'angular-sanitize';
 
 class SearchResultsController {
-    constructor() {
-
+    constructor($sce) {
+        this.$sce = $sce;
     }
 
     handleGoToPage(pageId){

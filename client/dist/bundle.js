@@ -21830,8 +21830,10 @@
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	var SearchResultsController = function () {
-	    function SearchResultsController() {
+	    function SearchResultsController($sce) {
 	        _classCallCheck(this, SearchResultsController);
+
+	        this.$sce = $sce;
 	    }
 
 	    _createClass(SearchResultsController, [{
