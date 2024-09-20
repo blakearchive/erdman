@@ -21840,7 +21840,9 @@
 	    }, {
 	        key: 'scrubLineNumbers',
 	        value: function scrubLineNumbers(result) {
+	            console.log(result);
 	            singleLineResult = result.match(/.*<em>.*/);
+	            console.log(singleLineResult);
 	            return singleLineResult.replace(/\d/gi, ' ');
 	        }
 	    }, {
