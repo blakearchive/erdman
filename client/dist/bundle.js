@@ -21840,12 +21840,11 @@
 	    }, {
 	        key: 'scrubLineNumbers',
 	        value: function scrubLineNumbers(result) {
-	            ///console.log(result);
-	            //const regExp = new RegExp('.*<em>.*')
-	            //var singleLineResult = result.match(regExp);
+	            //console.log(result);
+	            var regExp = new RegExp('.*<em>.*');
+	            var singleLineResult = result.match(regExp);
 	            //console.log(singleLineResult);
-	            //return singleLineResult[0].replace(/\d/gi,' ');
-	            return result.replace(/\d/gi, ' ');
+	            return singleLineResult[0].replace(/\d/gi, ' ');
 	        }
 	    }, {
 	        key: 'noResults',
