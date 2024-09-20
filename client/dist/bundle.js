@@ -21841,10 +21841,11 @@
 	        key: 'scrubLineNumbers',
 	        value: function scrubLineNumbers(result) {
 	            //console.log(result);
-	            var regExp = new RegExp('.*<em>.*');
+	            var regExp = new RegExp('.*<em>.*', "g");
 	            var singleLineResult = result.match(regExp);
 	            //console.log(singleLineResult);
-	            return singleLineResult[0].replace(/\d/gi, ' ');
+	            var joined = singleLineResult.join();
+	            return joined.replace(/\d/gi, ' ');
 	        }
 	    }, {
 	        key: 'noResults',

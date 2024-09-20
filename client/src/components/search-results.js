@@ -11,10 +11,11 @@ class SearchResultsController {
 
     scrubLineNumbers(result){
         //console.log(result);
-        const regExp = new RegExp('.*<em>.*')
+        const regExp = new RegExp('.*<em>.*', "g")
         var singleLineResult = result.match(regExp);
         //console.log(singleLineResult);
-        return singleLineResult[0].replace(/\d/gi,' ');
+        var joined = singleLineResult.join();
+        return joined.replace(/\d/gi,' ');
     }
 
     noResults(){
