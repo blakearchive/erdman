@@ -10,7 +10,7 @@ class SearchResultsController {
     }
 
     scrubLineNumbers(result){
-        return safe(result.replace(/\d/gi,' '));
+        return result.replace(/\d/gi,' ');
     }
 
     noResults(){
@@ -18,9 +18,6 @@ class SearchResultsController {
     }
 
     safe(string){
-        //console.log(string);
-        //resultWithoutLineNumbers = scrubLineNumbers(string)
-        //console.log(this.$sce.trustAsHtml(resultWithoutLineNumbers));
         return this.$sce.trustAsHtml(string);
     }
 }
