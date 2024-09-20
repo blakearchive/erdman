@@ -21845,7 +21845,6 @@
 	    }, {
 	        key: 'scrubLineNumbers',
 	        value: function scrubLineNumbers(result) {
-	            console.log(result);
 	            return result.replace(/\d/gi, ' ');
 	        }
 	    }, {
@@ -21858,6 +21857,7 @@
 	        value: function safe(string) {
 	            console.log(string);
 	            resultWithoutLineNumbers = scrubLineNumbers(string);
+	            console.log(this.$sce.trustAsHtml(resultWithoutLineNumbers));
 	            return this.$sce.trustAsHtml(resultWithoutLineNumbers);
 	        }
 	    }]);

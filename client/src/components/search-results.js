@@ -11,7 +11,6 @@ class SearchResultsController {
     }
 
     scrubLineNumbers(result){
-        console.log(result);
         return result.replace(/\d/gi,' ');
     }
 
@@ -22,6 +21,7 @@ class SearchResultsController {
     safe(string){
         console.log(string);
         resultWithoutLineNumbers = scrubLineNumbers(string)
+        console.log(this.$sce.trustAsHtml(resultWithoutLineNumbers));
         return this.$sce.trustAsHtml(resultWithoutLineNumbers);
     }
 }
