@@ -1,8 +1,9 @@
 import * as ngSanitize from 'angular-sanitize';
 
 class SearchResultsController {
-    constructor($sce) {
+    constructor($sce, $scope) {
         this.$sce = $sce;
+        this.$sce = $scope;
     }
 
     handleGoToPage(pageId){
@@ -18,12 +19,9 @@ class SearchResultsController {
         return angular.equals(this.results,{});
     }
 
-    safe(page){
-        if(page.highlight_contents){
-            return this.$sce.trustAsHtml(page.highlight_contents);
-        } else {
-            return this.$sce.trustAsHtml(page.contents);
-        }
+    safe(string){
+        resultWithoutLineNumbers = scrubLineNumbers(string)
+        return this.$sce.trustAsHtml(resultWithoutLineNumbers);
     }
 }
 
@@ -43,7 +41,7 @@ const SearchResultsComponent = {
                 <span class="result-heading">{{heading.heading.heading}}</span>
                 <ul class="list-unstyled" ng-repeat="result in heading.results track by $index">
                     <li ng-repeat="preview in result.preview track by $index" style="margin-left: 20px; padding: 3px 0;">
-                        <span class="preview" ng-bind-html="$ctrl.safe(scrubLineNumbers(preview))"></span>
+                        <span class="preview" ng-bind-html="$ctrl.trustAsHtml(preview)"></span>
                         <a href="#{{ result.page_id }}" ng-click="$ctrl.closeSearchResults()">(...Page {{ result.page_id }})</a>
                     </li>
                 </ul>
