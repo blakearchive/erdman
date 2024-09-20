@@ -2,7 +2,7 @@ import pysolr
 import os
 import re
 
-erdman_pages = pysolr.Solr(os.environ.get("SOLR_URL","http://127.0.0.1:8983/solr/erdman"))
+erdman_pages = pysolr.Solr(os.environ.get("SOLR_URL", "http://127.0.0.1:8983/solr/erdman"))
 
 
 class ErdmanDataService(object):
@@ -28,15 +28,15 @@ class ErdmanDataService(object):
             if e == "AND" or e == "OR":
                 return e
             else:
-                return "text_contents:%s" % e
+                return "contents:%s" % e
         search_elements = re.findall("([^\\s\"']+|\"[^\"]*\"|'[^']*')", q)
         query = " ".join(process_element(e) for e in search_elements)
 
         result = erdman_pages.search(query, **{
              "hl": "true",
-             "hl.fl":"text_contents",
-             "hl.snippets":10,
-             "hl.fragsize":50,
+             "hl.fl": "contents",
+             "hl.snippets": 10,
+             "hl.fragsize": 50,
              "fl": "id, page_id",
              "rows": 10000,
              "sort": "id asc"

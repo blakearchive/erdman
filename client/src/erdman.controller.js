@@ -68,7 +68,7 @@ class ErdmanController {
                 const headingText = titles[headingId];
 
                 const result = {
-                    preview: response.highlighting[doc.id].text_contents,
+                    preview: response.highlighting[doc.id].contents,
                     page_id: doc.page_id,
                 };
 
