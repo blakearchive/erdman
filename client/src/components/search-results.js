@@ -1,7 +1,7 @@
 import * as ngSanitize from 'angular-sanitize';
 
 class SearchResultsController {
-    constructor($sce, $scope) {
+    constructor($sce) {
         this.$sce = $sce;
     }
 
@@ -10,7 +10,7 @@ class SearchResultsController {
     }
 
     scrubLineNumbers(result){
-        return result.replace(/\d/gi,' ');
+        return safe(result.replace(/\d/gi,' '));
     }
 
     noResults(){
@@ -41,7 +41,7 @@ const SearchResultsComponent = {
                 <span class="result-heading">{{heading.heading.heading}}</span>
                 <ul class="list-unstyled" ng-repeat="result in heading.results track by $index">
                     <li ng-repeat="preview in result.preview track by $index" style="margin-left: 20px; padding: 3px 0;">
-                        <span class="preview" ng-bind-html="$ctrl.safe(preview)"></span>
+                        <span class="preview" ng-bind-html="$ctrl.scrubLineNumbers(preview)"></span>
                         <a href="#{{ result.page_id }}" ng-click="$ctrl.closeSearchResults()">(...Page {{ result.page_id }})</a>
                     </li>
                 </ul>
