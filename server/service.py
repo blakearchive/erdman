@@ -34,12 +34,11 @@ class ErdmanDataService(object):
 
         result = erdman_pages.search(query, **{
              "hl": "true",
-             "hl.fl": "contents",
+             "hl.fl": "text_contents",
              "hl.snippets": 10,
              "hl.fragsize": 50,
              "fl": "id, page_id",
              "rows": 10000,
-             "hl.bs.type": "LINE",
              "sort": "id asc"
         })
         return {"docs":result.docs, "highlighting":result.highlighting}
