@@ -21644,6 +21644,7 @@
 	    function TocController($rootScope) {
 	        _classCallCheck(this, TocController);
 
+	        this.items = [];
 	        this.sortItems();
 	        this.scope = $rootScope;
 	    }
@@ -21835,6 +21836,7 @@
 	    }, {
 	        key: 'scrubLineNumbers',
 	        value: function scrubLineNumbers(result) {
+	            console.log(result);
 	            return result.replace(/\d/gi, ' ');
 	        }
 	    }, {

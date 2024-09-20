@@ -1,5 +1,6 @@
 class TocController {
     constructor($rootScope) {
+        this.items = [];
         this.sortItems();
         this.scope = $rootScope;
     }
