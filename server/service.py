@@ -36,7 +36,7 @@ class ErdmanDataService(object):
              "hl": "true",
              "hl.fl": "text_contents",
              "hl.snippets": 10,
-             "hl.fragsize": 50,
+             "hl.fragsize": 10,
              "fl": "id, page_id",
              "rows": 10000,
              "sort": "id asc"
