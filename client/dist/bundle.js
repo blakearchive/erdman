@@ -21842,7 +21842,7 @@
 	        value: function scrubLineNumbers(result) {
 	            console.log(result);
 	            var regExp = new RegExp('.*<em>.*$', 'g');
-	            singleLineResult = result.match(regExp);
+	            var singleLineResult = result.match(regExp);
 	            console.log(singleLineResult);
 	            return singleLineResult.replace(/\d/gi, ' ');
 	        }
