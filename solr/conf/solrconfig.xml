@@ -645,13 +645,13 @@
          *** WARNING ***
          The settings below authorize Solr to fetch remote files, You
          should make sure your system has some authentication before
-         using enableRemoteStreaming="true"
+         using enableRemoteStreaming="true" -->
 
 
     <requestParsers enableRemoteStreaming="true"
                     multipartUploadLimitInKB="2048000"
                     formdataUploadLimitInKB="2048"
-                    addHttpRequestToContext="false"/> -->
+                    addHttpRequestToContext="false"/>
 
     <!-- HTTP Caching
 
@@ -1426,14 +1426,14 @@
     <str name="params.resource.loader.enabled">${velocity.params.resource.loader.enabled:false}</str>
   </queryResponseWriter>
 
-    <!-- @todo I don't think this gets used -->
+    <!-- @todo I don't think this gets used
    XSLT response writer transforms the XML output by any xslt file found
        in Solr's conf/xslt directory.  Changes to xslt files are checked for
        every xsltCacheLifetimeSeconds.
 
   <queryResponseWriter name="xslt" class="solr.scripting.xslt.XSLTResponseWriter">
     <int name="xsltCacheLifetimeSeconds">5</int>
-  </queryResponseWriter>
+  </queryResponseWriter> -->
   
 
   <!-- Query Parsers
