@@ -1,6 +1,8 @@
-class SearchResultsController {
-    constructor() {
+//import * as ngSanitize from 'angular-sanitize';
 
+class SearchResultsController {
+    constructor($sce) {
+        this.$sce = $sce;
     }
 
     handleGoToPage(pageId){
@@ -8,12 +10,22 @@ class SearchResultsController {
     }
 
     scrubLineNumbers(result){
-        return result.replace(/\d/gi,' ');
+        //console.log(result);
+        const regExp = new RegExp('.*<em>.*', "g")
+        var singleLineResult = result.match(regExp);
+        //console.log(singleLineResult);
+        var joined = singleLineResult.join('<br/>');
+        return joined.replace(/\d/gi,' ');
     }
 
     noResults(){
         return angular.equals(this.results,{});
     }
+/*
+    safe(string){
+        return this.$sce.trustAsHtml(string);
+    }
+*/
 }
 
 const SearchResultsComponent = {

@@ -1,6 +1,6 @@
-from erdman import app
+from server import app
 from flask import send_from_directory
-import config
+from server import config
 
 app.config["DEBUG"] = True
 app.config["SECRET_KEY"] = config.secret_key
