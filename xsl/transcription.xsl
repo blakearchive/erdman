@@ -349,4 +349,14 @@ transforms transcriptions
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
+    <!-- TEI <title> must never be copied through as a literal HTML <title> element:
+         browsers parse <title> using "rawtext" rules (like <script>/<style>), so any
+         markup nested inside it (e.g. <span class="tei-hi-italic">) is treated as
+         plain text instead of being rendered, and shows up as literal tag text in the
+         UI. Render it as an inline span instead. -->
+    <xsl:template match="title">
+        <span class="tei-title">
+            <xsl:apply-templates/>
+        </span>
+    </xsl:template>
 </xsl:stylesheet>
