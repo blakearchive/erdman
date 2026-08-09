@@ -3,7 +3,12 @@ import os
 import re
 import time
 
-erdman_pages = pysolr.Solr(os.environ.get("SOLR_URL", "http://127.0.0.1:8983/solr/erdman"))
+SOLR_URL = os.environ.get("SOLR_URL", "http://127.0.0.1:8983/solr/erdman")
+
+
+def _solr_client():
+    # Build a fresh client so each retry gets a new HTTP session.
+    return pysolr.Solr(SOLR_URL, timeout=10)
 
 # pysolr keeps one requests.Session alive for the life of the wsgi worker with no
 # retries configured; Solr's Jetty can close idle keep-alive sockets in the meantime,
@@ -13,7 +18,7 @@ erdman_pages = pysolr.Solr(os.environ.get("SOLR_URL", "http://127.0.0.1:8983/sol
 def _search_with_retry(query, retries=4, backoff=0.3, **kwargs):
     for attempt in range(retries + 1):
         try:
-            return erdman_pages.search(query, **kwargs)
+            return _solr_client().search(query, **kwargs)
         except pysolr.SolrError:
             if attempt == retries:
                 raise
