@@ -8,15 +8,16 @@ erdman_pages = pysolr.Solr(os.environ.get("SOLR_URL", "http://127.0.0.1:8983/sol
 # pysolr keeps one requests.Session alive for the life of the wsgi worker with no
 # retries configured; Solr's Jetty can close idle keep-alive sockets in the meantime,
 # so the next reuse fails immediately with a connection error. Retrying establishes
-# a fresh connection and succeeds.
-def _search_with_retry(query, retries=2, **kwargs):
+# a fresh connection and succeeds. Some failure windows outlast a couple of quick
+# retries, so back off a bit longer between attempts.
+def _search_with_retry(query, retries=4, backoff=0.3, **kwargs):
     for attempt in range(retries + 1):
         try:
             return erdman_pages.search(query, **kwargs)
         except pysolr.SolrError:
             if attempt == retries:
                 raise
-            time.sleep(0.2)
+            time.sleep(backoff * (attempt + 1))
 
 
 class ErdmanDataService(object):
