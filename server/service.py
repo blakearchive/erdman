@@ -1,4 +1,5 @@
 import pysolr
+import requests
 import os
 import re
 import time
@@ -6,9 +7,23 @@ import time
 SOLR_URL = os.environ.get("SOLR_URL", "http://127.0.0.1:8983/solr/erdman")
 
 
+class StableSolrClient(pysolr.Solr):
+    def get_session(self):
+        if self.session is None:
+            self.session = requests.Session()
+            self.session.stream = False
+            self.session.verify = self.verify
+            # Solr on this host drops large compressed keep-alive responses.
+            self.session.headers.update({
+                "Accept-Encoding": "identity",
+                "Connection": "close",
+            })
+        return self.session
+
+
 def _solr_client():
     # Build a fresh client so each retry gets a new HTTP session.
-    return pysolr.Solr(SOLR_URL, timeout=10)
+    return StableSolrClient(SOLR_URL, timeout=10)
 
 # pysolr keeps one requests.Session alive for the life of the wsgi worker with no
 # retries configured; Solr's Jetty can close idle keep-alive sockets in the meantime,
